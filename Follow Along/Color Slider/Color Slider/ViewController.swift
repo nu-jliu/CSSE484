@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello World")
         
         redSlider.value = 0.5
         greenSlider.value = 0
@@ -54,4 +53,3 @@ class ViewController: UIViewController {
         colorVliew.backgroundColor = UIColor(red: CGFloat(redValue), green: CGFloat(greenValue), blue: CGFloat(blueValue), alpha: CGFloat(alphaValue))
     }
 }
-
