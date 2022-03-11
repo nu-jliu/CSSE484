@@ -68,3 +68,5 @@ tuple.2
 var namedTuple = (first : "Dave", last : "Fisher")
 namedTuple.last
 namedTuple.first
+
+namedTuple.1
