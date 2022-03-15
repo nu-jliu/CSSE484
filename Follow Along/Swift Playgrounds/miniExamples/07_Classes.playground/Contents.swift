@@ -81,9 +81,9 @@ bobAccount.withdraw(70)
 
 
 
-//var bobAccount = AtmBankAccount()
-//bobAccount.deposit(100)
-//bobAccount.withdraw(40)
+var newAccount = ATMBankAccount()
+newAccount.deposit(100)
+newAccount.withdraw(40)
 
 
 
