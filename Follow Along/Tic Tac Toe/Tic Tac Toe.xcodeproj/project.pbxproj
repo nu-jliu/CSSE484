@@ -22,6 +22,7 @@
 		268059B727E2B58B0089FE3A /* iPad_board.png in Resources */ = {isa = PBXBuildFile; fileRef = 268059AE27E2B58B0089FE3A /* iPad_board.png */; };
 		268059B827E2B58B0089FE3A /* iPad_O.png in Resources */ = {isa = PBXBuildFile; fileRef = 268059AF27E2B58B0089FE3A /* iPad_O.png */; };
 		268059B927E2B58B0089FE3A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268059B027E2B58B0089FE3A /* Icon@2x.png */; };
+		268059BB27E2F8C50089FE3A /* TicTacToeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268059BA27E2F8C50089FE3A /* TicTacToeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		268059AE27E2B58B0089FE3A /* iPad_board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_board.png; sourceTree = "<group>"; };
 		268059AF27E2B58B0089FE3A /* iPad_O.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_O.png; sourceTree = "<group>"; };
 		268059B027E2B58B0089FE3A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		268059BA27E2F8C50089FE3A /* TicTacToeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				2680599D27E2B5260089FE3A /* Assets.xcassets */,
 				2680599F27E2B5260089FE3A /* LaunchScreen.storyboard */,
 				268059A227E2B5260089FE3A /* Info.plist */,
+				268059BA27E2F8C50089FE3A /* TicTacToeGame.swift */,
 			);
 			path = "Tic Tac Toe";
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				268059BB27E2F8C50089FE3A /* TicTacToeGame.swift in Sources */,
 				2680599927E2B5220089FE3A /* ViewController.swift in Sources */,
 				2680599527E2B5220089FE3A /* AppDelegate.swift in Sources */,
 				2680599727E2B5220089FE3A /* SceneDelegate.swift in Sources */,
@@ -331,6 +335,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -359,6 +364,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
