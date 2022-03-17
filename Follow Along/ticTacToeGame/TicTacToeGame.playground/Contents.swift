@@ -11,7 +11,7 @@ class TicTacToeGame: CustomStringConvertible {
         case o = "O"
     }
     
-    enum State: String {
+    enum GameState: String {
         case xTurn = "X's Turn"
         case oTurn = "O's Turn"
         case xWin = "X Wins!"
@@ -20,20 +20,19 @@ class TicTacToeGame: CustomStringConvertible {
     }
     
     var board: [MarkType]
-    var state: State
+    var state: GameState
     
     init() {
-//        self.board = [MarkType]()
-//
-//        for _ in 0..<9 {
-//            board.append(TicTacToeGame.MarkType.none)
-//        }
-        
         self.board = [MarkType](repeating: .none, count: 9)
-        self.state = TicTacToeGame.State.xTurn
+        self.state = .xTurn
     }
     
-    func pressedSquareAt(_ index: Int) {
+    func pressedSquare(at index: Int) {
+        if (index < 0 || index > 8) {
+            print("ERROR: Invalid index")
+            return
+        }
+        
         if (self.board[index] != .none) {
             print("ERROR: The square is not empty")
             return
@@ -41,7 +40,7 @@ class TicTacToeGame: CustomStringConvertible {
         
         switch self.state {
         case .xWin, .oWin, .tie:
-            print("WARNING: The game is over already, no move is allowed")
+            print("ERROR: The game is over already, no move is allowed")
             return
             
         case .xTurn:
@@ -69,12 +68,12 @@ class TicTacToeGame: CustomStringConvertible {
         var linesOfThree = [String]()
         
         for i in 0..<3 {
-            let startIndex = 3*i
-            linesOfThree.append(self.getBoardString([startIndex, startIndex+1, startIndex+2]))
+            let startIndex = 3 * i
+            linesOfThree.append(self.getBoardString([startIndex, startIndex + 1, startIndex + 2]))
         }
         
         for i in 0..<3 {
-            linesOfThree.append(self.getBoardString([i, i+3, i+6]))
+            linesOfThree.append(self.getBoardString([i, i + 3, i + 6]))
         }
         
         linesOfThree.append(self.getBoardString([0, 4, 8]))
@@ -102,7 +101,7 @@ class TicTacToeGame: CustomStringConvertible {
     }
     
     var description: String {
-        return "State: \(self.state), Board: \(self.getBoardString())"
+        return "\(self.state.rawValue): \(self.getBoardString())"
     }
 }
 
@@ -110,24 +109,24 @@ class TicTacToeGame: CustomStringConvertible {
 var game = TicTacToeGame()
 //game.board[0] = .x
 //game
-game.pressedSquareAt(0) // X is moving in the upper left
-game.pressedSquareAt(1) // O is moving in the top center
-game.pressedSquareAt(3) // X is below the other X
-game.pressedSquareAt(2) // O is moving to the top right
-game.pressedSquareAt(6) // X wins the game!!!
+game.pressedSquare(at: 0) // X is moving in the upper left
+game.pressedSquare(at: 1) // O is moving in the top center
+game.pressedSquare(at: 3) // X is below the other X
+game.pressedSquare(at: 2) // O is moving to the top right
+game.pressedSquare(at: 6) // X wins the game!!!
 
 
 var game2 = TicTacToeGame()
 game2.board = [.x, .x, .o,
                 .none, .none, .none,
                 .o, .none, .none]
-game2.pressedSquareAt(8)
-game2.pressedSquareAt(4)
+game2.pressedSquare(at: 8)
+game2.pressedSquare(at: 4)
 
 
 var game3 = TicTacToeGame()
 game3.board = [.x, .x, .o,
     .o, .o, .x,
     .x, .o, .none]
-game3.pressedSquareAt(8)
+game3.pressedSquare(at: 8)
 
