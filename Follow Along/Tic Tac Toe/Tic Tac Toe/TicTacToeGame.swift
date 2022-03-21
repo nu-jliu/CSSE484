@@ -64,7 +64,6 @@ class TicTacToeGame: CustomStringConvertible {
         
         if !self.board.contains(.none) {
             self.state = .tie
-            return
         }
         
         // Check for win
