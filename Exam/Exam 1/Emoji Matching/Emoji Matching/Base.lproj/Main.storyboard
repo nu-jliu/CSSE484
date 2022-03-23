@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Matching" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byG-hU-5Fx">
+                                <rect key="frame" x="0.0" y="1272" width="1024" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="asf-ur-lVN"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="x58-zr-T1Q"/>
+                                    <barButtonItem title="New Game" id="WkA-2I-0kg">
+                                        <connections>
+                                            <action selector="newGamePressed:" destination="BYZ-38-t0r" id="2KL-N2-4C3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lT1-JS-ai2">
+                                <rect key="frame" x="0.0" y="44" width="1024" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="6So-5j-VnE"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="Aky-k1-zao">
+                                        <barButtonItem key="leftBarButtonItem" title="New Game" id="Vo8-K9-IPg">
+                                            <connections>
+                                                <action selector="newGamePressed:" destination="BYZ-38-t0r" id="IWP-gP-Aeg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qMz-JK-XQU">
+                                <rect key="frame" x="100" y="304" width="824" height="842"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YgD-Ed-kmc">
+                                        <rect key="frame" x="0.0" y="0.0" width="824" height="160.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzD-d4-Gcp">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hWJ-Dy-ZLQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TY0-Ei-33C">
+                                                <rect key="frame" x="208.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sre-Nw-lvj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-FF-5Nc">
+                                                <rect key="frame" x="417" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIU-Jg-sc0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWe-s7-19e">
+                                                <rect key="frame" x="625.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9E-Ol-nP0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JL1-Bq-277">
+                                        <rect key="frame" x="0.0" y="170.5" width="824" height="160.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="4" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dg-7Z-AUw">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2lN-nv-Qha"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSH-Sq-2hT">
+                                                <rect key="frame" x="208.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HpR-KM-HJ4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-VC-8TE">
+                                                <rect key="frame" x="417" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AvC-nz-vrB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnc-ZR-0dO">
+                                                <rect key="frame" x="625.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jB9-vD-tRo"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WgF-6e-fJz">
+                                        <rect key="frame" x="0.0" y="341" width="824" height="160"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJq-Rx-bV5">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="160"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9b-NO-HFE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNx-4a-NNZ">
+                                                <rect key="frame" x="208.5" y="0.0" width="198.5" height="160"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hzN-o4-wHD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="10" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZ2-S9-XqB">
+                                                <rect key="frame" x="417" y="0.0" width="198.5" height="160"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fjh-nj-OxN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="11" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75N-bj-jaM">
+                                                <rect key="frame" x="625.5" y="0.0" width="198.5" height="160"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fe8-DF-wUK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gaf-cw-Cu7">
+                                        <rect key="frame" x="0.0" y="511" width="824" height="160.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="12" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-tC-vqI">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PWx-1h-LcZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="13" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uf8-HN-ZxF">
+                                                <rect key="frame" x="208.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Ql-8F-F7H"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="14" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rr-28-Ge4">
+                                                <rect key="frame" x="417" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yaf-Oq-ZSe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="15" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKz-QC-URp">
+                                                <rect key="frame" x="625.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YFl-dC-DaP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JZo-is-4iw">
+                                        <rect key="frame" x="0.0" y="681.5" width="824" height="160.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="16" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0r-1U-6yk">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCA-yG-btE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="17" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpl-2z-za1">
+                                                <rect key="frame" x="208.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5FM-O6-RCn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="18" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flm-P2-3Xh">
+                                                <rect key="frame" x="417" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hcB-of-NZX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="19" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSr-qE-bgL">
+                                                <rect key="frame" x="625.5" y="0.0" width="198.5" height="160.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="cardPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SCV-Bi-FOW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qMz-JK-XQU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="3gX-0f-n6U"/>
+                            <constraint firstItem="qMz-JK-XQU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="9qR-f4-A1p"/>
+                            <constraint firstItem="lT1-JS-ai2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BcA-bQ-vRR"/>
+                            <constraint firstItem="lT1-JS-ai2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GfR-mD-Jeb"/>
+                            <constraint firstAttribute="trailing" secondItem="lT1-JS-ai2" secondAttribute="trailing" id="HBk-ID-q23"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qMz-JK-XQU" secondAttribute="trailing" constant="30" id="NPB-84-Ym2"/>
+                            <constraint firstItem="qMz-JK-XQU" firstAttribute="top" secondItem="lT1-JS-ai2" secondAttribute="bottom" constant="200" id="PlN-5D-WDt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="byG-hU-5Fx" secondAttribute="trailing" id="VTL-GB-B59"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qMz-JK-XQU" secondAttribute="trailing" constant="100" id="W0d-6g-ZYH"/>
+                            <constraint firstItem="byG-hU-5Fx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="X0V-Eq-rRa"/>
+                            <constraint firstItem="qMz-JK-XQU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="hSD-CC-7v9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="byG-hU-5Fx" secondAttribute="bottom" id="i7h-w6-JWY"/>
+                            <constraint firstItem="byG-hU-5Fx" firstAttribute="top" secondItem="qMz-JK-XQU" secondAttribute="bottom" constant="100" id="nuZ-cs-4tS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qMz-JK-XQU" secondAttribute="bottom" constant="200" id="zlf-hl-XPK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="byG-hU-5Fx"/>
+                                <exclude reference="lT1-JS-ai2"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="NPB-84-Ym2"/>
+                                <exclude reference="VTL-GB-B59"/>
+                                <exclude reference="W0d-6g-ZYH"/>
+                                <exclude reference="i7h-w6-JWY"/>
+                                <exclude reference="zlf-hl-XPK"/>
+                                <exclude reference="BcA-bQ-vRR"/>
+                                <exclude reference="GfR-mD-Jeb"/>
+                                <exclude reference="HBk-ID-q23"/>
+                                <exclude reference="3gX-0f-n6U"/>
+                                <exclude reference="9qR-f4-A1p"/>
+                                <exclude reference="PlN-5D-WDt"/>
+                                <exclude reference="hSD-CC-7v9"/>
+                                <exclude reference="X0V-Eq-rRa"/>
+                                <exclude reference="nuZ-cs-4tS"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="byG-hU-5Fx"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="NPB-84-Ym2"/>
+                                <include reference="VTL-GB-B59"/>
+                                <include reference="i7h-w6-JWY"/>
+                                <include reference="3gX-0f-n6U"/>
+                                <include reference="9qR-f4-A1p"/>
+                                <include reference="X0V-Eq-rRa"/>
+                                <include reference="nuZ-cs-4tS"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="lT1-JS-ai2"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="W0d-6g-ZYH"/>
+                                <include reference="zlf-hl-XPK"/>
+                                <include reference="BcA-bQ-vRR"/>
+                                <include reference="GfR-mD-Jeb"/>
+                                <include reference="HBk-ID-q23"/>
+                                <include reference="PlN-5D-WDt"/>
+                                <include reference="hSD-CC-7v9"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outletCollection property="cardButtons" destination="IzD-d4-Gcp" collectionClass="NSMutableArray" id="7AW-5H-gqt"/>
+                        <outletCollection property="cardButtons" destination="TY0-Ei-33C" collectionClass="NSMutableArray" id="VtP-1Y-0pd"/>
+                        <outletCollection property="cardButtons" destination="FAt-FF-5Nc" collectionClass="NSMutableArray" id="dgt-NS-ESP"/>
+                        <outletCollection property="cardButtons" destination="iWe-s7-19e" collectionClass="NSMutableArray" id="Qxf-5G-FO8"/>
+                        <outletCollection property="cardButtons" destination="1Dg-7Z-AUw" collectionClass="NSMutableArray" id="mLA-yz-MrN"/>
+                        <outletCollection property="cardButtons" destination="XSH-Sq-2hT" collectionClass="NSMutableArray" id="Uoi-Gq-Szj"/>
+                        <outletCollection property="cardButtons" destination="aFa-VC-8TE" collectionClass="NSMutableArray" id="SuG-MZ-cWG"/>
+                        <outletCollection property="cardButtons" destination="dnc-ZR-0dO" collectionClass="NSMutableArray" id="5sJ-el-a5W"/>
+                        <outletCollection property="cardButtons" destination="gJq-Rx-bV5" collectionClass="NSMutableArray" id="SIS-Ed-ZQJ"/>
+                        <outletCollection property="cardButtons" destination="WNx-4a-NNZ" collectionClass="NSMutableArray" id="6Ab-Lm-Vs2"/>
+                        <outletCollection property="cardButtons" destination="LZ2-S9-XqB" collectionClass="NSMutableArray" id="wAt-Pa-kZt"/>
+                        <outletCollection property="cardButtons" destination="75N-bj-jaM" collectionClass="NSMutableArray" id="j7T-zF-TuU"/>
+                        <outletCollection property="cardButtons" destination="eqB-tC-vqI" collectionClass="NSMutableArray" id="sES-im-gPt"/>
+                        <outletCollection property="cardButtons" destination="Uf8-HN-ZxF" collectionClass="NSMutableArray" id="g7U-BM-yUh"/>
+                        <outletCollection property="cardButtons" destination="5rr-28-Ge4" collectionClass="NSMutableArray" id="yeE-Xq-6Vn"/>
+                        <outletCollection property="cardButtons" destination="oKz-QC-URp" collectionClass="NSMutableArray" id="e1t-C0-Tnu"/>
+                        <outletCollection property="cardButtons" destination="z0r-1U-6yk" collectionClass="NSMutableArray" id="yzC-1V-Hru"/>
+                        <outletCollection property="cardButtons" destination="Tpl-2z-za1" collectionClass="NSMutableArray" id="uj2-im-drZ"/>
+                        <outletCollection property="cardButtons" destination="flm-P2-3Xh" collectionClass="NSMutableArray" id="J8p-iK-mYo"/>
+                        <outletCollection property="cardButtons" destination="DSr-qE-bgL" collectionClass="NSMutableArray" id="tQo-Lu-XdH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

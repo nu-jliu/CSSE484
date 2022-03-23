@@ -18,8 +18,10 @@ class ViewController: UIViewController {
     let startTitle = "Turn all lights off!"
     var game = LinearLightsOutGame(numLights: 13)
     
-    var lightOnImage: UIImage = #imageLiteral(resourceName: "light_on.png")
-    var lightOffImage: UIImage = #imageLiteral(resourceName: "light_off.png")
+//    var lightOnImage: UIImage = #imageLiteral(resourceName: "light_on.png")
+//    var lightOffImage: UIImage = #imageLiteral(resourceName: "light_off.png")
+    var lightOnImage: UIImage!
+    var lightOffImage: UIImage!
     
     var gameWin = false
     
@@ -29,13 +31,17 @@ class ViewController: UIViewController {
         if self.traitCollection.horizontalSizeClass == .compact { // iPhone
             self.gameStateLabel.text = self.startTitle
             
-            self.lightOnImage = #imageLiteral(resourceName: "light_on_small.png")
-            self.lightOffImage = #imageLiteral(resourceName: "light_off_small.png")
+//            self.lightOnImage = #imageLiteral(resourceName: "light_on_small.png")
+//            self.lightOffImage = #imageLiteral(resourceName: "light_off_small.png")
+            self.lightOnImage = UIImage(named: "light_on_small.png")
+            self.lightOffImage = UIImage(named: "light_off_small.png")
         } else { // iPad
             self.gameStateNavBar.topItem?.title = self.startTitle
             
-            self.lightOnImage = #imageLiteral(resourceName: "light_on.png")
-            self.lightOffImage = #imageLiteral(resourceName: "light_off.png")
+//            self.lightOnImage = #imageLiteral(resourceName: "light_on.png")
+//            self.lightOffImage = #imageLiteral(resourceName: "light_off.png")
+            self.lightOnImage = UIImage(named: "light_on.png")
+            self.lightOffImage = UIImage(named: "light_off.png")
         }
         
         for button in self.gameLightButtons {

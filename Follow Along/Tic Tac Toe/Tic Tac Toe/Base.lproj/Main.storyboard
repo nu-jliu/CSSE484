@@ -41,7 +41,7 @@
                                 </variation>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCp-JC-2LO">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="810" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fY6-Eh-lKo"/>
                                 </constraints>
@@ -71,7 +71,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXL-Sp-Xqx" userLabel="Game Board">
                                         <rect key="frame" x="20" y="167.33333333333334" width="350" height="387.33333333333326"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QK2-8z-0pk">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board.png" translatesAutoresizingMaskIntoConstraints="NO" id="QK2-8z-0pk">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="387.33333333333331"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vkw-Tk-6Wg">
@@ -168,8 +168,8 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="670" id="00b-rJ-r0U"/>
-                                            <constraint firstAttribute="height" constant="670" id="4Vk-ry-MIW"/>
+                                            <constraint firstAttribute="width" constant="560" id="00b-rJ-r0U"/>
+                                            <constraint firstAttribute="height" constant="620" id="4Vk-ry-MIW"/>
                                             <constraint firstItem="QK2-8z-0pk" firstAttribute="leading" secondItem="qXL-Sp-Xqx" secondAttribute="leading" id="8Ba-c7-4kF"/>
                                             <constraint firstAttribute="width" secondItem="qXL-Sp-Xqx" secondAttribute="height" multiplier="28:31" id="9Cg-9K-bzL"/>
                                             <constraint firstAttribute="trailing" secondItem="QK2-8z-0pk" secondAttribute="trailing" id="BLy-eB-TZA"/>
@@ -200,8 +200,8 @@
                                         </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X's Turn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-5b-21t">
-                                        <rect key="frame" x="20" y="99.333333333333343" width="350" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <rect key="frame" x="20" y="87.333333333333343" width="350" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -217,14 +217,8 @@
                                     <constraint firstItem="qXL-Sp-Xqx" firstAttribute="centerY" secondItem="yZC-Xr-TMh" secondAttribute="centerY" id="hTu-W1-5jx"/>
                                 </constraints>
                                 <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="oJb-5b-21t"/>
-                                    </mask>
                                     <mask key="constraints">
-                                        <exclude reference="UDR-ET-1PZ"/>
-                                        <exclude reference="eIp-K7-R1c"/>
                                         <exclude reference="4Zf-Db-45w"/>
-                                        <exclude reference="7Dd-9o-MfQ"/>
                                         <exclude reference="8ey-Mv-r0Q"/>
                                         <exclude reference="IuD-Rm-q7h"/>
                                         <exclude reference="Qna-ME-ERU"/>
@@ -232,13 +226,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="oJb-5b-21t"/>
-                                    </mask>
                                     <mask key="constraints">
-                                        <include reference="UDR-ET-1PZ"/>
-                                        <include reference="eIp-K7-R1c"/>
-                                        <include reference="7Dd-9o-MfQ"/>
                                         <include reference="8ey-Mv-r0Q"/>
                                         <include reference="IuD-Rm-q7h"/>
                                         <include reference="hTu-W1-5jx"/>
@@ -253,7 +241,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="03k-iJ-v0M" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B4b-fO-Fwq"/>
                             <constraint firstItem="yZC-Xr-TMh" firstAttribute="top" secondItem="NCp-JC-2LO" secondAttribute="bottom" id="BEp-Ek-hu0"/>
@@ -332,8 +320,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="board.png" width="50.274314880371094" height="55.660846710205078"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -15,24 +15,27 @@ class ViewController: UIViewController {
     @IBOutlet var gameBoardButtons: [UIButton]!
     @IBOutlet weak var gameBoardImage: UIImageView!
     
-    var game = TicTacToeGame()
-    var xImage: UIImage!
-    var oImage: UIImage!
+    var game: TicTacToeGame!
+    let xImage = UIImage(named: "X.png")
+    let oImage = UIImage(named: "O.png")
+    let noneImage = UIImage(named: "empty.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
-        if self.traitCollection.horizontalSizeClass == .compact { // iPhone
-            self.gameBoardImage.image = #imageLiteral(resourceName: "iPhone_board.png")
-            self.xImage = #imageLiteral(resourceName: "iPhone_X.png")
-            self.oImage = #imageLiteral(resourceName: "iPhone_O.png")
-        } else {
-            self.gameBoardImage.image = #imageLiteral(resourceName: "iPad_board.png")
-            self.xImage = #imageLiteral(resourceName: "iPad_X.png")
-            self.oImage = #imageLiteral(resourceName: "iPad_O.png")
-        }
+        self.game = TicTacToeGame()
+//        if self.traitCollection.horizontalSizeClass == .compact { // iPhone
+//            self.gameBoardImage.image = #imageLiteral(resourceName: "board.png")
+//            self.xImage = #imageLiteral(resourceName: "X.png")
+//            self.oImage = #imageLiteral(resourceName: "O.png")
+//        } else {
+//            self.gameBoardImage.image =
+//            self.xImage = #imageLiteral(resourceName: "iPad_X.png")
+//            self.oImage = #imageLiteral(resourceName: "iPad_O.png")
+//        }
         
+//        self.gameBoardImage.image = #imageLiteral(resourceName: "board.png")
         self.updateView()
     }
 
@@ -43,16 +46,17 @@ class ViewController: UIViewController {
         self.updateView()
     }
     
-    @IBAction func gameBoardButtonPressed(_ sender: Any) {
-        let button = sender as! UIButton
-        print(button.tag)
-        self.game.pressedSquare(at: button.tag)
+    @IBAction func gameBoardButtonPressed(_ button: UIButton) {
+        let buttonTag = button.tag
+        
+        print("You pressed button \(buttonTag)")
+        self.game.pressedSquare(at: buttonTag)
         
         self.updateView()
     }
     
     func updateView() {
-        print("Game State: \(self.game)")
+        print("Game State: \(self.game!)")
         
         if self.traitCollection.horizontalSizeClass == .compact { // iPhone
             self.gameStateLabel.text = self.game.state.rawValue
@@ -60,12 +64,13 @@ class ViewController: UIViewController {
             self.gameStateNavBar.topItem?.title = self.game.state.rawValue
         }
         
-        for button in self.gameBoardButtons {
-            let buttonIndex = button.tag
+        for k in 0..<self.gameBoardButtons.count {
+            let button = self.gameBoardButtons[k]
+            let mark = self.game.board[k]
             
-            switch game.board[buttonIndex] {
+            switch mark {
             case .none:
-                button.imageView?.image = nil
+                button.setImage(self.noneImage, for: .normal)
             case .x:
                 button.setImage(self.xImage, for: .normal)
             case .o:
