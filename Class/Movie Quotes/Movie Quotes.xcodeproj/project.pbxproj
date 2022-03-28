@@ -13,6 +13,7 @@
 		2621159027F1DEA100C42C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2621158F27F1DEA100C42C04 /* Assets.xcassets */; };
 		2621159327F1DEA100C42C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2621159127F1DEA100C42C04 /* LaunchScreen.storyboard */; };
 		2621159B27F1E05100C42C04 /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2621159A27F1E05100C42C04 /* MovieQuotesTableViewController.swift */; };
+		2621159D27F1E59E00C42C04 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2621159C27F1E59E00C42C04 /* MovieQuote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2621159227F1DEA100C42C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2621159427F1DEA100C42C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2621159A27F1E05100C42C04 /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
+		2621159C27F1E59E00C42C04 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +42,6 @@
 		2621157A27F1DE9E00C42C04 = {
 			isa = PBXGroup;
 			children = (
-				2621159A27F1E05100C42C04 /* MovieQuotesTableViewController.swift */,
 				2621158527F1DE9E00C42C04 /* Movie Quotes */,
 				2621158427F1DE9E00C42C04 /* Products */,
 			);
@@ -57,6 +58,8 @@
 		2621158527F1DE9E00C42C04 /* Movie Quotes */ = {
 			isa = PBXGroup;
 			children = (
+				2621159C27F1E59E00C42C04 /* MovieQuote.swift */,
+				2621159A27F1E05100C42C04 /* MovieQuotesTableViewController.swift */,
 				2621158627F1DE9E00C42C04 /* AppDelegate.swift */,
 				2621158827F1DE9E00C42C04 /* SceneDelegate.swift */,
 				2621158C27F1DE9E00C42C04 /* Main.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2621158727F1DE9E00C42C04 /* AppDelegate.swift in Sources */,
+				2621159D27F1E59E00C42C04 /* MovieQuote.swift in Sources */,
 				2621159B27F1E05100C42C04 /* MovieQuotesTableViewController.swift in Sources */,
 				2621158927F1DE9E00C42C04 /* SceneDelegate.swift in Sources */,
 			);
