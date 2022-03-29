@@ -41,12 +41,32 @@ class MovieQuotesTableViewController: UITableViewController {
         
         let alertController = UIAlertController(title: "Create a new Movie Quote", message: "", preferredStyle: .alert)
         
+        // add qupte textfield
+        alertController.addTextField { textField in
+            textField.placeholder = "Quote"
+        }
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Movie"
+        }
+        
+        // Cancel action
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
             print("You pressed cancel")
         })
         
+        // Create quote action
         alertController.addAction(UIAlertAction(title: "Create Quote", style: .default) { action in
             print("You create quote")
+            
+            let quoteTextField = alertController.textFields![0] as UITextField
+            let movieTextField = alertController.textFields![1] as UITextField
+            print("Quote: \(quoteTextField.text!)\nMovie: \(movieTextField.text!)")
+            
+            let mq = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
+            self.movieQuotes.insert(mq, at: 0)
+            self.tableView.reloadData()
+            
         })
         
         self.present(alertController, animated: true)
