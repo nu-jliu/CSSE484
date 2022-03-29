@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +52,7 @@
                                 <connections>
                                     <outlet property="movieLabel" destination="Nfi-sV-fP2" id="RmX-aK-PAE"/>
                                     <outlet property="quoteLabel" destination="wcv-OF-Yth" id="6dq-SF-lBk"/>
+                                    <segue destination="RnJ-fO-bMD" kind="show" identifier="MovieQuoteDetailSegue" id="E73-QJ-Eth"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,6 +66,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIL-1h-CHu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="119"/>
+        </scene>
+        <!--Movie Quote Detail View Controller-->
+        <scene sceneID="jba-lp-mxH">
+            <objects>
+                <viewController id="RnJ-fO-bMD" customClass="MovieQuoteDetailViewController" customModule="Movie_Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A0c-94-CLf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="X0d-KO-unD">
+                                <rect key="frame" x="20" y="128" width="374" height="186"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20M-HA-3ug">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Goes Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vai-lw-94u">
+                                        <rect key="frame" x="0.0" y="54" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUN-ca-81t">
+                                        <rect key="frame" x="0.0" y="108" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Goes Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjN-RZ-E4c">
+                                        <rect key="frame" x="0.0" y="162" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2tl-SX-aKh"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2tl-SX-aKh" firstAttribute="trailing" secondItem="X0d-KO-unD" secondAttribute="trailing" constant="20" id="Bcb-m1-ccr"/>
+                            <constraint firstItem="X0d-KO-unD" firstAttribute="leading" secondItem="2tl-SX-aKh" secondAttribute="leading" constant="20" id="PpV-5O-VYt"/>
+                            <constraint firstItem="X0d-KO-unD" firstAttribute="top" secondItem="2tl-SX-aKh" secondAttribute="top" constant="40" id="edx-fT-FRq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zls-RK-SIl"/>
+                    <connections>
+                        <outlet property="movieLabel" destination="hjN-RZ-E4c" id="Iaq-p2-YUc"/>
+                        <outlet property="quoteLabel" destination="Vai-lw-94u" id="fKR-Co-e8T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0f-Ef-wxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fyh-5O-2gV">

@@ -15,6 +15,7 @@ class MovieQuotesTableViewCell: UITableViewCell {
 class MovieQuotesTableViewController: UITableViewController {
     
     let movieQuoteCell = "MovieQuoteCell"
+    let movieQuoteDetailSegue = "MovieQuoteDetailSegue"
 //    let names = ["Dave", "Kristy", "McKinley", "Keegan", "Bowen", "Neala"]
     var movieQuotes = [MovieQuote]()
 
@@ -25,15 +26,26 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMovieQuoteDialog))
         
         // Hardcode movie quotes
         let mq1 = MovieQuote(quote: "I'll be back", movie: "The Terminator")
         let mq2 = MovieQuote(quote: "You Adrian", movie: "Rocky")
+        let mq3 = MovieQuote(quote: "You don't understand! I coulda had class. I coulda been a contender. I could've been somebody, instead of a bum, which is what I am.", movie: "On the Waterfront, 1954")
+       
         self.movieQuotes.append(mq1)
         self.movieQuotes.append(mq2)
+        self.movieQuotes.append(mq3)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     @objc func showAddMovieQuoteDialog() {
@@ -98,7 +110,8 @@ class MovieQuotesTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: implement delete
+            self.movieQuotes.remove(at: indexPath.row)
+            self.tableView.reloadData()
         }
     }
 
@@ -107,6 +120,12 @@ class MovieQuotesTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.movieQuoteDetailSegue {
+            let mqDetailVC = segue.destination as! MovieQuoteDetailViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                mqDetailVC.movieQuote = self.movieQuotes[indexPath.row]
+            }
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
