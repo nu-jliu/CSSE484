@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rH7-tb-B2I">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Buckets-->
+        <scene sceneID="8U0-zM-NZc">
+            <objects>
+                <tableViewController id="kdr-p5-q6i" customClass="PhotoBucketsTableViewController" customModule="Photo_Buckets" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="N3H-z6-ADh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PhotoBucketCell" textLabel="pYm-SB-h8g" style="IBUITableViewCellStyleDefault" id="8Tj-Lj-tEu">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Tj-Lj-tEu" id="sZU-PL-JXh">
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pYm-SB-h8g">
+                                            <rect key="frame" x="20" y="0.0" width="357.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="d3u-1C-QKf" kind="show" identifier="PhotoBucketDetailSegue" id="sZM-3d-H1i"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kdr-p5-q6i" id="TYm-2j-dAy"/>
+                            <outlet property="delegate" destination="kdr-p5-q6i" id="aQH-ZG-6wV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Photo Buckets" id="P88-KS-gYI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ck-nh-k4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="46"/>
+        </scene>
+        <!--Photo Bucket Detail View Controller-->
+        <scene sceneID="ssD-7C-vJh">
+            <objects>
+                <viewController id="d3u-1C-QKf" customClass="PhotoBucketDetailViewController" customModule="Photo_Buckets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JmI-bd-eCe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-u5-GRj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="119-3D-s7h"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0n-54-0Dg">
+                                <rect key="frame" x="20" y="558" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E7s-ih-N0N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wnd-u5-GRj" firstAttribute="leading" secondItem="E7s-ih-N0N" secondAttribute="leading" id="IO8-WM-8pT"/>
+                            <constraint firstItem="j0n-54-0Dg" firstAttribute="leading" secondItem="E7s-ih-N0N" secondAttribute="leading" constant="20" id="MBh-C2-HV9"/>
+                            <constraint firstItem="j0n-54-0Dg" firstAttribute="top" secondItem="Wnd-u5-GRj" secondAttribute="bottom" constant="20" id="OqK-YO-ldi"/>
+                            <constraint firstItem="Wnd-u5-GRj" firstAttribute="top" secondItem="E7s-ih-N0N" secondAttribute="top" id="kHH-KO-rhc"/>
+                            <constraint firstItem="E7s-ih-N0N" firstAttribute="trailing" secondItem="j0n-54-0Dg" secondAttribute="trailing" constant="20" id="qUt-K2-QIO"/>
+                            <constraint firstItem="E7s-ih-N0N" firstAttribute="trailing" secondItem="Wnd-u5-GRj" secondAttribute="trailing" id="yoa-lH-mHR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vsg-OG-cFL"/>
+                    <connections>
+                        <outlet property="imageTitleLable" destination="j0n-54-0Dg" id="Gh9-sr-jKo"/>
+                        <outlet property="photoBucketImageView" destination="Wnd-u5-GRj" id="h5g-yd-JgS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w8A-zf-7rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444.9275362318842" y="45.535714285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uHb-Qp-hOK">
+            <objects>
+                <navigationController id="rH7-tb-B2I" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sEh-wx-6Qu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kdr-p5-q6i" kind="relationship" relationship="rootViewController" id="9LW-po-sz4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crW-TX-7Ma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-512" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

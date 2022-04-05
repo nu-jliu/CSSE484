@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class MovieQuote {
     var quote: String
@@ -16,4 +17,13 @@ class MovieQuote {
         self.quote = quote
         self.movie = movie
     }
+    
+    init(docSnapshot: DocumentSnapshot) {
+        self.documentId = docSnapshot.documentID
+        let data = docSnapshot.data()
+        
+        self.quote = data?[MOVIE_QUOTE_QUOTE] as? String ?? ""
+        self.movie = data?[MOVIE_QUOTE_MOVIE] as? String ?? ""
+    }
 }
+
