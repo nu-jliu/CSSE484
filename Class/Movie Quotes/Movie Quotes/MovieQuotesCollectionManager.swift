@@ -19,11 +19,11 @@ class MovieQuotesCollectionManager {
     
     var latestMovieQuotes = [MovieQuote]()
     
-    func startListening(changeListener: @escaping (() -> Void)) {
+    func startListening(changeListener: @escaping (() -> Void)) -> ListenerRegistration {
         // TODO: receive a changeListener
         
         let query = self._collectionRef.order(by: MOVIE_QUOTE_LAST_TOUCHED, descending: true).limit(to: 50)
-        query.addSnapshotListener { snapshot, err in
+        return query.addSnapshotListener { snapshot, err in
             guard let documents = snapshot?.documents else {
                 print("ERROR: failed to fetching documents: \(err!)")
                 return
@@ -31,7 +31,6 @@ class MovieQuotesCollectionManager {
             
             self.latestMovieQuotes = [MovieQuote]()
             for doc in documents {
-                print("\(doc.documentID) => \(doc.data())")
                 self.latestMovieQuotes.append(MovieQuote(docSnapshot: doc))
             }
             
@@ -39,8 +38,9 @@ class MovieQuotesCollectionManager {
         }
     }
     
-    func stopListening() {
-        // TODO: remove listener
+    func stopListening(_ listenerRegisteration: ListenerRegistration?) {
+        print("Removing the collection listener ...")
+        listenerRegisteration?.remove()
     }
     
     func add(_ mq: MovieQuote) {

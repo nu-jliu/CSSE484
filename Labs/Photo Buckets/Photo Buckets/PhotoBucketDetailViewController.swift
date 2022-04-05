@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class PhotoBucketDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var imageTitleLable: UILabel!
     @IBOutlet weak var photoBucketImageView: UIImageView!
     
@@ -18,7 +18,7 @@ class PhotoBucketDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self._documentReference.addSnapshotListener { docSnapshot, err in
             guard let doc = docSnapshot else {
@@ -58,5 +58,4 @@ class PhotoBucketDetailViewController: UIViewController {
     func setDocumentReference(docId: String) {
         self._documentReference = Firestore.firestore().collection(Constants.FIREBASE_PHOTOS_COLLECTION_PATH).document(docId)
     }
-
 }

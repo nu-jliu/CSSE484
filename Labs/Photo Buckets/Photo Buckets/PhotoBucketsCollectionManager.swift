@@ -79,5 +79,12 @@ class PhotoBucketsCollectionManager {
     
     func delete(_ docId: String) {
         // TODO: Implement this
+        self._collectionRef.document(docId).delete() { err in
+            if let err = err {
+                print("ERROR: remove document \(docId) failed \(err)")
+            } else {
+                print("Remove document \(docId) successfully")
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MovieQuotesTableViewCell: UITableViewCell {
     @IBOutlet weak var quoteLabel: UILabel!
@@ -16,7 +17,7 @@ class MovieQuotesTableViewController: UITableViewController {
     
     let movieQuoteCell = "MovieQuoteCell"
     let movieQuoteDetailSegue = "MovieQuoteDetailSegue"
-//    let names = ["Dave", "Kristy", "McKinley", "Keegan", "Bowen", "Neala"]
+    var movieQuotesListenerRegisteration: ListenerRegistration?
     var movieQuotes = [MovieQuote]()
 
     override func viewDidLoad() {
@@ -28,25 +29,12 @@ class MovieQuotesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMovieQuoteDialog))
-        
-        // Hardcode movie quotes
-//        let mq1 = MovieQuote(quote: "I'll be back", movie: "The Terminator")
-//        let mq2 = MovieQuote(quote: "You Adrian", movie: "Rocky")
-//        let mq3 = MovieQuote(quote: "You don't understand! I coulda had class. I coulda been a contender. I could've been somebody, instead of a bum, which is what I am.", movie: "On the Waterfront, 1954")
-//
-//        self.movieQuotes.append(mq1)
-//        self.movieQuotes.append(mq2)
-//        self.movieQuotes.append(mq3)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        MovieQuotesCollectionManager.shared.startListening {
+        self.movieQuotesListenerRegisteration = MovieQuotesCollectionManager.shared.startListening {
             print("The movie quotes were updated")
-            
-            for mq in MovieQuotesCollectionManager.shared.latestMovieQuotes {
-                print("Movie: \(mq.movie), Quote: \(mq.quote)")
-            }
         
             self.tableView.reloadData()
         }
@@ -54,7 +42,7 @@ class MovieQuotesTableViewController: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        MovieQuotesCollectionManager.shared.stopListening()
+        MovieQuotesCollectionManager.shared.stopListening(self.movieQuotesListenerRegisteration)
     }
     
     @objc func showAddMovieQuoteDialog() {
@@ -82,7 +70,7 @@ class MovieQuotesTableViewController: UITableViewController {
             
             let quoteTextField = alertController.textFields![0] as UITextField
             let movieTextField = alertController.textFields![1] as UITextField
-            print("Quote: \(quoteTextField.text!)\nMovie: \(movieTextField.text!)")
+//            print("Quote: \(quoteTextField.text!)\nMovie: \(movieTextField.text!)")
             
             let mq = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
 //            self.movieQuotes.insert(mq, at: 0)
@@ -141,11 +129,8 @@ class MovieQuotesTableViewController: UITableViewController {
         if segue.identifier == self.movieQuoteDetailSegue {
             let mqDetailVC = segue.destination as! MovieQuoteDetailViewController
             if let indexPath = self.tableView.indexPathForSelectedRow {
-//                mqDetailVC.movieQuote = self.movieQuotes[indexPath.row]
-                
-                // TODO: inform detail view about the MovieQuote
-                
-                // Note: this will crash
+                let mq = MovieQuotesCollectionManager.shared.latestMovieQuotes[indexPath.row]
+                mqDetailVC.movieQuoteDocumentId = mq.documentId
             }
         }
         // Get the new view controller using segue.destination.

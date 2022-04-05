@@ -10,10 +10,4 @@ import Firebase
 
 class PhotoBucketDocumentManager {
     
-    var _documentReference: DocumentReference
-    
-    init() {
-        
-    }
-    
 }

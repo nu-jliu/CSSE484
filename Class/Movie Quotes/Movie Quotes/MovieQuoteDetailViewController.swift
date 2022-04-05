@@ -6,19 +6,36 @@
 //
 
 import UIKit
+import Firebase
 
 class MovieQuoteDetailViewController: UIViewController {
 
     @IBOutlet weak var movieLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     
-    var movieQuote: MovieQuote!
+//    var movieQuote: MovieQuote!
+    var movieQuoteDocumentId: String!
+    var moviequoteListenerRegisteration: ListenerRegistration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditMovieQuoteDialog))
         
+//        print("TODO: listen for the doc with docId: \(self.movieQuoteDocumentId)")
         self.updateView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.moviequoteListenerRegisteration = MovieQuoteDocumentManager.shared.startListening(for: self.movieQuoteDocumentId) {
+            
+            self.updateView()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        MovieQuoteDocumentManager.shared.stopListening(self.moviequoteListenerRegisteration)
     }
     
     @objc func showEditMovieQuoteDialog() {
@@ -29,12 +46,12 @@ class MovieQuoteDetailViewController: UIViewController {
         // add qupte textfield
         alertController.addTextField { textField in
             textField.placeholder = "Quote"
-            textField.text = self.movieQuote.quote
+            textField.text = MovieQuoteDocumentManager.shared.latestMovieQuote?.quote
         }
         
         alertController.addTextField { textField in
             textField.placeholder = "Movie"
-            textField.text = self.movieQuote.movie
+            textField.text = MovieQuoteDocumentManager.shared.latestMovieQuote?.movie
         }
         
         // Cancel action
@@ -50,9 +67,12 @@ class MovieQuoteDetailViewController: UIViewController {
             let movieTextField = alertController.textFields![1] as UITextField
             print("Quote: \(quoteTextField.text!)\nMovie: \(movieTextField.text!)")
             
-            self.movieQuote.quote = quoteTextField.text!
-            self.movieQuote.movie = movieTextField.text!
+//            self.movieQuote.quote = quoteTextField.text!
+//            self.movieQuote.movie = movieTextField.text!
             
+//            self.updateView()
+            
+            MovieQuoteDocumentManager.shared.update(quote: quoteTextField.text!, movie: movieTextField.text!)
             self.updateView()
         })
         
@@ -60,8 +80,13 @@ class MovieQuoteDetailViewController: UIViewController {
     }
 
     func updateView() {
-        self.quoteLabel.text = self.movieQuote.quote
-        self.movieLabel.text = self.movieQuote.movie
+//        self.quoteLabel.text = self.movieQuote.quote
+//        self.movieLabel.text = self.movieQuote.movie
+        
+        if let mq = MovieQuoteDocumentManager.shared.latestMovieQuote {
+            self.quoteLabel.text = mq.quote
+            self.movieLabel.text = mq.movie
+        }
     }
 
 }
