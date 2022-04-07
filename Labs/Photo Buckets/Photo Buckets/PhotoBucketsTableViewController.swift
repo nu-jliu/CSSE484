@@ -124,9 +124,9 @@ class PhotoBucketsTableViewController: UITableViewController {
         if segue.identifier == self.PHOTO_BUCKET_DETAIL_SEGUE {
             let photoBucketDetailVC = segue.destination as! PhotoBucketDetailViewController
             if let indexPath = self.tableView.indexPathForSelectedRow {
-//                photoBucketDetailVC.photo = self.photos[indexPath.row]
-//                photoBucketDetailVC.photo = PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row]
-                photoBucketDetailVC.setDocumentReference(docId: PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId!)
+                photoBucketDetailVC.docId = PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId
+                print("Selected row \(indexPath.row)")
+                print("doc id = \(PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId)")
             }
         }
     }

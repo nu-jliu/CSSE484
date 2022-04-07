@@ -7,55 +7,90 @@
 
 import UIKit
 import Firebase
+import SwiftUI
 
 class PhotoBucketDetailViewController: UIViewController {
     
     @IBOutlet weak var imageTitleLable: UILabel!
     @IBOutlet weak var photoBucketImageView: UIImageView!
     
-    var photo: Photo!
-    private var _documentReference: DocumentReference!
+    var docId: String?
+    var photoListenerRegisteration: ListenerRegistration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self._documentReference.addSnapshotListener { docSnapshot, err in
-            guard let doc = docSnapshot else {
-                print("ERROR: failed to fetch the document \(err!)")
-                return
-            }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showPhotoEditDialog))
+        self.updateView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.photoListenerRegisteration = PhotoBucketDocumentManager.shared.startListening(for: self.docId!) {
+            print("Photo updated")
             
-            guard let data = doc.data() else {
-                print("ERROR: document is empty")
-                return
-            }
-            
-            print("Current Document \(data)")
-            self.photo = Photo(snaphot: doc)
             self.updateView()
         }
     }
     
-    func updateView() {
-        self.imageTitleLable.text = self.photo.title
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        PhotoBucketDocumentManager.shared.stopListening(self.photoListenerRegisteration)
+    }
+    
+    @objc func showPhotoEditDialog() {
+        print("You pressed the edit button")
         
-        let imageStr = self.photo.imageUrl
-        if let imageUrl = URL(string: imageStr) {
-            DispatchQueue.global().async {
-                do {
-                    let data = try Data(contentsOf: imageUrl)
-                    DispatchQueue.main.async {
-                        self.photoBucketImageView.image = UIImage(data: data)
+        let alertController = UIAlertController(title: "Edit a Photo", message: "", preferredStyle: .alert)
+        
+        // add title text field
+        alertController.addTextField { textField in
+            textField.placeholder = "Title"
+            textField.text = PhotoBucketDocumentManager.shared.latestPhoto?.title
+        }
+        
+        // add image url field
+        alertController.addTextField { textField in
+            textField.placeholder = "Image URL"
+            textField.text = PhotoBucketDocumentManager.shared.latestPhoto?.imageUrl
+        }
+        
+        // add cancel action
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print("You pressed the cancel")
+        })
+        
+        // add edit action
+        alertController.addAction(UIAlertAction(title: "Edit Photo", style: .default) { action in
+            
+            let titleTextField = alertController.textFields![0] as UITextField
+            let urlTextField = alertController.textFields![1] as UITextField
+            
+            PhotoBucketDocumentManager.shared.update(title: titleTextField.text!, url: urlTextField.text!)
+        })
+        
+        self.present(alertController, animated: true)
+    }
+    
+    func updateView() {
+        if let photo = PhotoBucketDocumentManager.shared.latestPhoto {
+            print("Title = \(photo.title)")
+            self.imageTitleLable.text = photo.title
+        
+            if let imageUrl = URL(string: photo.imageUrl) {
+                DispatchQueue.global().async {
+                    do {
+                        let data = try Data(contentsOf: imageUrl)
+                        DispatchQueue.main.async {
+                            self.photoBucketImageView.image = UIImage(data: data)
+                            print("Image updated")
+                        }
+                    } catch {
+                        print("ERROR: downloading image failed: \(error)")
                     }
-                } catch {
-                    print("ERROR: downloading image failed: \(error)")
                 }
             }
         }
-    }
-    
-    func setDocumentReference(docId: String) {
-        self._documentReference = Firestore.firestore().collection(Constants.FIREBASE_PHOTOS_COLLECTION_PATH).document(docId)
     }
 }
