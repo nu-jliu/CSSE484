@@ -22,7 +22,6 @@ class PhotoBucketDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showPhotoEditDialog))
-        self.updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

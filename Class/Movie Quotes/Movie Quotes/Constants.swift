@@ -14,3 +14,5 @@ let MOVIE_QUOTE_QUOTE = "quote"
 // Pick between
 let MOVIE_QUOTE_CREATED = "created"
 let MOVIE_QUOTE_LAST_TOUCHED = "lastTouched" // select this one
+
+let MOVIE_QUOTE_AUTHER_UID = "authorUid"

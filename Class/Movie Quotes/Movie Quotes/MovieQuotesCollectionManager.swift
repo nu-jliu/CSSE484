@@ -31,7 +31,10 @@ class MovieQuotesCollectionManager {
             
             self.latestMovieQuotes = [MovieQuote]()
             for doc in documents {
-                self.latestMovieQuotes.append(MovieQuote(docSnapshot: doc))
+                let mq = MovieQuote(docSnapshot: doc)
+                if mq.authorUid == AuthManager.shared.currentUser?.uid || mq.documentId == "Console Data" {
+                    self.latestMovieQuotes.append(mq)
+                }
             }
             
             changeListener()
@@ -48,7 +51,8 @@ class MovieQuotesCollectionManager {
         ref = self._collectionRef.addDocument(data: [
             MOVIE_QUOTE_QUOTE: mq.quote,
             MOVIE_QUOTE_MOVIE: mq.movie,
-            MOVIE_QUOTE_LAST_TOUCHED: Timestamp.init()
+            MOVIE_QUOTE_LAST_TOUCHED: Timestamp.init(),
+            MOVIE_QUOTE_AUTHER_UID: AuthManager.shared.currentUser!.uid
         ]) { err in
             if let e = err {
                 print("ERROR: failed to add document \(e)")

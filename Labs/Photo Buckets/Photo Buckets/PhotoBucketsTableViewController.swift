@@ -111,6 +111,10 @@ class PhotoBucketsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // do nothing
+        if editingStyle == .delete {
+            let photo = PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row]
+            PhotoBucketsCollectionManager.shared.delete(photo.documentId ?? "")
+        }
     }
 
     
@@ -126,7 +130,7 @@ class PhotoBucketsTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 photoBucketDetailVC.docId = PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId
                 print("Selected row \(indexPath.row)")
-                print("doc id = \(PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId)")
+                print("doc id = \(PhotoBucketsCollectionManager.shared.latestPhotos[indexPath.row].documentId ?? "-1")")
             }
         }
     }

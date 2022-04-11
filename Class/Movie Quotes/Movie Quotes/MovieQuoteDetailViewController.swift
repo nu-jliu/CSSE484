@@ -19,7 +19,8 @@ class MovieQuoteDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditMovieQuoteDialog))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditMovieQuoteDialog))
+        self.showOrHideButton()
         
 //        print("TODO: listen for the doc with docId: \(self.movieQuoteDocumentId)")
         self.updateView()
@@ -79,6 +80,12 @@ class MovieQuoteDetailViewController: UIViewController {
         self.present(alertController, animated: true)
     }
 
+    func showOrHideButton() {
+        if AuthManager.shared.currentUser?.uid == MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showEditMovieQuoteDialog))
+        }
+    }
+    
     func updateView() {
 //        self.quoteLabel.text = self.movieQuote.quote
 //        self.movieLabel.text = self.movieQuote.movie

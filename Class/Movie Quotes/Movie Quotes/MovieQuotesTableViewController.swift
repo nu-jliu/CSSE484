@@ -38,6 +38,14 @@ class MovieQuotesTableViewController: UITableViewController {
         
             self.tableView.reloadData()
         }
+    
+        // TODO: Eventual use a login
+        if AuthManager.shared.isSignedIn {
+            print("User is signed in")
+        } else {
+            print("No user, sign in anomymously")
+            AuthManager.shared.signInAnonymously()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -121,6 +129,10 @@ class MovieQuotesTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let mq = MovieQuotesCollectionManager.shared.latestMovieQuotes[indexPath.row]
+        return AuthManager.shared.currentUser?.uid == mq.authorUid
+    }
     
     // MARK: - Navigation
 
