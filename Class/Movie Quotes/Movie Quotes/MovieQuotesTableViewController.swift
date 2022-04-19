@@ -18,7 +18,10 @@ class MovieQuotesTableViewController: UITableViewController {
     let movieQuoteCell = "MovieQuoteCell"
     let movieQuoteDetailSegue = "MovieQuoteDetailSegue"
     var movieQuotesListenerRegisteration: ListenerRegistration?
-    var movieQuotes = [MovieQuote]()
+    
+    var isShowingAllQuotes = true
+    var logoutHandle: AuthStateDidChangeListenerHandle?
+//    var movieQuotes = [MovieQuote]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,29 +31,95 @@ class MovieQuotesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMovieQuoteDialog))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMovieQuoteDialog))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "☰",
+            style: .plain,
+            target: self,
+            action: #selector(showMenu)
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.movieQuotesListenerRegisteration = MovieQuotesCollectionManager.shared.startListening {
-            print("The movie quotes were updated")
+        self.startListeningForMovieQuotes()
         
-            self.tableView.reloadData()
-        }
-    
         // TODO: Eventual use a login
-        if AuthManager.shared.isSignedIn {
-            print("User is signed in")
-        } else {
-            print("No user, sign in anomymously")
-            AuthManager.shared.signInAnonymously()
+//        if AuthManager.shared.isSignedIn {
+//            print("User is signed in")
+//        } else {
+//            print("No user, sign in anomymously")
+//            AuthManager.shared.signInAnonymously()
+//        }
+        
+//        if (!AuthManager.shared.isSignedIn) {
+//            print("Oops")
+//            self.navigationController?.popViewController(animated: true)
+//        }
+        
+        self.logoutHandle = AuthManager.shared.addLogoutObserver {
+            print("Oops")
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.stopListeningForMovieQuotes()
+    }
+    
+    func startListeningForMovieQuotes() {
+//        self.movieQuotesListenerRegisteration = MovieQuotesCollectionManager.shared.startListening {
+//            print("The movie quotes were updated")
+//
+//            self.tableView.reloadData()
+//        }
+        
+        self.movieQuotesListenerRegisteration = MovieQuotesCollectionManager.shared.startListening(filterByAuther: self.isShowingAllQuotes ? nil : AuthManager.shared.currentUser?.uid) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func stopListeningForMovieQuotes() {
         MovieQuotesCollectionManager.shared.stopListening(self.movieQuotesListenerRegisteration)
+    }
+    
+    @objc func showMenu() {
+        print("TODO show action sheet")
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // show only my quote
+        let showOnlyMyQuoteAction = UIAlertAction(
+            title: self.isShowingAllQuotes ? "Show Only My Quotes" : "Show All Quotes",
+            style: .default
+        ) { action in
+            self.isShowingAllQuotes = !self.isShowingAllQuotes
+            print("Toggle show only my quote")
+            self.stopListeningForMovieQuotes()
+            self.startListeningForMovieQuotes()
+        }
+        alertController.addAction(showOnlyMyQuoteAction)
+        
+        // sign out
+        let signOutAction = UIAlertAction(title: "Sign Qut", style: .default) { action in
+            AuthManager.shared.signOut()
+            print("sign out")
+        }
+        alertController.addAction(signOutAction)
+        
+        // add a quote
+        let showAddQuoteDialogAction = UIAlertAction(title: "Add a Quote", style: .default) { action in
+            self.showAddMovieQuoteDialog()
+        }
+        alertController.addAction(showAddQuoteDialogAction)
+        
+        // cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
     }
     
     @objc func showAddMovieQuoteDialog() {

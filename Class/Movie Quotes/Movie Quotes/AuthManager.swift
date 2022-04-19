@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
 class AuthManager {
     
@@ -79,6 +80,37 @@ class AuthManager {
             } else {
                 print("User signed in \(authResult?.user.uid ?? "")")
             }
+        }
+    }
+    
+    func signInwithRoseifreToken(_ rosefireToken: String) {
+        Auth.auth().signIn(withCustomToken: rosefireToken) { res, err in
+            if let err = err {
+                print("Error: \(err)")
+                return
+            }
+            
+            print("Signed in using rosefire \(res!.user)")
+        }
+    }
+    
+    func signInWithGoogleCredential(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { res, err in
+            
+            if let err = err {
+                print("Error: \(err)")
+                return
+            }
+            
+            print("Sign in completed \(res!.user)")
+        }
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Sign out failed: \(error)")
         }
     }
 }

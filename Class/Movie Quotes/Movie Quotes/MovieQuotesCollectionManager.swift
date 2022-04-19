@@ -19,10 +19,16 @@ class MovieQuotesCollectionManager {
     
     var latestMovieQuotes = [MovieQuote]()
     
-    func startListening(changeListener: @escaping (() -> Void)) -> ListenerRegistration {
+    func startListening(filterByAuther authorFilter: String?, changeListener: @escaping (() -> Void)) -> ListenerRegistration {
         // TODO: receive a changeListener
         
-        let query = self._collectionRef.order(by: MOVIE_QUOTE_LAST_TOUCHED, descending: true).limit(to: 50)
+        var query = self._collectionRef.order(by: MOVIE_QUOTE_LAST_TOUCHED, descending: true).limit(to: 50)
+        
+        if let authorFilter = authorFilter {
+            print("TODO: filter by this author \(authorFilter)")
+            query = query.whereField(MOVIE_QUOTE_AUTHER_UID, isEqualTo: authorFilter)
+        }
+        
         return query.addSnapshotListener { snapshot, err in
             guard let documents = snapshot?.documents else {
                 print("ERROR: failed to fetching documents: \(err!)")
@@ -32,9 +38,9 @@ class MovieQuotesCollectionManager {
             self.latestMovieQuotes = [MovieQuote]()
             for doc in documents {
                 let mq = MovieQuote(docSnapshot: doc)
-                if mq.authorUid == AuthManager.shared.currentUser?.uid || mq.documentId == "Console Data" {
-                    self.latestMovieQuotes.append(mq)
-                }
+//                if mq.authorUid == AuthManager.shared.currentUser?.uid || mq.documentId == "Console Data" {
+                self.latestMovieQuotes.append(mq)
+//                }
             }
             
             changeListener()

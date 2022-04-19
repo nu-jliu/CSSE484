@@ -28,8 +28,10 @@ class MovieQuoteDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.moviequoteListenerRegisteration = MovieQuoteDocumentManager.shared.startListening(for: self.movieQuoteDocumentId) {
-            
+        self.moviequoteListenerRegisteration = MovieQuoteDocumentManager.shared.startListening(
+            for: self.movieQuoteDocumentId
+        ) {
+            print("start listening for document by \(MovieQuoteDocumentManager.shared.latestMovieQuote!.authorUid!)")
             self.updateView()
         }
     }
@@ -82,7 +84,11 @@ class MovieQuoteDetailViewController: UIViewController {
 
     func showOrHideButton() {
         if AuthManager.shared.currentUser?.uid == MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showEditMovieQuoteDialog))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .edit,
+                target: self,
+                action: #selector(showEditMovieQuoteDialog)
+            )
         }
     }
     
