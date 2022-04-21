@@ -22,7 +22,6 @@ class MovieQuoteDetailViewController: UIViewController {
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditMovieQuoteDialog))
         self.showOrHideButton()
         
-//        print("TODO: listen for the doc with docId: \(self.movieQuoteDocumentId)")
         self.updateView()
     }
     

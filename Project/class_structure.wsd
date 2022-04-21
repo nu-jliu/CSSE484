@@ -1,0 +1,116 @@
+@startuml ios_class
+abstract class User {
+    +username: String
+    +name: String
+    +uid: String
+}
+
+class Student {
+    +GPA: int
+    +calc_total_grade(): double
+}
+
+class Instructor {
+    +get_average_grade(course: String): double
+    +get_std(course: String): double
+}
+
+package Firebase {
+    interface FirebaseManager {
+        +startsListening()
+        +stopListening()
+    }
+
+    class CoursesCollectionManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+
+    class CourseDocumentManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+
+    class AssignmentsCollectionManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+
+    class ExamsCollectionManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+
+    class QuizzesCollectionManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+
+    class AuthStateManager << (S,#FF7700) Singleton >> {
+        {static} shard
+        -init()
+    }
+}
+
+abstract class Document {
+    {abstract} fromSnapshot(doc: DocumentSnapshot)
+}
+
+class Course {
+    +participation: double
+    +weight_part: int
+    +weight_agmt: int
+    +weight_exam: int
+    +weight_quiz: int
+
+    +get_overall_grade(): double
+}
+
+class Assignment {
+}
+
+class Exam {
+}
+
+class Quiz {
+
+}
+
+abstract class GradeItem {
+    +grade: double
+    +weight: int
+}
+
+User <|-- Student
+User <|-- Instructor
+User .> "*" Course
+
+Course ..> "*" Assignment
+Course ..> "*" Exam
+Course ..> "*" Quiz
+
+Document <|-- Course
+Document <|-- Assignment
+Document <|-- Quiz
+Document <|-- Exam
+
+GradeItem <|--- Assignment
+GradeItem <|--- Quiz
+GradeItem <|--- Exam
+
+AuthStateManager ....> "1" User
+
+CoursesCollectionManager ..> "*" Course
+CourseDocumentManager ..> "1" Course
+
+AssignmentsCollectionManager ..> "*" Assignment
+ExamsCollectionManager ..> "*" Exam
+QuizzesCollectionManager ..> "*" Quiz
+
+FirebaseManager <|.. CoursesCollectionManager
+FirebaseManager <|.. CourseDocumentManager
+FirebaseManager <|.. AssignmentsCollectionManager
+FirebaseManager <|.. ExamsCollectionManager
+FirebaseManager <|.. QuizzesCollectionManager
+
+@enduml

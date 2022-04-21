@@ -19,6 +19,8 @@
 		262115A327F5D38300C42C04 /* MovieQuoteDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262115A227F5D38300C42C04 /* MovieQuoteDocumentManager.swift */; };
 		262115A527F5D4A600C42C04 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262115A427F5D4A600C42C04 /* Constants.swift */; };
 		262115AC27F5DE7F00C42C04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 262115AB27F5DE7F00C42C04 /* GoogleService-Info.plist */; };
+		2637142C2811837800716434 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2637142B2811837800716434 /* SideMenu */; };
+		2637142E281183FF00716434 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2637142D281183FF00716434 /* SideMenuViewController.swift */; };
 		2696701427FF10E50052C393 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696701327FF10E50052C393 /* AuthManager.swift */; };
 		2696701727FF1C160052C393 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2696701627FF1C160052C393 /* FirebaseAnalytics */; };
 		2696701927FF1C160052C393 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2696701827FF1C160052C393 /* FirebaseAuth */; };
@@ -43,6 +45,7 @@
 		262115A227F5D38300C42C04 /* MovieQuoteDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDocumentManager.swift; sourceTree = "<group>"; };
 		262115A427F5D4A600C42C04 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		262115AB27F5DE7F00C42C04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2637142D281183FF00716434 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		2696701327FF10E50052C393 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		26F999D4280D9D230085B775 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		26F999D6280EE3280085B775 /* Rosefire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rosefire.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 				2696701727FF1C160052C393 /* FirebaseAnalytics in Frameworks */,
 				26F999DA280EECBA0085B775 /* GoogleSignIn in Frameworks */,
 				2696701927FF1C160052C393 /* FirebaseAuth in Frameworks */,
+				2637142C2811837800716434 /* SideMenu in Frameworks */,
 				2696701B27FF1C160052C393 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +88,7 @@
 			children = (
 				2621159E27F3345000C42C04 /* MovieQuoteDetailViewController.swift */,
 				2621159A27F1E05100C42C04 /* MovieQuotesTableViewController.swift */,
+				2637142D281183FF00716434 /* SideMenuViewController.swift */,
 				2621158627F1DE9E00C42C04 /* AppDelegate.swift */,
 				2621158827F1DE9E00C42C04 /* SceneDelegate.swift */,
 				2621158C27F1DE9E00C42C04 /* Main.storyboard */,
@@ -123,6 +128,7 @@
 				2696701827FF1C160052C393 /* FirebaseAuth */,
 				2696701A27FF1C160052C393 /* FirebaseFirestore */,
 				26F999D9280EECBA0085B775 /* GoogleSignIn */,
+				2637142B2811837800716434 /* SideMenu */,
 			);
 			productName = "Movie Quotes";
 			productReference = 2621158327F1DE9E00C42C04 /* Movie Quotes.app */;
@@ -155,6 +161,7 @@
 			packageReferences = (
 				2696701527FF1C160052C393 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				26F999D8280EECBA0085B775 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				2637142A2811837800716434 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 2621158427F1DE9E00C42C04 /* Products */;
 			projectDirPath = "";
@@ -188,6 +195,7 @@
 				2696701427FF10E50052C393 /* AuthManager.swift in Sources */,
 				2621159F27F3345000C42C04 /* MovieQuoteDetailViewController.swift in Sources */,
 				2621159D27F1E59E00C42C04 /* MovieQuote.swift in Sources */,
+				2637142E281183FF00716434 /* SideMenuViewController.swift in Sources */,
 				262115A127F5D2BB00C42C04 /* MovieQuotesCollectionManager.swift in Sources */,
 				2621159B27F1E05100C42C04 /* MovieQuotesTableViewController.swift in Sources */,
 				26F999D7280EE3280085B775 /* Rosefire.swift in Sources */,
@@ -416,6 +424,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2637142A2811837800716434 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 		2696701527FF1C160052C393 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -435,6 +451,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2637142B2811837800716434 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2637142A2811837800716434 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
 		2696701627FF1C160052C393 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2696701527FF1C160052C393 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

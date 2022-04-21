@@ -30,15 +30,19 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMovieQuoteDialog))
-        
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "☰",
-            style: .plain,
+            barButtonSystemItem: .add,
             target: self,
-            action: #selector(showMenu)
+            action: #selector(showAddMovieQuoteDialog)
         )
+        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            title: "☰",
+//            style: .plain,
+//            target: self,
+//            action: #selector(showMenu)
+//        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +101,6 @@ class MovieQuotesTableViewController: UITableViewController {
         ) { action in
             self.isShowingAllQuotes = !self.isShowingAllQuotes
             print("Toggle show only my quote")
-            self.stopListeningForMovieQuotes()
             self.startListeningForMovieQuotes()
         }
         alertController.addAction(showOnlyMyQuoteAction)

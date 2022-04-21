@@ -23,6 +23,10 @@
 		262115E327F74F5C00C42C04 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 262115E227F74F5C00C42C04 /* FirebaseFirestore */; };
 		262115E527F74F5C00C42C04 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 262115E427F74F5C00C42C04 /* FirebaseStorage */; };
 		262115E727F7519300C42C04 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262115E627F7519300C42C04 /* Photo.swift */; };
+		26F999DC280F13E00085B775 /* AuthStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F999DB280F13E00085B775 /* AuthStateManager.swift */; };
+		26F999DE280F187A0085B775 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F999DD280F187A0085B775 /* LogInViewController.swift */; };
+		26F999E0280F19300085B775 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 26F999DF280F19300085B775 /* background.jpeg */; };
+		26F999E2280F1C9A0085B775 /* Rosefire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F999E1280F1C9A0085B775 /* Rosefire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		262115D727F74E2C00C42C04 /* PhotoBucketsCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBucketsCollectionManager.swift; sourceTree = "<group>"; };
 		262115DB27F74E7B00C42C04 /* PhotoBucketDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBucketDocumentManager.swift; sourceTree = "<group>"; };
 		262115E627F7519300C42C04 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		26F999DB280F13E00085B775 /* AuthStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateManager.swift; sourceTree = "<group>"; };
+		26F999DD280F187A0085B775 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		26F999DF280F19300085B775 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
+		26F999E1280F1C9A0085B775 /* Rosefire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rosefire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +84,12 @@
 		262115B827F730B600C42C04 /* Photo Buckets */ = {
 			isa = PBXGroup;
 			children = (
+				26F999DF280F19300085B775 /* background.jpeg */,
 				262115B927F730B700C42C04 /* AppDelegate.swift */,
 				262115BB27F730B700C42C04 /* SceneDelegate.swift */,
 				262115D327F73D8B00C42C04 /* PhotoBucketDetailViewController.swift */,
 				262115CD27F7332B00C42C04 /* PhotoBucketsTableViewController.swift */,
+				26F999DD280F187A0085B775 /* LogInViewController.swift */,
 				262115BF27F730B700C42C04 /* Main.storyboard */,
 				262115C227F730BE00C42C04 /* Assets.xcassets */,
 				262115C427F730BE00C42C04 /* LaunchScreen.storyboard */,
@@ -88,7 +98,9 @@
 				262115E627F7519300C42C04 /* Photo.swift */,
 				262115D727F74E2C00C42C04 /* PhotoBucketsCollectionManager.swift */,
 				262115DB27F74E7B00C42C04 /* PhotoBucketDocumentManager.swift */,
+				26F999E1280F1C9A0085B775 /* Rosefire.swift */,
 				262115D127F737E600C42C04 /* Constants.swift */,
+				26F999DB280F13E00085B775 /* AuthStateManager.swift */,
 			);
 			path = "Photo Buckets";
 			sourceTree = "<group>";
@@ -164,6 +176,7 @@
 				262115D627F74DA400C42C04 /* GoogleService-Info.plist in Resources */,
 				262115C327F730BE00C42C04 /* Assets.xcassets in Resources */,
 				262115C127F730B700C42C04 /* Main.storyboard in Resources */,
+				26F999E0280F19300085B775 /* background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +193,10 @@
 				262115DC27F74E7B00C42C04 /* PhotoBucketDocumentManager.swift in Sources */,
 				262115BA27F730B700C42C04 /* AppDelegate.swift in Sources */,
 				262115D827F74E2C00C42C04 /* PhotoBucketsCollectionManager.swift in Sources */,
+				26F999E2280F1C9A0085B775 /* Rosefire.swift in Sources */,
+				26F999DC280F13E00085B775 /* AuthStateManager.swift in Sources */,
 				262115CE27F7332B00C42C04 /* PhotoBucketsTableViewController.swift in Sources */,
+				26F999DE280F187A0085B775 /* LogInViewController.swift in Sources */,
 				262115BC27F730B700C42C04 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,50 @@
+{
+    "courses": {
+        "course1": {
+            "takenby": "liuj9",
+            "taughtBy": "fisherds",
+            "quarter": "Spring 2021-2022",
+            "courseNumber": "CSSE484",
+            "courseName": "iOS Application Development",
+            "section": 1,
+            "hasGrade": true,
+            "participation": {
+                "weight": 10,
+                "grade": 100
+            },
+            "assignments": {
+                "weight": 10
+            },
+            "exams": {
+                "weight": 60,
+                "exam1": {
+                    "weight": 20,
+                    "grade": 90
+                }
+            },
+            "labs": {
+                "weight": 20,
+                "lab1": {
+                    "weight": 10,
+                    "grade": 84
+                }
+            },
+            "quizzes": {
+                "weight": 0
+            }
+        }
+    },
+    "users": {
+        "students": {
+            "student1": {
+                "name": "Allen Liu",
+                "uid": "liuj9",
+                "currentGPA": 3.89
+            }
+        },
+        "instructors": {
+            "name": "Fisher",
+            "uid": "fisherds"
+        }
+    }
+}

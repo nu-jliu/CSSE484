@@ -18,4 +18,5 @@ let MOVIE_QUOTE_LAST_TOUCHED = "lastTouched" // select this one
 let MOVIE_QUOTE_AUTHER_UID = "authorUid"
 
 let SHOW_LIST_SEGUE = "showListSegue"
+let SHOW_PROFILE_SEGUE = "showProfilePageSegue"
 let ROSEFIRE_REGISTRY_TOKEN = "b4124e08-bfa7-4b48-bacf-36f52778e85b"
