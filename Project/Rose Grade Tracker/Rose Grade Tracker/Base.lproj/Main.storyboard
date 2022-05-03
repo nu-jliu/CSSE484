@@ -8,6 +8,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="CeQ-9b-NZv">
+            <objects>
+                <navigationController id="nEP-Du-bu0" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4mk-Wy-A8a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Sg-KH-LPq">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowPushOfSameClassTwice" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="alwaysAnimate" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="6Gl-9K-PVq" kind="relationship" relationship="rootViewController" id="hFd-mF-FcM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dck-iW-DiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="-627"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oWy-t4-gOL">
+            <objects>
+                <viewController id="6Gl-9K-PVq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O6P-Hd-b7n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hcU-15-2uh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cYw-P9-nyW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oFH-bS-0ja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2883" y="-627"/>
+        </scene>
         <!--Course List-->
         <scene sceneID="VOe-Vm-KWm">
             <objects>
@@ -86,7 +127,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="7IO-tx-axf">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="menuPressed:" destination="8fi-mj-p76" id="KKu-aC-XGv"/>
+                                <segue destination="nEP-Du-bu0" kind="presentation" id="T4R-Ea-gNe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

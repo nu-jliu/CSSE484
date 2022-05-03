@@ -40,7 +40,12 @@ class Constants {
     // Grade Keys
     static let FIRESTORE_WEIGHT_KEY = "weight"
     static let FIRESTORE_GRADE_KEY = "grade"
-    static let FIREBASE_NAME_KEY = "name"
+    static let FIRESTORE_NAME_KEY = "name"
+    
+    // users
+    static let FIRESTORE_USER_COLLECTION_PATH = "users"
+    static let FIRESTORE_USER_NAME = "name"
+    static let FIRESTORE_USER_PHOTO_URL = "photoUrl"
     
     // Cloud Functions
     static let CLOUD_FUNCTIONS_URL = "https://us-central-rose-gradebook-ios.cloudfunctions.net"

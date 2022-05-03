@@ -26,6 +26,8 @@
 		266C004B281E40D10023702A /* CoursesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C004A281E40D10023702A /* CoursesCollectionManager.swift */; };
 		26803A102820323400F36EFB /* CourseDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A0F2820323400F36EFB /* CourseDocumentManager.swift */; };
 		26803A122820334400F36EFB /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A112820334400F36EFB /* CourseDetailViewController.swift */; };
+		26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AEB2821AE7200D8FF3E /* Kingfisher */; };
+		26986AF22821B0A200D8FF3E /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AF12821B0A200D8FF3E /* SideMenu */; };
 		26B90B8F2820457A00000CF1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B8E2820457A00000CF1 /* FirebaseAnalytics */; };
 		26B90B912820457A00000CF1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B902820457A00000CF1 /* FirebaseAuth */; };
 		26B90B932820457A00000CF1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B922820457A00000CF1 /* FirebaseDatabase */; };
@@ -72,8 +74,10 @@
 				26B90B912820457A00000CF1 /* FirebaseAuth in Frameworks */,
 				26B90B932820457A00000CF1 /* FirebaseDatabase in Frameworks */,
 				26B90B972820457A00000CF1 /* FirebaseFunctions in Frameworks */,
+				26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */,
 				26B90B952820457A00000CF1 /* FirebaseFirestore in Frameworks */,
 				26B90B9B2820457A00000CF1 /* FirebaseStorage in Frameworks */,
+				26986AF22821B0A200D8FF3E /* SideMenu in Frameworks */,
 				26B90B992820457A00000CF1 /* FirebaseMLModelDownloader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +154,8 @@
 				26B90B962820457A00000CF1 /* FirebaseFunctions */,
 				26B90B982820457A00000CF1 /* FirebaseMLModelDownloader */,
 				26B90B9A2820457A00000CF1 /* FirebaseStorage */,
+				26986AEB2821AE7200D8FF3E /* Kingfisher */,
+				26986AF12821B0A200D8FF3E /* SideMenu */,
 			);
 			productName = "Rose Grade Tracker";
 			productReference = 266C0008281D9CB40023702A /* Rose Grade Tracker.app */;
@@ -181,6 +187,8 @@
 			mainGroup = 266CFFFF281D9CB40023702A;
 			packageReferences = (
 				26B90B8D2820457A00000CF1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				26986AF02821B0A100D8FF3E /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 266C0009281D9CB40023702A /* Products */;
 			projectDirPath = "";
@@ -448,6 +456,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
+		26986AF02821B0A100D8FF3E /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 		26B90B8D2820457A00000CF1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -459,6 +483,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		26986AEB2821AE7200D8FF3E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		26986AF12821B0A200D8FF3E /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26986AF02821B0A100D8FF3E /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
 		26B90B8E2820457A00000CF1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26B90B8D2820457A00000CF1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

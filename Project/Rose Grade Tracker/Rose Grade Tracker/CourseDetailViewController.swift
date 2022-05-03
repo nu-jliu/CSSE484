@@ -44,7 +44,6 @@ class CourseDetailViewController: UIViewController {
         self.courseDetailListenerRegiteration = CourseDocumentManager.shared.startListening(for: self.coursDocumentId!) {
             self.numRows = Utils.getNumRows(course: CourseDocumentManager.shared.latestCourse!)
             self.sumWeight = Double(Utils.calculateTotal(course: CourseDocumentManager.shared.latestCourse!).weight)
-            self.gradeDetailTableView.reloadData()
             self.updateView()
             
             if let course = CourseDocumentManager.shared.latestCourse {
@@ -64,7 +63,9 @@ class CourseDetailViewController: UIViewController {
         self.tabBarItem.title = CourseDocumentManager.shared.latestCourse?.name
         let overallGrade = Utils.calculateTotal(course: CourseDocumentManager.shared.latestCourse!)
         self.overallGradeLabel.text = String(format: "%.2f", overallGrade.grade)
-        self.overallLetterGradeLabel.text = Utils.parseGradeToLetter(grade: overallGrade.grade)
+        self.overallLetterGradeLabel.text = Utils.parseGradeToLetter(grade: overallGrade.grade).letter
+        
+        self.gradeDetailTableView.reloadData()
     }
     /*
     // MARK: - Navigation
@@ -87,6 +88,7 @@ extension CourseDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.gradeDetailTableView.dequeueReusableCell(withIdentifier: self.GRAGE_TABLE_CELL, for: indexPath) as! GradeTableCell
+        
         if let course = CourseDocumentManager.shared.latestCourse {
             var gradeEntry = [(weight: Int, grade: Double, displayName: String)]()
             var totalWeight: Int?
@@ -108,16 +110,20 @@ extension CourseDetailViewController: UITableViewDataSource {
                 cell.gradeItemNameLabel.text = "Participation Grade"
                 cell.gradeWeightLabel.text = "\(String(format: "%.1f", Double(course.partWeight!) / self.sumWeight! * 100.0))%"
                 cell.gradeLabel.text = "\(String(format: "%.1f", course.partGrade!))"
-                cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: course.partGrade!)
+                cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: course.partGrade!).letter
                 return cell
             }
+            
             cell.gradeItemNameLabel.text = gradeEntry[indexPath.row].displayName
+            
             let totalWeightRatio = Double(totalWeight!) / self.sumWeight!
             let weightRatio = Double(gradeEntry[indexPath.row].weight) / Double(Utils.calcTotalGradeWeight(grades: gradeEntry, weight: totalWeight!).weight)
             cell.gradeWeightLabel.text = "\(String(format: "%.1f", totalWeightRatio * weightRatio * 100))%"
+            
             cell.gradeLabel.text = "\(String(format: "%.1f", gradeEntry[indexPath.row].grade))"
-            cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: gradeEntry[indexPath.row].grade)
+            cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: gradeEntry[indexPath.row].grade).letter
         }
+        
         return cell
     }
     

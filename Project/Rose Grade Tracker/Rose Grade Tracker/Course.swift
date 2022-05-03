@@ -47,9 +47,9 @@ class Course {
             for gradeDict in assignmentGrades {
                 let weight = gradeDict[Constants.FIRESTORE_WEIGHT_KEY] as! Int
                 let grade = gradeDict[Constants.FIRESTORE_GRADE_KEY] as! Double
-                let displayName = gradeDict[Constants.FIREBASE_NAME_KEY] as! String
+                let displayName = gradeDict[Constants.FIRESTORE_NAME_KEY] as! String
+                
                 self.assignmentsGrade.append((weight, grade, displayName))
-                print("assignment 1")
             }
         }
         
@@ -57,14 +57,16 @@ class Course {
         self.examsWeight = snapshot.get(Constants.FIRESTORE_COURSE_EXAMS_WEIGHT_KEY) as? Int
         if let examGrades = snapshot.get(Constants.FIRESTORE_COURSE_EXAMS_GRADE_KEY)
             as? [[String: Any]] {
-            
+
             for gradeDict in examGrades {
                 let weight = gradeDict[Constants.FIRESTORE_WEIGHT_KEY] as! Int
                 let grade = gradeDict[Constants.FIRESTORE_GRADE_KEY] as! Double
-                let displayName = gradeDict[Constants.FIREBASE_NAME_KEY] as! String
+                let displayName = gradeDict[Constants.FIRESTORE_NAME_KEY] as! String
+                
                 self.examsGrade.append((weight, grade, displayName))
             }
         }
+        print(self.examsGrade)
         
         // labs
         self.labsWeight = snapshot.get(Constants.FIRESTORE_COURSE_LABS_WEIGHT_KEY) as? Int
@@ -74,9 +76,9 @@ class Course {
             for gradeDict in labGrades {
                 let weight = gradeDict[Constants.FIRESTORE_WEIGHT_KEY] as! Int
                 let grade = gradeDict[Constants.FIRESTORE_GRADE_KEY] as! Double
-                let displayName = gradeDict[Constants.FIREBASE_NAME_KEY] as! String
+                let displayName = gradeDict[Constants.FIRESTORE_NAME_KEY] as! String
+                
                 self.labsGrade.append((weight, grade, displayName))
-                print("lab 1")
             }
         }
         
@@ -88,7 +90,8 @@ class Course {
             for gradeDict in quizGrades {
                 let weight = gradeDict[Constants.FIRESTORE_WEIGHT_KEY] as! Int
                 let grade = gradeDict[Constants.FIRESTORE_GRADE_KEY] as! Double
-                let displayName = gradeDict[Constants.FIREBASE_NAME_KEY] as! String
+                let displayName = gradeDict[Constants.FIRESTORE_NAME_KEY] as! String
+                
                 self.quizzesGrade.append((weight, grade, displayName))
             }
         }

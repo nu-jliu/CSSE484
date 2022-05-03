@@ -23,7 +23,10 @@ class CourseListViewController: UIViewController {
     let SHOW_COURSE_DETAIL_SEGUE_IDENTIFIER = "showCourseDetailSegue"
     
     var coursesListenerRegisteration: ListenerRegistration?
+    var userListenerRegisteration: ListenerRegistration?
     var logoutHandle: AuthStateDidChangeListenerHandle?
+    
+    var profileImageButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,42 @@ class CourseListViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
         self.courseListTableView.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem()
+//        self.navigationItem.rightBarButtonItem?.image = UIImage(named: "RH_G_HiRes-RGB-1c.png")
 //        self.menuButton.image = UIImage(named: "RH_G_HiRes-RGB-1c.png")
+//        let button: UIButton = UIButton(type: .custom)
+//                //set image for button
+//        button.setImage(UIImage(named: "RH_G_HiRes-RGB-1c.png"), for: .normal)
+//                //add function for button
+//
+//        //set frame
+//        button.frame = CGRect(x: 200, y: 0, width: 50, height: 50)
+//
+//        let barButton = UIBarButtonItem(customView: button)
+//        //assign button to navigationbar
+//        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func showMenu() {
+        let alertController = UIAlertController(
+            title: "Courses Options",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        
+        // sign out action
+        alertController.addAction(UIAlertAction(
+            title: "Sign Out",
+            style: .destructive
+        ) { action in
+            AuthManager.shared.signOut()
+        })
+        
+        alertController.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel
+        ))
+        
+        self.present(alertController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +84,10 @@ class CourseListViewController: UIViewController {
             for: AuthManager.shared.currentUser!.uid
         ) {
             self.courseListTableView.reloadData()
-            self.navigationItem.title = "Hi, \(AuthManager.shared.currentUser!.uid)!"
+        }
+        
+        self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: AuthManager.shared.currentUser!.uid) {
+            self.navigationItem.title = "Hi, \(UserDocumentManager.shared.name)!"
         }
     }
     
@@ -54,23 +95,6 @@ class CourseListViewController: UIViewController {
         super.viewDidDisappear(animated)
         AuthManager.shared.removeObserver(self.logoutHandle)
         CoursesCollectionManager.shared.stopListening(self.coursesListenerRegisteration)
-    }
-
-    @IBAction func menuPressed(_ sender: Any) {
-        let alertController = UIAlertController(
-            title: "Courses Options",
-            message: nil,
-            preferredStyle: .actionSheet
-        )
-        
-        alertController.addAction(UIAlertAction(
-            title: "Sign Out",
-            style: .destructive
-        ) { action in
-            AuthManager.shared.signOut()
-        })
-        
-        self.present(alertController, animated: true)
     }
     
     // MARK: - Navigation
@@ -99,8 +123,7 @@ extension CourseListViewController: UITableViewDataSource {
         let course = CoursesCollectionManager.shared.latestCourses[indexPath.section][indexPath.row]
         cell.courseNameLabel.text = course.name
         cell.couseSectionLabel.text = course.section
-        print(Utils.calculateTotal(course: course))
-        cell.courseGradeLabel.text = Utils.parseGradeToLetter(grade: Utils.calculateTotal(course: course).grade)
+        cell.courseGradeLabel.text = Utils.parseGradeToLetter(grade: Utils.calculateTotal(course: course).grade).letter
         
         return cell
     }

@@ -16,8 +16,6 @@ class AuthManager {
         
     }
     
-    var name: String?
-    
     var currentUser: User? {
         Auth.auth().currentUser
     }

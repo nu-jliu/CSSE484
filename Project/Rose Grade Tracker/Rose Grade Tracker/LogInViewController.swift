@@ -11,6 +11,7 @@ import Firebase
 class LogInViewController: UIViewController {
     
     private var logInHandle: AuthStateDidChangeListenerHandle?
+    var rosefireName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +49,34 @@ class LogInViewController: UIViewController {
 //            print("Result = \(res!.token!)")
 //            print("Result = \(res!.username!)")
             print("Name = \(res!.name!)")
+            self.rosefireName = res?.name
 //            print("Result = \(res!.email!)")
             print("Group = \(res!.group!)")
             
-            AuthManager.shared.name = res!.name
             AuthManager.shared.signInwithRoseifreToken(res!.token!)
         }
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        print("Segue identifier: \(segue.identifier ?? "")")
+        if segue.identifier == Constants.SHOW_COURSE_LIST_SEQUE {
+                    print("Name = \(self.rosefireName ?? "")")
+                    print("PhotoUrl = \(AuthManager.shared.currentUser?.photoURL?.absoluteString ?? "")")
+                    
+                    UserDocumentManager.shared.addNewUserMaybe(
+                        uid: AuthManager.shared.currentUser!.uid,
+                        name: self.rosefireName,
+                        photoUrl: AuthManager.shared.currentUser?.photoURL?.absoluteString
+                    )
+                }
     }
-    */
+    
 
 }
