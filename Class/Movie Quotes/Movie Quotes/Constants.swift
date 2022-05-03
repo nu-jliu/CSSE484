@@ -7,15 +7,17 @@
 
 import Foundation
 
+// Firestore Movie Quotes
 let MOVIE_QUOTES_COLLECTION_PATH = "MovieQuotes"
 let MOVIE_QUOTE_MOVIE = "movie"
 let MOVIE_QUOTE_QUOTE = "quote"
-
-// Pick between
-let MOVIE_QUOTE_CREATED = "created"
-let MOVIE_QUOTE_LAST_TOUCHED = "lastTouched" // select this one
-
 let MOVIE_QUOTE_AUTHER_UID = "authorUid"
+let MOVIE_QUOTE_LAST_TOUCHED = "lastTouched"
+
+// Firestore Users
+let USERS_COLLECTION_PATH = "Users"
+let USER_NAME = "name"
+let USER_PHOTO_URL = "photoUrl"
 
 let SHOW_LIST_SEGUE = "showListSegue"
 let SHOW_PROFILE_SEGUE = "showProfilePageSegue"

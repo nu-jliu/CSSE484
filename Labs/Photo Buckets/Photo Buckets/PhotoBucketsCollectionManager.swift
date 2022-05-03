@@ -21,11 +21,17 @@ class PhotoBucketsCollectionManager {
     
     var latestPhotos = [Photo]()
     
-    func startsListening(changeListener: @escaping (() -> Void)) {
+    func startsListening(_ onlyShowMine: Bool, changeListener: @escaping (() -> Void)) {
         
         self.latestPhotos.removeAll()
         
-        let query = self._collectionRef.order(by: Constants.FIREBASE_LAST_TOUCHED_KEY).limit(to: 50)
+        var query = self._collectionRef.order(by: Constants.FIREBASE_LAST_TOUCHED_KEY).limit(to: 50)
+        
+        if let user = AuthStateManager.shared.currentUser {
+            if onlyShowMine {
+                query = query.whereField(Constants.FIREBASE_AUTHOR_ID_KEY, isEqualTo: user.uid)
+            }
+        }
         
         self._collectionSnapshotListener = query.addSnapshotListener { docSnapshot, err in
             guard let snapshot = docSnapshot else {
@@ -68,12 +74,13 @@ class PhotoBucketsCollectionManager {
         self._collectionSnapshotListener?.remove()
     }
     
-    func add(_ photo: Photo) {
+    func add(_ photo: Photo) -> DocumentReference {
         // TODO: Implement this
-        self._collectionRef.addDocument(data: [
+        return self._collectionRef.addDocument(data: [
             Constants.FIREBASE_PHOTO_TITLE_KEY: photo.title,
             Constants.FIREBASE_PHOTO_URL_KEY: photo.imageUrl,
-            Constants.FIREBASE_LAST_TOUCHED_KEY: Timestamp.init()
+            Constants.FIREBASE_LAST_TOUCHED_KEY: Timestamp.init(),
+            Constants.FIREBASE_AUTHOR_ID_KEY: AuthStateManager.shared.currentUser?.uid ?? ""
         ])
     }
     

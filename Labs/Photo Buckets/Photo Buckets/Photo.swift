@@ -14,6 +14,7 @@ class Photo {
     var title: String
     var imageUrl: String
     var documentId: String?
+    var authorId: String?
     
     init(title: String, imageUrl: String) {
         self.title = title
@@ -26,5 +27,6 @@ class Photo {
         
         self.title = data?[Constants.FIREBASE_PHOTO_TITLE_KEY] as? String ?? ""
         self.imageUrl = data?[Constants.FIREBASE_PHOTO_URL_KEY] as? String ?? ""
+        self.authorId = data?[Constants.FIREBASE_AUTHOR_ID_KEY] as? String ?? ""
     }
 }

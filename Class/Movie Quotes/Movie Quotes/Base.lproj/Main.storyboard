@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kLZ-kw-bha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kLZ-kw-bha">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="2744.9275362318845" y="-340.17857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Page View Controller-->
         <scene sceneID="TsD-HA-Ggc">
             <objects>
-                <viewController id="ngS-bk-1Kr" sceneMemberID="viewController">
+                <viewController id="ngS-bk-1Kr" customClass="ProfilePageViewController" customModule="Movie_Quotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G6j-n5-2kN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,6 +150,10 @@
                                         <rect key="frame" x="0.0" y="74" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="displayNameDidChange:" destination="ngS-bk-1Kr" eventType="editingDidEnd" id="HL0-7W-Wok"/>
+                                            <action selector="displayNameDidChange:" destination="ngS-bk-1Kr" eventType="editingChanged" id="wGt-IX-sd3"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ha-iX-OlA">
                                         <rect key="frame" x="0.0" y="148" width="112" height="34"/>
@@ -175,10 +179,14 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="  Change Profile Photo" image="edit_18pt"/>
+                                <connections>
+                                    <action selector="pressedChangeProfilePhoto:" destination="ngS-bk-1Kr" eventType="touchUpInside" id="lqy-Xs-5hN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W8r-mT-CiB"/>
-                        <color key="backgroundColor" red="0.50196078431372548" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="MOV-bm-FiV" firstAttribute="top" secondItem="JiY-4R-fRC" secondAttribute="bottom" constant="60" id="0cs-cn-WvX"/>
                             <constraint firstItem="W8r-mT-CiB" firstAttribute="trailing" secondItem="Tx8-sE-xcF" secondAttribute="trailing" id="IuZ-aD-UDj"/>
@@ -190,10 +198,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TqB-QR-rBw"/>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="YNf-ZN-K2w" id="wF4-Hp-37a"/>
+                        <outlet property="profilePhotoImageView" destination="JiY-4R-fRC" id="hqN-jF-ll2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puy-Qi-9yA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633" y="119"/>
+            <point key="canvasLocation" x="1590" y="645"/>
         </scene>
         <!--Movie Quotes-->
         <scene sceneID="Xhd-7i-Zmj">
@@ -300,24 +312,53 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fyo-fw-UVp">
+                                <rect key="frame" x="244" y="602" width="150" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf6-dB-0xt">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ugb-LZ-p2j">
+                                        <rect key="frame" x="0.0" y="30.5" width="150" height="189"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3R6-Yd-O2U">
+                                        <rect key="frame" x="0.0" y="229.5" width="150" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="aa8-Rk-wsm"/>
+                                    <constraint firstAttribute="width" constant="150" id="q4V-ak-HLK"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2tl-SX-aKh"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2tl-SX-aKh" firstAttribute="trailing" secondItem="X0d-KO-unD" secondAttribute="trailing" constant="20" id="Bcb-m1-ccr"/>
                             <constraint firstItem="X0d-KO-unD" firstAttribute="leading" secondItem="2tl-SX-aKh" secondAttribute="leading" constant="20" id="PpV-5O-VYt"/>
+                            <constraint firstItem="2tl-SX-aKh" firstAttribute="trailing" secondItem="fyo-fw-UVp" secondAttribute="trailing" constant="20" id="a5L-VG-7w2"/>
                             <constraint firstItem="X0d-KO-unD" firstAttribute="top" secondItem="2tl-SX-aKh" secondAttribute="top" constant="40" id="edx-fT-FRq"/>
+                            <constraint firstItem="2tl-SX-aKh" firstAttribute="bottom" secondItem="fyo-fw-UVp" secondAttribute="bottom" constant="10" id="rBJ-ED-gMY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zls-RK-SIl"/>
                     <connections>
+                        <outlet property="authorBoxStackView" destination="fyo-fw-UVp" id="0zo-Mh-Zh8"/>
+                        <outlet property="authorNameLabel" destination="3R6-Yd-O2U" id="3Kv-Ga-TCw"/>
+                        <outlet property="authorProfileImageView" destination="Ugb-LZ-p2j" id="jJe-gD-Guv"/>
                         <outlet property="movieLabel" destination="hjN-RZ-E4c" id="Iaq-p2-YUc"/>
                         <outlet property="quoteLabel" destination="Vai-lw-94u" id="fKR-Co-e8T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0f-Ef-wxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1590" y="540"/>
+            <point key="canvasLocation" x="3720" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fyh-5O-2gV">

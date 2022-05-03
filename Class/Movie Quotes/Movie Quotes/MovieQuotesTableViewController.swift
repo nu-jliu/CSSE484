@@ -106,7 +106,7 @@ class MovieQuotesTableViewController: UITableViewController {
         alertController.addAction(showOnlyMyQuoteAction)
         
         // sign out
-        let signOutAction = UIAlertAction(title: "Sign Qut", style: .default) { action in
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .default) { action in
             AuthManager.shared.signOut()
             print("sign out")
         }

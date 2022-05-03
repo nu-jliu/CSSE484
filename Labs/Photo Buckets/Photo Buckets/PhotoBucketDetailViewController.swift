@@ -14,14 +14,20 @@ class PhotoBucketDetailViewController: UIViewController {
     @IBOutlet weak var imageTitleLable: UILabel!
     @IBOutlet weak var photoBucketImageView: UIImageView!
     
+    @IBOutlet weak var authorProfileImageView: UIImageView!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var authorBoxStackView: UIStackView!
+    
     var docId: String?
+    
+    var userListenerRegisteration: ListenerRegistration?
     var photoListenerRegisteration: ListenerRegistration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showPhotoEditDialog))
+        self.authorProfileImageView.layer.cornerRadius = self.authorProfileImageView.frame.width / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +35,22 @@ class PhotoBucketDetailViewController: UIViewController {
         self.photoListenerRegisteration = PhotoBucketDocumentManager.shared.startListening(for: self.docId!) {
             print("Photo updated")
             
+            if AuthStateManager.shared.currentUser?.uid ==  PhotoBucketDocumentManager.shared.latestPhoto?.authorId {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    barButtonSystemItem: .edit,
+                    target: self,
+                    action: #selector(self.showPhotoEditDialog)
+                )
+            }
+            
             self.updateView()
+            
+            if let authorUID = PhotoBucketDocumentManager.shared.latestPhoto?.authorId {
+                UserDocumentManager.shared.stopListening(self.userListenerRegisteration)
+                self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: authorUID) {
+                    self.updateAuthorBox()
+                }
+            }
         }
     }
     
@@ -77,19 +98,36 @@ class PhotoBucketDetailViewController: UIViewController {
             print("Title = \(photo.title)")
             self.imageTitleLable.text = photo.title
         
-            if let imageUrl = URL(string: photo.imageUrl) {
-                DispatchQueue.global().async {
-                    do {
-                        let data = try Data(contentsOf: imageUrl)
-                        DispatchQueue.main.async {
-                            self.photoBucketImageView.image = UIImage(data: data)
-                            print("Image updated")
-                        }
-                    } catch {
-                        print("ERROR: downloading image failed: \(error)")
-                    }
-                }
-            }
+            
+            PhotoUtils.load(imageView: self.photoBucketImageView, from: photo.imageUrl)
+//            if let imageUrl = URL(string: photo.imageUrl) {
+//                DispatchQueue.global().async {
+//                    do {
+//                        let data = try Data(contentsOf: imageUrl)
+//                        DispatchQueue.main.async {
+//                            self.photoBucketImageView.image = UIImage(data: data)
+//                            print("Image updated")
+//                        }
+//                    } catch {
+//                        print("ERROR: downloading image failed: \(error)")
+//                    }
+//                }
+//            }
+        }
+    }
+    
+    func updateAuthorBox() {
+        self.authorBoxStackView.isHidden = UserDocumentManager.shared.name.isEmpty
+        
+        let authorName = UserDocumentManager.shared.name
+        let profilePhotoUrl = UserDocumentManager.shared.photoUrl
+        
+        if !authorName.isEmpty {
+            self.authorNameLabel.text = authorName
+        }
+        
+        if !profilePhotoUrl.isEmpty {
+            PhotoUtils.load(imageView: self.authorProfileImageView, from: profilePhotoUrl)
         }
     }
 }

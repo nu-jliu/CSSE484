@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleSignin: GIDSignInButton!
     
     var loginHandle: AuthStateDidChangeListenerHandle?
+    var rosefireName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +50,12 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            print("Result = \(res!.token!)")
-            print("Result = \(res!.username!)")
-            print("Result = \(res!.name!)")
-            print("Result = \(res!.email!)")
-            print("Result = \(res!.group!)")
+//            print("Result = \(res!.token!)")
+//            print("Result = \(res!.username!)")
+            print("Name = \(res!.name!)")
+            self.rosefireName = res?.name
+//            print("Result = \(res!.email!)")
+            print("Group = \(res!.group!)")
             
             AuthManager.shared.signInwithRoseifreToken(res!.token!)
         }
@@ -105,6 +107,23 @@ class LoginViewController: UIViewController {
             
 //            print("\(credential.provider)")
             AuthManager.shared.signInWithGoogleCredential(credential)
+        }
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Make sure that segue identifier is currect
+        print("Segue identifier: \(segue.identifier ?? "")")
+        if segue.identifier == SHOW_LIST_SEGUE {
+            print("Name = \(self.rosefireName ?? (AuthManager.shared.currentUser?.displayName ?? ""))")
+            print("PhotoUrl = \(AuthManager.shared.currentUser?.photoURL?.absoluteString ?? "")")
+            
+            UserDocumentManager.shared.addNewUserMaybe(
+                uid: AuthManager.shared.currentUser!.uid,
+                name: self.rosefireName ?? AuthManager.shared.currentUser?.displayName,
+                photoUrl: AuthManager.shared.currentUser?.photoURL?.absoluteString
+            )
         }
     }
 }

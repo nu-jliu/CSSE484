@@ -13,31 +13,47 @@ class MovieQuoteDetailViewController: UIViewController {
     @IBOutlet weak var movieLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     
-//    var movieQuote: MovieQuote!
+    @IBOutlet weak var authorBoxStackView: UIStackView!
+    @IBOutlet weak var authorProfileImageView: UIImageView!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    
     var movieQuoteDocumentId: String!
+    
     var moviequoteListenerRegisteration: ListenerRegistration?
+    var userListenerRegisteration: ListenerRegistration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditMovieQuoteDialog))
-        self.showOrHideButton()
-        
-        self.updateView()
+//        self.showOrHideButton()
+//
+//        self.updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.authorBoxStackView.isHidden = true
         self.moviequoteListenerRegisteration = MovieQuoteDocumentManager.shared.startListening(
             for: self.movieQuoteDocumentId
         ) {
             print("start listening for document by \(MovieQuoteDocumentManager.shared.latestMovieQuote!.authorUid!)")
             self.updateView()
+            self.showOrHideButton()
+            
+            // Start listening for user (author of the quote)
+            if let authorUid = MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid {
+                UserDocumentManager.shared.stopListening(self.userListenerRegisteration)
+                self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: authorUid) {
+                    self.updateAuthorBox()
+                }
+            }
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         MovieQuoteDocumentManager.shared.stopListening(self.moviequoteListenerRegisteration)
+        UserDocumentManager.shared.stopListening(self.userListenerRegisteration)
     }
     
     @objc func showEditMovieQuoteDialog() {
@@ -82,6 +98,8 @@ class MovieQuoteDetailViewController: UIViewController {
     }
 
     func showOrHideButton() {
+        
+        print("Current User: \(AuthManager.shared.currentUser?.uid ?? ""), quote user: \(MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid ?? "")")
         if AuthManager.shared.currentUser?.uid == MovieQuoteDocumentManager.shared.latestMovieQuote?.authorUid {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem: .edit,
@@ -99,6 +117,22 @@ class MovieQuoteDetailViewController: UIViewController {
             self.quoteLabel.text = mq.quote
             self.movieLabel.text = mq.movie
         }
+        
+
     }
 
+    func updateAuthorBox() {
+        print("TODO: update the author box with name: \(UserDocumentManager.shared.name)")
+        print("TODO: update the author box with photoUrl: \(UserDocumentManager.shared.photoUrl)")
+        
+        self.authorBoxStackView.isHidden = UserDocumentManager.shared.name.isEmpty || UserDocumentManager.shared.photoUrl.isEmpty
+        
+        if !UserDocumentManager.shared.name.isEmpty {
+            self.authorNameLabel.text = UserDocumentManager.shared.name
+        }
+        
+        if !UserDocumentManager.shared.photoUrl.isEmpty {
+            ImageUtils.load(imageView: self.authorProfileImageView, from: UserDocumentManager.shared.photoUrl)
+        }
+    }
 }

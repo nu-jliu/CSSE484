@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Firebase
 
 class AuthStateManager {
     
@@ -24,24 +24,31 @@ class AuthStateManager {
         self.currentUser != nil
     }
     
-    func addLoginObserver(callback: @escaping (() -> Void)) -> AuthStateDidChangeListenerHandle {
+    var currentNonce: String?
+    
+    func addLoginObserver(callback: @escaping (() -> Void)) -> AuthStateDidChangeListenerHandle? {
+        print("adding login listener ...")
         return Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
+                print("user: \(user?.uid ?? "") signed in")
                 callback()
             }
         }
     }
     
-    func addLogoutObserver(callback: @escaping (() -> Void)) -> AuthStateDidChangeListenerHandle {
+    func addLogoutObserver(callback: @escaping (() -> Void)) -> AuthStateDidChangeListenerHandle? {
+        print("adding logout listener ...")
         return Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
+            if user == nil {
+                print("user signed out")
                 callback()
             }
         }
     }
     
-    func removeObserver(_ authStateChangeHandle: AuthStateDidChangeListenerHandle?) {
-        if let authHandle = authStateChangeHandle {
+    func removeObserver(authStateHandle: AuthStateDidChangeListenerHandle?) {
+        print("removing listener ...")
+        if let authHandle = authStateHandle {
             Auth.auth().removeStateDidChangeListener(authHandle)
         }
     }
@@ -86,7 +93,30 @@ class AuthStateManager {
                 return
             }
             
-            print("User \(res?.user.uid ?? "") signed out")
+            if let user = res?.user {
+                print("Google user: \(user.displayName ?? ""):\(user.uid) signed in")
+            }
+        }
+    }
+    
+    func signInWithAppleCredential(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { res, err in
+            if let err = err {
+                print("Error: \(err)")
+                return
+            }
+            
+            if let user = res?.user {
+                print("Apple user: \(user.displayName ?? ""):\(user.uid) signed in")
+            }
+        }
+    }
+    
+    func signOut(errorCallback: @escaping (() -> Void)) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            errorCallback()
         }
     }
 }

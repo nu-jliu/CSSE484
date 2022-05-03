@@ -32,7 +32,7 @@ class AuthManager {
             }
         }
     }
-
+    
     func addLogoutObserver(callback: @escaping (() -> Void)) -> AuthStateDidChangeListenerHandle {
         return Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
@@ -40,11 +40,11 @@ class AuthManager {
             }
         }
     }
-
+    
     func removeObserver(_ authDidChangeHandle: AuthStateDidChangeListenerHandle?) {
-//        if authDidChangeHandle != nil {
-//            Auth.auth().removeStateDidChangeListener(authDidChangeHandle)
-//        }
+        //        if authDidChangeHandle != nil {
+        //            Auth.auth().removeStateDidChangeListener(authDidChangeHandle)
+        //        }
         if let authHandle = authDidChangeHandle {
             Auth.auth().removeStateDidChangeListener(authHandle)
         }
