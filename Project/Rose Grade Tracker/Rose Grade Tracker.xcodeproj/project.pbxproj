@@ -28,6 +28,9 @@
 		26803A122820334400F36EFB /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A112820334400F36EFB /* CourseDetailViewController.swift */; };
 		26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AEB2821AE7200D8FF3E /* Kingfisher */; };
 		26986AF22821B0A200D8FF3E /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AF12821B0A200D8FF3E /* SideMenu */; };
+		26986AF42821D10E00D8FF3E /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26986AF32821D10E00D8FF3E /* SideMenuViewController.swift */; };
+		26986AF82821D3D700D8FF3E /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 26986AF72821D3D700D8FF3E /* avatar-placeholder.png */; };
+		26986AFA2821D62100D8FF3E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26986AF92821D62100D8FF3E /* StorageManager.swift */; };
 		26B90B8F2820457A00000CF1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B8E2820457A00000CF1 /* FirebaseAnalytics */; };
 		26B90B912820457A00000CF1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B902820457A00000CF1 /* FirebaseAuth */; };
 		26B90B932820457A00000CF1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B90B922820457A00000CF1 /* FirebaseDatabase */; };
@@ -61,6 +64,9 @@
 		266C004A281E40D10023702A /* CoursesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionManager.swift; sourceTree = "<group>"; };
 		26803A0F2820323400F36EFB /* CourseDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDocumentManager.swift; sourceTree = "<group>"; };
 		26803A112820334400F36EFB /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
+		26986AF32821D10E00D8FF3E /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		26986AF72821D3D700D8FF3E /* avatar-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder.png"; sourceTree = "<group>"; };
+		26986AF92821D62100D8FF3E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		26B90B9C2820950000000CF1 /* UsefulEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulEnums.swift; sourceTree = "<group>"; };
 		26B90B9E282161BA00000CF1 /* UserDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocumentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +102,7 @@
 		266C000A281D9CB40023702A /* Rose Grade Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				26986AF72821D3D700D8FF3E /* avatar-placeholder.png */,
 				266C0021281DB73D0023702A /* oie_mfmuHBY9396n.png */,
 				266C0022281DB73D0023702A /* RH_G_HiRes-RGB-1c.png */,
 				266C000B281D9CB40023702A /* AppDelegate.swift */,
@@ -103,6 +110,7 @@
 				266C0025281DB8AB0023702A /* LogInViewController.swift */,
 				266C0040281DC7C60023702A /* CourseListViewController.swift */,
 				26803A112820334400F36EFB /* CourseDetailViewController.swift */,
+				26986AF32821D10E00D8FF3E /* SideMenuViewController.swift */,
 				266C0011281D9CB40023702A /* Main.storyboard */,
 				266C0014281D9CB60023702A /* Assets.xcassets */,
 				266C0016281D9CB60023702A /* LaunchScreen.storyboard */,
@@ -118,6 +126,7 @@
 				266C0048281E3BFA0023702A /* Utils.swift */,
 				26B90B9C2820950000000CF1 /* UsefulEnums.swift */,
 				26B90B9E282161BA00000CF1 /* UserDocumentManager.swift */,
+				26986AF92821D62100D8FF3E /* StorageManager.swift */,
 			);
 			path = "Rose Grade Tracker";
 			sourceTree = "<group>";
@@ -205,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				266C0024281DB73E0023702A /* RH_G_HiRes-RGB-1c.png in Resources */,
+				26986AF82821D3D700D8FF3E /* avatar-placeholder.png in Resources */,
 				266C0023281DB73E0023702A /* oie_mfmuHBY9396n.png in Resources */,
 				266C0018281D9CB60023702A /* LaunchScreen.storyboard in Resources */,
 				266C0015281D9CB60023702A /* Assets.xcassets in Resources */,
@@ -220,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26986AFA2821D62100D8FF3E /* StorageManager.swift in Sources */,
+				26986AF42821D10E00D8FF3E /* SideMenuViewController.swift in Sources */,
 				26B90B9D2820950000000CF1 /* UsefulEnums.swift in Sources */,
 				266C0045281DD8F70023702A /* Course.swift in Sources */,
 				266C0026281DB8AB0023702A /* LogInViewController.swift in Sources */,

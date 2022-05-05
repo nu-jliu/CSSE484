@@ -8,7 +8,7 @@
 import Foundation
 
 class Constants {
-    // Firestore course
+    // courses
     static let FIRESTORE_COURSE_COLLETION_PATH = "courses"
     static let FIRESTORE_COURSE_NUMBER_KEY = "courseNumber"
     static let FIRESTORE_COURSE_NAME_KEY = "courseName"
@@ -46,6 +46,16 @@ class Constants {
     static let FIRESTORE_USER_COLLECTION_PATH = "users"
     static let FIRESTORE_USER_NAME = "name"
     static let FIRESTORE_USER_PHOTO_URL = "photoUrl"
+    
+    // Course Templates
+    static let FIRESTORE_COURSE_TEMPLATES_COLLECTION_PATH = "templates"
+    static let FIRESTORE_COURSE_TEMPLATES_NAME_KEY = "name"
+    static let FIRESTORE_COURSE_TEMPLATES_NUMBER_KEY = "number"
+    static let FIRESTORE_COURSE_TEMPLATES_PARTICIPATION_WEIGHT_KEY = "pWeight"
+    static let FIRESTORE_COURSE_TEMPLATES_ASSIGNMENTS_WEIHGT_KEY = "aWeight"
+    static let FIRESTORE_COURSE_TEMPLATES_EXAMS_WEIGHT_KEY = "eWeight"
+    static let FIRESTORE_COURSE_TEMPLATES_LABS_WEIGHT_KEY = "lWeight"
+    static let FIRESTORE_COURSE_TEMPLATES_QUIZZES_WEIGHT_KEY = "qWeight"
     
     // Cloud Functions
     static let CLOUD_FUNCTIONS_URL = "https://us-central-rose-gradebook-ios.cloudfunctions.net"

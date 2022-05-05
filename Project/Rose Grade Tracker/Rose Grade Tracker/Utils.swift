@@ -158,10 +158,6 @@ class Utils {
     static func load(imageView: UIImageView, from url: String) {
         if let imgUrl = URL(string: url) {
             imageView.kf.setImage(with: imgUrl)
-            
-            if let image = imageView.image {
-                imageView.image = self.cropImageToSquare(image: image)
-            }
 //            DispatchQueue.global().async { // Download in the background
 //                do {
 //                    let data = try Data(contentsOf: imgUrl)
