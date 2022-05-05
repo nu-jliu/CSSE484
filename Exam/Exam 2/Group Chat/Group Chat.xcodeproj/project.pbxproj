@@ -25,6 +25,14 @@
 		266177F828239935008629A4 /* UserDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177F728239935008629A4 /* UserDocumentManager.swift */; };
 		266177FA282399D4008629A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177F9282399D4008629A4 /* RegisterViewController.swift */; };
 		266177FC282399E5008629A4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177FB282399E5008629A4 /* LogInViewController.swift */; };
+		266177FE28240907008629A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177FD28240907008629A4 /* Constants.swift */; };
+		2661780028241900008629A4 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177FF28241900008629A4 /* GroupsTableViewController.swift */; };
+		266178022824279A008629A4 /* GroupsSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266178012824279A008629A4 /* GroupsSideMenuViewController.swift */; };
+		26617804282429E6008629A4 /* GroupsCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26617803282429E6008629A4 /* GroupsCollectionManager.swift */; };
+		2661780628242AFB008629A4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780528242AFB008629A4 /* Group.swift */; };
+		2661780A28243E6F008629A4 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2661780928243E6F008629A4 /* Toast */; };
+		2661780C282447CB008629A4 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780B282447CB008629A4 /* UserProfileViewController.swift */; };
+		2661780E2824521C008629A4 /* GroupMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +49,13 @@
 		266177F728239935008629A4 /* UserDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocumentManager.swift; sourceTree = "<group>"; };
 		266177F9282399D4008629A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		266177FB282399E5008629A4 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		266177FD28240907008629A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		266177FF28241900008629A4 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		266178012824279A008629A4 /* GroupsSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsSideMenuViewController.swift; sourceTree = "<group>"; };
+		26617803282429E6008629A4 /* GroupsCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCollectionManager.swift; sourceTree = "<group>"; };
+		2661780528242AFB008629A4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		2661780B282447CB008629A4 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2661780A28243E6F008629A4 /* Toast in Frameworks */,
 				266177EC28239900008629A4 /* FirebaseAnalytics in Frameworks */,
 				266177EE28239900008629A4 /* FirebaseAuth in Frameworks */,
 				266177F028239900008629A4 /* FirebaseDatabase in Frameworks */,
@@ -87,6 +103,8 @@
 				266177D428239162008629A4 /* LaunchScreen.storyboard */,
 				266177D728239162008629A4 /* Info.plist */,
 				266177E528239854008629A4 /* GoogleService-Info.plist */,
+				266177FD28240907008629A4 /* Constants.swift */,
+				2661780728242B01008629A4 /* Models */,
 				266177E2282397E9008629A4 /* Firebase Managers */,
 				266177DF2823945E008629A4 /* View Controllers */,
 			);
@@ -99,6 +117,10 @@
 				266177DD282391EE008629A4 /* WelcomePageViewController.swift */,
 				266177F9282399D4008629A4 /* RegisterViewController.swift */,
 				266177FB282399E5008629A4 /* LogInViewController.swift */,
+				266177FF28241900008629A4 /* GroupsTableViewController.swift */,
+				266178012824279A008629A4 /* GroupsSideMenuViewController.swift */,
+				2661780B282447CB008629A4 /* UserProfileViewController.swift */,
+				2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -108,8 +130,17 @@
 			children = (
 				266177E0282397DA008629A4 /* AuthStateManager.swift */,
 				266177F728239935008629A4 /* UserDocumentManager.swift */,
+				26617803282429E6008629A4 /* GroupsCollectionManager.swift */,
 			);
 			path = "Firebase Managers";
+			sourceTree = "<group>";
+		};
+		2661780728242B01008629A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2661780528242AFB008629A4 /* Group.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +167,7 @@
 				266177F128239900008629A4 /* FirebaseFirestore */,
 				266177F328239900008629A4 /* FirebaseFunctions */,
 				266177F528239900008629A4 /* FirebaseStorage */,
+				2661780928243E6F008629A4 /* Toast */,
 			);
 			productName = "Group Chat";
 			productReference = 266177C628239161008629A4 /* Group Chat.app */;
@@ -168,6 +200,7 @@
 			packageReferences = (
 				266177E728239876008629A4 /* XCRemoteSwiftPackageReference "SideMenu" */,
 				266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 266177C728239161008629A4 /* Products */;
 			projectDirPath = "";
@@ -199,11 +232,18 @@
 			files = (
 				266177CA28239161008629A4 /* AppDelegate.swift in Sources */,
 				266177DE282391EE008629A4 /* WelcomePageViewController.swift in Sources */,
+				2661780028241900008629A4 /* GroupsTableViewController.swift in Sources */,
+				2661780628242AFB008629A4 /* Group.swift in Sources */,
 				266177F828239935008629A4 /* UserDocumentManager.swift in Sources */,
 				266177FC282399E5008629A4 /* LogInViewController.swift in Sources */,
 				266177FA282399D4008629A4 /* RegisterViewController.swift in Sources */,
 				266177CC28239161008629A4 /* SceneDelegate.swift in Sources */,
+				2661780C282447CB008629A4 /* UserProfileViewController.swift in Sources */,
 				266177E1282397DA008629A4 /* AuthStateManager.swift in Sources */,
+				26617804282429E6008629A4 /* GroupsCollectionManager.swift in Sources */,
+				266178022824279A008629A4 /* GroupsSideMenuViewController.swift in Sources */,
+				266177FE28240907008629A4 /* Constants.swift in Sources */,
+				2661780E2824521C008629A4 /* GroupMembersTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +479,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -476,6 +524,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		2661780928243E6F008629A4 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

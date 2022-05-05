@@ -6,17 +6,45 @@
 //
 
 import UIKit
+import Toast
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var welcomeViewController: WelcomePageViewController {
+        let navViewController = self.presentingViewController as! UINavigationController
+        return navViewController.viewControllers.last as! WelcomePageViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.emailTextField.placeholder = "Email"
+        self.passwordTextField.placeholder = "Password"
     }
+    
+    // MARK: Button Actions
     
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+        guard
+            let email = self.emailTextField.text,
+            let password = self.passwordTextField.text
+        else { return }
+        
+        AuthStateManager.shared.logInExistingEmailPasswordUser(
+            email: email,
+            password: password
+        ) {
+            self.welcomeViewController.view.makeToast("Log in Failed", duration: 1.0)
+        }
     }
     
     /*
