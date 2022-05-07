@@ -20,9 +20,10 @@ class GroupsCollectionManager {
     var latestGroups = [Group]()
     
     func startListening(changeListener: @escaping (() -> Void)) -> ListenerRegistration {
-        // TODO: receive a changeListener
-        
-        var query = self._collectionRef.order(by: Constants.GROUPS_CREATED_ON_KEY, descending: true).limit(to: 50)
+        let query = self._collectionRef.order(
+            by: Constants.GROUPS_CREATED_ON_KEY,
+            descending: false
+        ).limit(to: 50)
         
         return query.addSnapshotListener { snapshot, err in
             guard let documents = snapshot?.documents else {
@@ -31,11 +32,13 @@ class GroupsCollectionManager {
             }
             
             self.latestGroups = [Group]()
+            
             for doc in documents {
                 let group = Group(snapshot: doc)
-//                if mq.authorUid == AuthManager.shared.currentUser?.uid || mq.documentId == "Console Data" {
-                self.latestGroups.append(group)
-//                }
+                
+                if group.memberEmails.contains(AuthStateManager.shared.currentUser?.email ?? "") {
+                    self.latestGroups.append(group)
+                }
             }
             
             changeListener()

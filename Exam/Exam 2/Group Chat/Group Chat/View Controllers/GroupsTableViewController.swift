@@ -10,14 +10,13 @@ import Firebase
 
 class GroupCell: UITableViewCell {
     @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var showMembersButton: UIButton!
 }
 
 class GroupsTableViewController: UITableViewController {
     
     var logoutHandle: AuthStateDidChangeListenerHandle?
     var groupsListerRegisteration: ListenerRegistration?
-
-    let GROUP_CELL_IDENTIFIER = "groupCell"
     
     // MARK: - Life Cycle
     
@@ -58,6 +57,10 @@ class GroupsTableViewController: UITableViewController {
             textField.placeholder = "Group Name"
         }
         
+        alertController.addTextField { textField in
+            textField.placeholder = "Member Email(s), seperated by \", \""
+        }
+        
         // add action
         alertController.addAction(UIAlertAction(
             title: "Add Group",
@@ -65,9 +68,19 @@ class GroupsTableViewController: UITableViewController {
         ) { action in
             let groupName = alertController.textFields![0].text
             
+            var memberEmails = [String]()
+            if let memberEmailStr = alertController.textFields![1].text {
+                memberEmails = memberEmailStr.components(separatedBy: ", ")
+            }
+            
             if let email = AuthStateManager.shared.currentUser?.email {
-                let group = Group(name: groupName ?? "", ownerEmail: email)
+                let group = Group(name: groupName ?? "", ownerEmail: email, memberEmails: memberEmails)
                 GroupsCollectionManager.shared.add(group)
+            }
+            
+            GroupsCollectionManager.shared.stopListening(self.groupsListerRegisteration)
+            self.groupsListerRegisteration = GroupsCollectionManager.shared.startListening {
+                self.tableView.reloadData()
             }
         })
 
@@ -85,11 +98,12 @@ class GroupsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.GROUP_CELL_IDENTIFIER, for: indexPath) as! GroupCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.GROUP_CELL_IDENTIFIER, for: indexPath) as! GroupCell
 
         // Configure the cell...
         let group = GroupsCollectionManager.shared.latestGroups[indexPath.row]
         cell.groupNameLabel.text = group.name
+        cell.showMembersButton.tag = indexPath.row
         
         return cell
     }
@@ -103,17 +117,19 @@ class GroupsTableViewController: UITableViewController {
     }
     
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            let docId = GroupsCollectionManager.shared.latestGroups[indexPath.row].documentId!
+            GroupsCollectionManager.shared.delete(docId)
+        }
+//        else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -130,14 +146,22 @@ class GroupsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.GROUP_MEMBER_SEGUE_IDENTIFIER {
+            let groupMemberVC = segue.destination as! GroupMembersTableViewController
+            let memberButton = sender as! UIButton
+            let group = GroupsCollectionManager.shared.latestGroups[memberButton.tag]
+            
+            print("Current row: \(memberButton.tag)")
+            groupMemberVC.documentId = group.documentId
+        }
     }
-    */
+    
 
 }

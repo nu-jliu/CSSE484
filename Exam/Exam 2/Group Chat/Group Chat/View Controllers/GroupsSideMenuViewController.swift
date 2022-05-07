@@ -22,9 +22,6 @@ class GroupsSideMenuViewController: UIViewController {
     
     // MARK: Button Actions
     
-    @IBAction func editProfileButtonPressed(_ sender: Any) {
-    }
-    
     @IBAction func deleteGroupButtonPressed(_ sender: Any) {
         self.dismiss(animated: true)
         self.groupsTableViewController.isEditing = !self.groupsTableViewController.isEditing

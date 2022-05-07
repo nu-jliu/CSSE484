@@ -16,12 +16,6 @@
 		266177E1282397DA008629A4 /* AuthStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177E0282397DA008629A4 /* AuthStateManager.swift */; };
 		266177E628239854008629A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266177E528239854008629A4 /* GoogleService-Info.plist */; };
 		266177E928239876008629A4 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 266177E828239876008629A4 /* SideMenu */; };
-		266177EC28239900008629A4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 266177EB28239900008629A4 /* FirebaseAnalytics */; };
-		266177EE28239900008629A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266177ED28239900008629A4 /* FirebaseAuth */; };
-		266177F028239900008629A4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 266177EF28239900008629A4 /* FirebaseDatabase */; };
-		266177F228239900008629A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266177F128239900008629A4 /* FirebaseFirestore */; };
-		266177F428239900008629A4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 266177F328239900008629A4 /* FirebaseFunctions */; };
-		266177F628239900008629A4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 266177F528239900008629A4 /* FirebaseStorage */; };
 		266177F828239935008629A4 /* UserDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177F728239935008629A4 /* UserDocumentManager.swift */; };
 		266177FA282399D4008629A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177F9282399D4008629A4 /* RegisterViewController.swift */; };
 		266177FC282399E5008629A4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266177FB282399E5008629A4 /* LogInViewController.swift */; };
@@ -33,6 +27,16 @@
 		2661780A28243E6F008629A4 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2661780928243E6F008629A4 /* Toast */; };
 		2661780C282447CB008629A4 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780B282447CB008629A4 /* UserProfileViewController.swift */; };
 		2661780E2824521C008629A4 /* GroupMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */; };
+		266178102824A9A4008629A4 /* MembersListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661780F2824A9A4008629A4 /* MembersListManager.swift */; };
+		266178122824BAFE008629A4 /* AllUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266178112824BAFE008629A4 /* AllUsersManager.swift */; };
+		2661781528256625008629A4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781428256625008629A4 /* FirebaseAnalytics */; };
+		2661781728256625008629A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781628256625008629A4 /* FirebaseAuth */; };
+		2661781928256625008629A4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781828256625008629A4 /* FirebaseDatabase */; };
+		2661781B28256625008629A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781A28256625008629A4 /* FirebaseFirestore */; };
+		2661781D28256625008629A4 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781C28256625008629A4 /* FirebaseFirestoreCombine-Community */; };
+		2661781F28256625008629A4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781E28256625008629A4 /* FirebaseFunctions */; };
+		2661782128256625008629A4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2661782028256625008629A4 /* FirebaseStorage */; };
+		2661782328257A78008629A4 /* GroupMembersSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,9 @@
 		2661780528242AFB008629A4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2661780B282447CB008629A4 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
+		2661780F2824A9A4008629A4 /* MembersListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersListManager.swift; sourceTree = "<group>"; };
+		266178112824BAFE008629A4 /* AllUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersManager.swift; sourceTree = "<group>"; };
+		2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersSideMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +70,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2661781928256625008629A4 /* FirebaseDatabase in Frameworks */,
 				2661780A28243E6F008629A4 /* Toast in Frameworks */,
-				266177EC28239900008629A4 /* FirebaseAnalytics in Frameworks */,
-				266177EE28239900008629A4 /* FirebaseAuth in Frameworks */,
-				266177F028239900008629A4 /* FirebaseDatabase in Frameworks */,
-				266177F428239900008629A4 /* FirebaseFunctions in Frameworks */,
-				266177F628239900008629A4 /* FirebaseStorage in Frameworks */,
-				266177F228239900008629A4 /* FirebaseFirestore in Frameworks */,
+				2661782128256625008629A4 /* FirebaseStorage in Frameworks */,
 				266177E928239876008629A4 /* SideMenu in Frameworks */,
+				2661781F28256625008629A4 /* FirebaseFunctions in Frameworks */,
+				2661781528256625008629A4 /* FirebaseAnalytics in Frameworks */,
+				2661781728256625008629A4 /* FirebaseAuth in Frameworks */,
+				2661781B28256625008629A4 /* FirebaseFirestore in Frameworks */,
+				2661781D28256625008629A4 /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +129,7 @@
 				266178012824279A008629A4 /* GroupsSideMenuViewController.swift */,
 				2661780B282447CB008629A4 /* UserProfileViewController.swift */,
 				2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */,
+				2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -131,6 +140,8 @@
 				266177E0282397DA008629A4 /* AuthStateManager.swift */,
 				266177F728239935008629A4 /* UserDocumentManager.swift */,
 				26617803282429E6008629A4 /* GroupsCollectionManager.swift */,
+				2661780F2824A9A4008629A4 /* MembersListManager.swift */,
+				266178112824BAFE008629A4 /* AllUsersManager.swift */,
 			);
 			path = "Firebase Managers";
 			sourceTree = "<group>";
@@ -161,13 +172,14 @@
 			name = "Group Chat";
 			packageProductDependencies = (
 				266177E828239876008629A4 /* SideMenu */,
-				266177EB28239900008629A4 /* FirebaseAnalytics */,
-				266177ED28239900008629A4 /* FirebaseAuth */,
-				266177EF28239900008629A4 /* FirebaseDatabase */,
-				266177F128239900008629A4 /* FirebaseFirestore */,
-				266177F328239900008629A4 /* FirebaseFunctions */,
-				266177F528239900008629A4 /* FirebaseStorage */,
 				2661780928243E6F008629A4 /* Toast */,
+				2661781428256625008629A4 /* FirebaseAnalytics */,
+				2661781628256625008629A4 /* FirebaseAuth */,
+				2661781828256625008629A4 /* FirebaseDatabase */,
+				2661781A28256625008629A4 /* FirebaseFirestore */,
+				2661781C28256625008629A4 /* FirebaseFirestoreCombine-Community */,
+				2661781E28256625008629A4 /* FirebaseFunctions */,
+				2661782028256625008629A4 /* FirebaseStorage */,
 			);
 			productName = "Group Chat";
 			productReference = 266177C628239161008629A4 /* Group Chat.app */;
@@ -199,8 +211,8 @@
 			mainGroup = 266177BD28239161008629A4;
 			packageReferences = (
 				266177E728239876008629A4 /* XCRemoteSwiftPackageReference "SideMenu" */,
-				266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 266177C728239161008629A4 /* Products */;
 			projectDirPath = "";
@@ -234,10 +246,13 @@
 				266177DE282391EE008629A4 /* WelcomePageViewController.swift in Sources */,
 				2661780028241900008629A4 /* GroupsTableViewController.swift in Sources */,
 				2661780628242AFB008629A4 /* Group.swift in Sources */,
+				2661782328257A78008629A4 /* GroupMembersSideMenuViewController.swift in Sources */,
 				266177F828239935008629A4 /* UserDocumentManager.swift in Sources */,
 				266177FC282399E5008629A4 /* LogInViewController.swift in Sources */,
+				266178122824BAFE008629A4 /* AllUsersManager.swift in Sources */,
 				266177FA282399D4008629A4 /* RegisterViewController.swift in Sources */,
 				266177CC28239161008629A4 /* SceneDelegate.swift in Sources */,
+				266178102824A9A4008629A4 /* MembersListManager.swift in Sources */,
 				2661780C282447CB008629A4 /* UserProfileViewController.swift in Sources */,
 				266177E1282397DA008629A4 /* AuthStateManager.swift in Sources */,
 				26617804282429E6008629A4 /* GroupsCollectionManager.swift in Sources */,
@@ -471,20 +486,20 @@
 				minimumVersion = 6.5.0;
 			};
 		};
-		266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -495,40 +510,45 @@
 			package = 266177E728239876008629A4 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
 		};
-		266177EB28239900008629A4 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		266177ED28239900008629A4 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		266177EF28239900008629A4 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		266177F128239900008629A4 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		266177F328239900008629A4 /* FirebaseFunctions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFunctions;
-		};
-		266177F528239900008629A4 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 266177EA28239900008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
 		2661780928243E6F008629A4 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2661780828243E6F008629A4 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		2661781428256625008629A4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2661781628256625008629A4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		2661781828256625008629A4 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		2661781A28256625008629A4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		2661781C28256625008629A4 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		2661781E28256625008629A4 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		2661782028256625008629A4 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2661781328256625008629A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

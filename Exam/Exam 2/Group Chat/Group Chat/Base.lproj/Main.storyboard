@@ -299,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROY-lb-rTx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="756"/>
+            <point key="canvasLocation" x="1793" y="1588"/>
         </scene>
         <!--Groups Table View Controller-->
         <scene sceneID="3cs-jP-Rdk">
@@ -332,7 +332,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="person.fill.badge.plus" catalog="system" title=""/>
                                                     <connections>
-                                                        <segue destination="1Ru-1P-8Nd" kind="show" id="wOt-8E-CNd"/>
+                                                        <segue destination="1Ru-1P-8Nd" kind="show" identifier="groupMemberSegue" id="RSn-r4-imJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -350,6 +350,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="groupNameLabel" destination="J1h-I9-EpR" id="3Fw-ZP-OdH"/>
+                                    <outlet property="showMembersButton" destination="9iC-f8-qaZ" id="Xaf-pC-BRx"/>
+                                    <segue destination="Eg8-E6-rR8" kind="show" identifier="showMessageListSegue" id="p6m-Sh-egs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -370,7 +372,7 @@
             </objects>
             <point key="canvasLocation" x="3064" y="31"/>
         </scene>
-        <!--Group Members Table View Controller-->
+        <!--Group Name-->
         <scene sceneID="A39-10-ARH">
             <objects>
                 <tableViewController id="1Ru-1P-8Nd" customClass="GroupMembersTableViewController" customModule="Group_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -379,7 +381,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupMemberCell" id="WX0-tZ-Ndc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupMemberCell" id="WX0-tZ-Ndc" customClass="MemberInfoCell" customModule="Group_Chat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="83.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WX0-tZ-Ndc" id="3Tq-3m-9Of">
@@ -420,6 +422,10 @@
                                         <constraint firstAttribute="bottom" secondItem="JY4-ZT-l2U" secondAttribute="bottom" constant="10" id="wfr-Xq-7J3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="memberEmailLabel" destination="cYp-k1-uHH" id="zo5-vj-u6H"/>
+                                    <outlet property="memberNameLabel" destination="QMj-Gb-6aa" id="ICs-2p-I1f"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -427,11 +433,46 @@
                             <outlet property="delegate" destination="1Ru-1P-8Nd" id="Sfg-0M-n2B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6Qt-Vd-Mph"/>
+                    <navigationItem key="navigationItem" title="Group Name" id="6Qt-Vd-Mph">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="OIJ-OH-YF6">
+                            <connections>
+                                <segue destination="erb-6R-nIE" kind="presentation" id="Kh1-9h-4cu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Go7-m3-qXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4206" y="31"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="faW-mI-k8F">
+            <objects>
+                <tableViewController id="Eg8-E6-rR8" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="idW-Z5-bRr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YYb-XA-T32">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YYb-XA-T32" id="Ev0-Ni-mFB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Eg8-E6-rR8" id="0nu-1N-bYW"/>
+                            <outlet property="delegate" destination="Eg8-E6-rR8" id="ZG4-YJ-Hmc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="93j-oi-BJg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVf-FJ-pEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4206" y="789"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="bkj-KH-f9f">
@@ -473,7 +514,6 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="  Edit Profile" image="person.crop.circle.fill" catalog="system"/>
                                                 <connections>
-                                                    <action selector="editProfileButtonPressed:" destination="CNx-1n-MOv" eventType="touchUpInside" id="L2o-ty-oT9"/>
                                                     <segue destination="Fq6-Ur-10o" kind="show" id="eHL-Pa-lWZ"/>
                                                 </connections>
                                             </button>
@@ -598,11 +638,119 @@
             </objects>
             <point key="canvasLocation" x="6509" y="-702"/>
         </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="leC-f2-v7F">
+            <objects>
+                <navigationController id="erb-6R-nIE" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g36-fV-2Ez">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="ryv-au-ZAF" kind="relationship" relationship="rootViewController" id="TSs-91-5WO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvf-cU-dim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5296" y="31"/>
+        </scene>
+        <!--Group Members Side Menu View Controller-->
+        <scene sceneID="FUt-nd-1uQ">
+            <objects>
+                <viewController id="ryv-au-ZAF" customClass="GroupMembersSideMenuViewController" customModule="Group_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6A4-fi-Sfv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cR-ae-ZO8">
+                                <rect key="frame" x="0.0" y="56" width="414" height="886"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6bg-LF-eot">
+                                        <rect key="frame" x="10" y="40" width="214.5" height="121"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-Ko-IET">
+                                                <rect key="frame" x="0.0" y="0.0" width="214.5" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="  Rename Group" image="pencil" catalog="system"/>
+                                                <connections>
+                                                    <action selector="renameGroupPressed:" destination="ryv-au-ZAF" eventType="touchUpInside" id="MRD-p5-OEP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLx-he-uT5">
+                                                <rect key="frame" x="0.0" y="47" width="214.5" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="  Remove Members" image="person.fill.badge.minus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="removeMembersPressed:" destination="ryv-au-ZAF" eventType="touchUpInside" id="eT5-LK-AD9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUA-Cr-zeI">
+                                                <rect key="frame" x="0.0" y="94" width="214.5" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="  Leave Group" image="person.fill.xmark" catalog="system"/>
+                                                <connections>
+                                                    <action selector="leaveGroupPressed:" destination="ryv-au-ZAF" eventType="touchUpInside" id="kk0-gA-BjP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byF-Aq-d9y">
+                                        <rect key="frame" x="10" y="361" width="183.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   Back to Groups" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="backToGroupsPressed:" destination="ryv-au-ZAF" eventType="touchUpInside" id="rVi-fU-vtd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6bg-LF-eot" firstAttribute="top" secondItem="7cR-ae-ZO8" secondAttribute="top" constant="40" id="Pvb-Dy-Jae"/>
+                                    <constraint firstItem="6bg-LF-eot" firstAttribute="leading" secondItem="7cR-ae-ZO8" secondAttribute="leading" constant="10" id="RCg-XS-eL8"/>
+                                    <constraint firstItem="byF-Aq-d9y" firstAttribute="leading" secondItem="7cR-ae-ZO8" secondAttribute="leading" constant="10" id="fDN-VZ-Me1"/>
+                                    <constraint firstItem="byF-Aq-d9y" firstAttribute="top" secondItem="6bg-LF-eot" secondAttribute="bottom" constant="200" id="sjB-ma-Re5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oXV-IU-xT1"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="oXV-IU-xT1" firstAttribute="trailing" secondItem="7cR-ae-ZO8" secondAttribute="trailing" id="8BK-Tl-OFw"/>
+                            <constraint firstItem="7cR-ae-ZO8" firstAttribute="leading" secondItem="oXV-IU-xT1" secondAttribute="leading" id="c3y-kn-7Sm"/>
+                            <constraint firstItem="7cR-ae-ZO8" firstAttribute="top" secondItem="oXV-IU-xT1" secondAttribute="top" id="fjQ-Q9-BIW"/>
+                            <constraint firstItem="oXV-IU-xT1" firstAttribute="bottom" secondItem="7cR-ae-ZO8" secondAttribute="bottom" constant="-100" id="tLf-ac-aKf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="j86-1M-zsQ"/>
+                    <connections>
+                        <outlet property="leaveGroupButton" destination="lUA-Cr-zeI" id="f7u-LR-AGt"/>
+                        <outlet property="renameGroupButton" destination="ThF-Ko-IET" id="ag4-KF-CTA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7r2-iA-oQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6509" y="31"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.fill.badge.minus" catalog="system" width="128" height="124"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
+        <image name="person.fill.xmark" catalog="system" width="128" height="88"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
@@ -610,6 +758,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -22,4 +22,11 @@ class Constants {
     
     // segue
     static let SHOW_LIST_SEGUE = "showListSegue"
+    static let SHOW_MEMBER_LIST_SEGUE = "showMemberListSegue"
+    static let GROUP_MEMBER_SEGUE_IDENTIFIER = "groupMemberSegue"
+    static let SHOW_MESSAGE_LIST_SEGUE = "showMessageListSegue"
+    
+    // cell
+    static let GROUP_CELL_IDENTIFIER = "groupCell"
+    static let GROUP_MEMBER_CELL_IDENTIFIER = "groupMemberCell"
 }

@@ -39,6 +39,8 @@ class UserProfileViewController: UIViewController {
         UserDocumentManager.shared.stopListening(self.userListenerRegisteration)
     }
     
+    // MARK: - Button Actions
+    
     @IBAction func updateButtonPressed(_ sender: Any) {
         guard
             let firstName = self.firstNameTextField.text,
