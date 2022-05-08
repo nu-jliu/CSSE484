@@ -16,10 +16,10 @@ class GroupMembersSideMenuViewController: UIViewController {
         let navController = self.presentingViewController as! UINavigationController
         return navController.viewControllers.last as! GroupMembersTableViewController
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         if AuthStateManager.shared.currentUser?.email == MembersListManager.shared.latestGroup?.ownerEmail {
             self.leaveGroupButton.isHidden = true
@@ -65,9 +65,7 @@ class GroupMembersSideMenuViewController: UIViewController {
     
     @IBAction func leaveGroupPressed(_ sender: Any) {
         self.dismiss(animated: true)
-        self.groupMemberTableViewController
-            .navigationController?
-            .popViewController(animated: true)
+        let tableViewVC = self.groupMemberTableViewController
         
         let alertController = UIAlertController(
             title: "Leave Group",
@@ -79,10 +77,14 @@ class GroupMembersSideMenuViewController: UIViewController {
         alertController.addAction(UIAlertAction(
             title: "Leave",
             style: .default) { action in
+                tableViewVC
+                    .navigationController?
+                    .popViewController(animated: true)
+                
                 MembersListManager.shared.removeMember(
                     email: AuthStateManager.shared.currentUser?.email ?? ""
                 )
-        })
+            })
         
         // Cancel Action
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -97,15 +99,4 @@ class GroupMembersSideMenuViewController: UIViewController {
             .navigationController?
             .popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

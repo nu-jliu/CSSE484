@@ -37,6 +37,12 @@
 		2661781F28256625008629A4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 2661781E28256625008629A4 /* FirebaseFunctions */; };
 		2661782128256625008629A4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2661782028256625008629A4 /* FirebaseStorage */; };
 		2661782328257A78008629A4 /* GroupMembersSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */; };
+		266178252827328B008629A4 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266178242827328B008629A4 /* MessagesTableViewController.swift */; };
+		26617827282737B0008629A4 /* MessagesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26617826282737B0008629A4 /* MessagesCollectionManager.swift */; };
+		26617829282739CA008629A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26617828282739CA008629A4 /* Message.swift */; };
+		2661782B282797B6008629A4 /* MessagesSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661782A282797B6008629A4 /* MessagesSideMenuViewController.swift */; };
+		2661782D28279E0C008629A4 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661782C28279E0C008629A4 /* MessageDetailViewController.swift */; };
+		2661782F28279E1F008629A4 /* MessageDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661782E28279E1F008629A4 /* MessageDocumentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +69,12 @@
 		2661780F2824A9A4008629A4 /* MembersListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersListManager.swift; sourceTree = "<group>"; };
 		266178112824BAFE008629A4 /* AllUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersManager.swift; sourceTree = "<group>"; };
 		2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersSideMenuViewController.swift; sourceTree = "<group>"; };
+		266178242827328B008629A4 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
+		26617826282737B0008629A4 /* MessagesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionManager.swift; sourceTree = "<group>"; };
+		26617828282739CA008629A4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2661782A282797B6008629A4 /* MessagesSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesSideMenuViewController.swift; sourceTree = "<group>"; };
+		2661782C28279E0C008629A4 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		2661782E28279E1F008629A4 /* MessageDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocumentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +142,9 @@
 				2661780B282447CB008629A4 /* UserProfileViewController.swift */,
 				2661780D2824521C008629A4 /* GroupMembersTableViewController.swift */,
 				2661782228257A78008629A4 /* GroupMembersSideMenuViewController.swift */,
+				266178242827328B008629A4 /* MessagesTableViewController.swift */,
+				2661782A282797B6008629A4 /* MessagesSideMenuViewController.swift */,
+				2661782C28279E0C008629A4 /* MessageDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -142,6 +157,8 @@
 				26617803282429E6008629A4 /* GroupsCollectionManager.swift */,
 				2661780F2824A9A4008629A4 /* MembersListManager.swift */,
 				266178112824BAFE008629A4 /* AllUsersManager.swift */,
+				26617826282737B0008629A4 /* MessagesCollectionManager.swift */,
+				2661782E28279E1F008629A4 /* MessageDocumentManager.swift */,
 			);
 			path = "Firebase Managers";
 			sourceTree = "<group>";
@@ -150,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				2661780528242AFB008629A4 /* Group.swift */,
+				26617828282739CA008629A4 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,20 +261,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				266177CA28239161008629A4 /* AppDelegate.swift in Sources */,
+				26617827282737B0008629A4 /* MessagesCollectionManager.swift in Sources */,
 				266177DE282391EE008629A4 /* WelcomePageViewController.swift in Sources */,
 				2661780028241900008629A4 /* GroupsTableViewController.swift in Sources */,
 				2661780628242AFB008629A4 /* Group.swift in Sources */,
+				2661782B282797B6008629A4 /* MessagesSideMenuViewController.swift in Sources */,
 				2661782328257A78008629A4 /* GroupMembersSideMenuViewController.swift in Sources */,
 				266177F828239935008629A4 /* UserDocumentManager.swift in Sources */,
 				266177FC282399E5008629A4 /* LogInViewController.swift in Sources */,
 				266178122824BAFE008629A4 /* AllUsersManager.swift in Sources */,
 				266177FA282399D4008629A4 /* RegisterViewController.swift in Sources */,
+				2661782F28279E1F008629A4 /* MessageDocumentManager.swift in Sources */,
 				266177CC28239161008629A4 /* SceneDelegate.swift in Sources */,
 				266178102824A9A4008629A4 /* MembersListManager.swift in Sources */,
+				2661782D28279E0C008629A4 /* MessageDetailViewController.swift in Sources */,
 				2661780C282447CB008629A4 /* UserProfileViewController.swift in Sources */,
 				266177E1282397DA008629A4 /* AuthStateManager.swift in Sources */,
+				266178252827328B008629A4 /* MessagesTableViewController.swift in Sources */,
 				26617804282429E6008629A4 /* GroupsCollectionManager.swift in Sources */,
 				266178022824279A008629A4 /* GroupsSideMenuViewController.swift in Sources */,
+				26617829282739CA008629A4 /* Message.swift in Sources */,
 				266177FE28240907008629A4 /* Constants.swift in Sources */,
 				2661780E2824521C008629A4 /* GroupMembersTableViewController.swift in Sources */,
 			);

@@ -17,6 +17,7 @@ class GroupsTableViewController: UITableViewController {
     
     var logoutHandle: AuthStateDidChangeListenerHandle?
     var groupsListerRegisteration: ListenerRegistration?
+    var usersListenerRegisteration: ListenerRegistration?
     
     // MARK: - Life Cycle
     
@@ -40,11 +41,19 @@ class GroupsTableViewController: UITableViewController {
         self.groupsListerRegisteration = GroupsCollectionManager.shared.startListening {
             self.tableView.reloadData()
         }
+        
+        self.usersListenerRegisteration = AllUsersManger.shared.startsListenering {
+            print("Users updated")
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         AuthStateManager.shared.removeObserver(self.logoutHandle)
+        
+        GroupsCollectionManager.shared.stopListening(self.groupsListerRegisteration)
+        
+        AllUsersManger.shared.stopListening(self.usersListenerRegisteration)
     }
     
     // MARK: Bar Button Actions
@@ -68,13 +77,19 @@ class GroupsTableViewController: UITableViewController {
         ) { action in
             let groupName = alertController.textFields![0].text
             
-            var memberEmails = [String]()
+            var emails = [String]()
             if let memberEmailStr = alertController.textFields![1].text {
-                memberEmails = memberEmailStr.components(separatedBy: ", ")
+                let memberEmails = memberEmailStr.components(separatedBy: ", ")
+            
+                for newEmail in memberEmails {
+                    if AllUsersManger.shared.emailNameMap.keys.contains(newEmail) {
+                        emails.append(newEmail)
+                    }
+                }
             }
             
             if let email = AuthStateManager.shared.currentUser?.email {
-                let group = Group(name: groupName ?? "", ownerEmail: email, memberEmails: memberEmails)
+                let group = Group(name: groupName ?? "", ownerEmail: email, memberEmails: emails)
                 GroupsCollectionManager.shared.add(group)
             }
             
@@ -160,6 +175,12 @@ class GroupsTableViewController: UITableViewController {
             
             print("Current row: \(memberButton.tag)")
             groupMemberVC.documentId = group.documentId
+        } else if segue.identifier == Constants.SHOW_MESSAGE_LIST_SEGUE {
+            let messagesTableVC = segue.destination as! MessagesTableViewController
+            if let row = self.tableView.indexPathForSelectedRow?.row {
+                let group = GroupsCollectionManager.shared.latestGroups[row]
+                messagesTableVC.groupId = group.documentId
+            }
         }
     }
     
