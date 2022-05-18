@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/abseil-cpp-SwiftPM.git",
       "state" : {
-        "revision" : "fffc3c2729be5747390ad02d5100291a0d9ad26a",
-        "version" : "0.20200225.4"
+        "revision" : "d302de612e3d57c6f4afaf087da18fba8eac72a7",
+        "version" : "0.20220203.1"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
       "state" : {
-        "revision" : "734a8247442fde37df4364c21f6a0085b6a36728",
-        "version" : "0.7.2"
+        "revision" : "79db6516894a932d0ddaff3b05b9da1e4f6c4069",
+        "version" : "0.9.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "839cc6b0cd80b0b8bf81fe9bd82b743b25dc6446",
-        "version" : "8.9.1"
+        "revision" : "cfa854c9c1073c4d1b83b20dfcb1ef7ceb85388b",
+        "version" : "9.0.0"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "9b2f6aca5b4685c45f9f5481f19bee8e7982c538",
-        "version" : "8.9.1"
+        "revision" : "6a3123fab90f3884167990bee9bb30097d99c98c",
+        "version" : "9.0.0"
       }
     },
     {
@@ -55,12 +55,12 @@
       }
     },
     {
-      "identity" : "grpc-swiftpm",
+      "identity" : "grpc-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/grpc-SwiftPM.git",
+      "location" : "https://github.com/grpc/grpc-ios.git",
       "state" : {
-        "revision" : "fb405dd2c7901485f7e158b24e3a0a47e4efd8b5",
-        "version" : "1.28.4"
+        "revision" : "87cbe43709371123e95ca10d6956938741388af7",
+        "version" : "1.44.1-grpc"
       }
     },
     {

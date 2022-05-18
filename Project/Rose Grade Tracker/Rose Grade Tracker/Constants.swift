@@ -16,6 +16,7 @@ class Constants {
     static let FIRESTORE_COURSE_QUARTER_KEY = "quarter"
     static let FIRESTORE_COURSE_YEAR_KEY = "year"
     static let FIRESTORE_COURSE_TAKEN_BY_KEY = "takenBy"
+    static let FIREBASE_COURSE_CREDIT_KEY = "credit"
     
     // Participation Grade
     static let FIRESTORE_COURSE_PARTICIPATION_GRADE_KEY = "participationGrade"
@@ -46,6 +47,8 @@ class Constants {
     static let FIRESTORE_USER_COLLECTION_PATH = "users"
     static let FIRESTORE_USER_NAME = "name"
     static let FIRESTORE_USER_PHOTO_URL = "photoUrl"
+    static let FIRESTORE_USER_CURRENT_GPA = "currentGPA"
+    static let FIRESTORE_USER_CURRENT_CREDITS = "currentCredits"
     
     // Course Templates
     static let FIRESTORE_COURSE_TEMPLATES_COLLECTION_PATH = "templates"

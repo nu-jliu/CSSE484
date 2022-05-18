@@ -16,6 +16,7 @@ class CourseTableCell: UITableViewCell {
 
 class CourseListViewController: UIViewController {
     
+    @IBOutlet weak var overallGPALabel: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var courseListTableView: UITableView!
     
@@ -27,6 +28,10 @@ class CourseListViewController: UIViewController {
     var logoutHandle: AuthStateDidChangeListenerHandle?
     
     var profileImageButton: UIButton?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +88,11 @@ class CourseListViewController: UIViewController {
         self.coursesListenerRegisteration = CoursesCollectionManager.shared.startListening(
             for: AuthManager.shared.currentUser!.uid
         ) {
-            self.courseListTableView.reloadData()
+            self.updateView()
         }
         
         self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: AuthManager.shared.currentUser!.uid) {
-            self.navigationItem.title = "Hi, \(UserDocumentManager.shared.name)!"
+            self.updateView()
         }
     }
     
@@ -95,6 +100,23 @@ class CourseListViewController: UIViewController {
         super.viewDidDisappear(animated)
         AuthManager.shared.removeObserver(self.logoutHandle)
         CoursesCollectionManager.shared.stopListening(self.coursesListenerRegisteration)
+    }
+    
+    func updateView() {
+        self.courseListTableView.reloadData()
+        self.navigationItem.title = "Hi, \(UserDocumentManager.shared.name)!"
+        
+        let courses = Array(CoursesCollectionManager.shared.latestCourses.joined())
+        let gpa = Utils.calcCumGPA(
+            currGPA: UserDocumentManager.shared.GPA,
+            currCred: UserDocumentManager.shared.credits,
+            courses: courses
+        )
+            
+        self.overallGPALabel.text = String(format: "%.2f", gpa.GPA)
+        
+        print("Total credits \(gpa.credits)")
+    
     }
     
     // MARK: - Navigation

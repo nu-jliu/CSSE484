@@ -27,11 +27,25 @@ class UserDocumentManager {
         docRef.getDocument { doc, err in
             if let doc = doc, doc.exists {
                 print("User \(doc.documentID) exist")
+                
+                if doc.get(Constants.FIRESTORE_USER_CURRENT_CREDITS) == nil {
+                    docRef.updateData([
+                        Constants.FIRESTORE_USER_CURRENT_CREDITS: 0
+                    ])
+                }
+                
+                if doc.get(Constants.FIRESTORE_USER_CURRENT_GPA) == nil {
+                    docRef.updateData([
+                        Constants.FIRESTORE_USER_CURRENT_GPA: 0.0
+                    ])
+                }
             } else {
                 print("User doc does not exist, create a new user")
                 docRef.setData([
                     Constants.FIRESTORE_USER_NAME: name ?? "",
-                    Constants.FIRESTORE_USER_PHOTO_URL: photoUrl ?? ""
+                    Constants.FIRESTORE_USER_PHOTO_URL: photoUrl ?? "",
+                    Constants.FIRESTORE_USER_CURRENT_CREDITS: 0,
+                    Constants.FIRESTORE_USER_CURRENT_GPA: 0.0
                 ])
             }
         }
@@ -75,6 +89,22 @@ class UserDocumentManager {
         }
         
         return ""
+    }
+    
+    var GPA: Double {
+        if let point = self._latestDocument?.get(Constants.FIRESTORE_USER_CURRENT_GPA) {
+            return point as! Double
+        }
+        
+        return 0.0
+    }
+    
+    var credits: Int {
+        if let credit = self._latestDocument?.get(Constants.FIRESTORE_USER_CURRENT_CREDITS) {
+            return credit as! Int
+        }
+        
+        return 0
     }
     
 //    func update(quote: String, movie: String) {

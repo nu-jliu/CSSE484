@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SectionLabel: String {
+enum GradeType: String {
     case participation = "Participation"
     case assignments = "Assignments"
     case labs = "Labs"

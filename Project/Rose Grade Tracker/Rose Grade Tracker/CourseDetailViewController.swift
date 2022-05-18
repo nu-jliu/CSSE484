@@ -25,11 +25,11 @@ class CourseDetailViewController: UIViewController {
     var coursDocumentId: String?
     
     let GRAGE_TABLE_CELL = "gradeCell"
-    var numRows = [(SectionLabel, Int)]()
+    var numRows = [(GradeType, Int)]()
     var sumWeight: Double?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+        .darkContent
     }
     
     override func viewDidLoad() {
@@ -37,6 +37,7 @@ class CourseDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.gradeDetailTableView.dataSource = self
+        self.gradeDetailTableView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +81,7 @@ class CourseDetailViewController: UIViewController {
 }
 
 
-extension CourseDetailViewController: UITableViewDataSource {
+extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.numRows[section].1
@@ -136,6 +137,245 @@ extension CourseDetailViewController: UITableViewDataSource {
         return self.numRows[section].0.rawValue
     }
     
-    
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected row at section: \(indexPath.section), row: \(indexPath.row)")
+        
+        switch indexPath.section {
+        case 0:
+            
+            let alertController = UIAlertController(
+                title: "Edit Participation Grade",
+                message: "Enter new Participation Grade",
+                preferredStyle: .alert
+            )
+            
+            alertController.addTextField { textfield in
+                textfield.placeholder = "Grade"
+                
+                if let grade = CourseDocumentManager.shared.latestCourse?.partGrade {
+                    textfield.text = "\(grade)"
+                }
+            }
+            
+            alertController.addTextField { textfield in
+                textfield.placeholder = "Weight"
+                
+                if let weight = CourseDocumentManager.shared.latestCourse?.partWeight {
+                    textfield.text = "\(weight)"
+                }
+            }
+            
+            alertController.addAction(UIAlertAction(
+                title: "Submit",
+                style: .default
+            ) { action in
+                
+                let grade = Double(alertController.textFields![0].text ?? "") ?? 0.0
+                let weight = Int(alertController.textFields![1].text ?? "") ?? 0
 
+                
+                CourseDocumentManager.shared.updateParticipation(grade: grade, weight: weight)
+                
+            })
+            
+            alertController.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .cancel
+            ))
+            
+            self.present(alertController, animated: true)
+        case 1:
+            if var assignments = CourseDocumentManager.shared.latestCourse?.assignmentsGrade {
+                var assignment = assignments[indexPath.row]
+                
+                let alertController = UIAlertController(
+                    title: "Assignment Grade",
+                    message: "Enter New Grade",
+                    preferredStyle: .alert
+                )
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Name"
+                    textfield.text = assignment.displayName
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Grade"
+                    textfield.text = "\(assignment.grade)"
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Weight"
+                    textfield.text = "\(assignment.weight)"
+                }
+                
+                alertController.addAction(UIAlertAction(title: "Submit", style: .default) { action in
+                    let name = alertController.textFields?[0].text ?? ""
+                    let grade = Double(alertController.textFields?[1].text ?? "") ?? 0.0
+                    let weight = Int(alertController.textFields?[2].text ?? "") ?? 0
+                    
+                    assignment.displayName = name
+                    assignment.grade = grade
+                    assignment.weight = weight
+                    
+                    assignments[indexPath.row] = assignment
+                    
+                    CourseDocumentManager.shared.updateGrade(type: .assignments, grades: assignments)
+                })
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Cancel",
+                    style: .cancel
+                ))
+                
+                self.present(alertController, animated: true)
+            }
+        case 2:
+            if var exams = CourseDocumentManager.shared.latestCourse?.examsGrade {
+                var exam = exams[indexPath.row]
+                
+                let alertController = UIAlertController(
+                    title: "Exam Grade",
+                    message: "Enter New Grade",
+                    preferredStyle: .alert
+                )
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Name"
+                    textfield.text = exam.displayName
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Grade"
+                    textfield.text = "\(exam.grade)"
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Weight"
+                    textfield.text = "\(exam.weight)"
+                }
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Submit",
+                    style: .default
+                ) { action in
+                    let name = alertController.textFields?[0].text ?? ""
+                    let grade = Double(alertController.textFields?[1].text ?? "") ?? 0.0
+                    let weight = Int(alertController.textFields?[2].text ?? "") ?? 0
+                    
+                    exam.displayName = name
+                    exam.grade = grade
+                    exam.weight = weight
+                    
+                    exams[indexPath.row] = exam
+                    
+                    CourseDocumentManager.shared.updateGrade(type: .exams, grades: exams)
+                })
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Cancel",
+                    style: .cancel
+                ))
+                
+                self.present(alertController, animated: true)
+            }
+        case 3:
+            if var labs = CourseDocumentManager.shared.latestCourse?.labsGrade {
+                var lab = labs[indexPath.row]
+                
+                let alertController = UIAlertController(
+                    title: "Lab Grade",
+                    message: "Enter New Grade",
+                    preferredStyle: .alert
+                )
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Name"
+                    textfield.text = lab.displayName
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Grade"
+                    textfield.text = "\(lab.grade)"
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Weight"
+                    textfield.text = "\(lab.weight)"
+                }
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Submit",
+                    style: .default
+                ) { action in
+                    let name = alertController.textFields?[0].text ?? ""
+                    let grade = Double(alertController.textFields?[1].text ?? "") ?? 0.0
+                    let weight = Int(alertController.textFields?[2].text ?? "") ?? 0
+                    
+                    lab.displayName = name
+                    lab.grade = grade
+                    lab.weight = weight
+
+                    labs[indexPath.row] = lab
+                    
+                    CourseDocumentManager.shared.updateGrade(type: .labs, grades: labs)
+                })
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Cancel",
+                    style: .cancel
+                ))
+                
+                self.present(alertController, animated: true)
+            }
+        case 4:
+            if var quizzes = CourseDocumentManager.shared.latestCourse?.quizzesGrade {
+                var quiz = quizzes[indexPath.row]
+                
+                let alertController = UIAlertController(
+                    title: "Quiz Grade",
+                    message: "Enter New Grade",
+                    preferredStyle: .alert
+                )
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Name"
+                    textfield.text = quiz.displayName
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Grade"
+                    textfield.text = "\(quiz.grade)"
+                }
+                
+                alertController.addTextField { textfield in
+                    textfield.placeholder = "Weight"
+                    textfield.text = "\(quiz.weight)"
+                }
+                
+                alertController.addAction(UIAlertAction(
+                    title: "Submit",
+                    style: .default
+                ) { action in
+                    let name = alertController.textFields?[0].text ?? ""
+                    let grade = Double(alertController.textFields?[1].text ?? "") ?? 0.0
+                    let weight = Int(alertController.textFields?[2].text ?? "") ?? 0
+                    
+                    quiz.displayName = name
+                    quiz.grade = grade
+                    quiz.weight = weight
+                    
+                    quizzes[indexPath.row] = quiz
+                    
+                    CourseDocumentManager.shared.updateGrade(type: .quizzes, grades: quizzes)
+                })
+                
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                
+                self.present(alertController, animated: true)
+            }
+        default:
+            print("Invalid row")
+        }
+    }
+}

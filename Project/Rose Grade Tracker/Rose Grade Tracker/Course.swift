@@ -13,6 +13,7 @@ class Course {
     var section: String
     var quarter: String
     var year: Int
+    var credit: Int
     var documentId: String?
     
     // weights
@@ -35,6 +36,7 @@ class Course {
         self.section = String(format: "%02d", snapshot.get(Constants.FIRESTORE_COURSE_SECTION_KEY) as! Int)
         self.quarter = Utils.parseQuarter(quarter: snapshot.get(Constants.FIRESTORE_COURSE_QUARTER_KEY) as! Int)
         self.year = snapshot.get(Constants.FIRESTORE_COURSE_YEAR_KEY) as! Int
+        self.credit = snapshot.get(Constants.FIREBASE_COURSE_CREDIT_KEY) as! Int
         
         self.partWeight = snapshot.get(Constants.FIRESTORE_COURSE_PARTICIPATION_WEIGHT_KEY) as? Int
         self.partGrade = snapshot.get(Constants.FIRESTORE_COURSE_PARTICIPATION_GRADE_KEY) as? Double

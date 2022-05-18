@@ -129,45 +129,52 @@ class Utils {
         return (totalGrade / Double(totalWeight) * Double(weight), totalWeight)
     }
     
-    static func getNumRows(course: Course) -> [(SectionLabel, Int)] {
-        var numRows = [(SectionLabel, Int)]()
+    static func getNumRows(course: Course) -> [(GradeType, Int)] {
+        var numRows = [(GradeType, Int)]()
         
-        if course.partGrade != nil {
+        if course.partGrade != nil && course.partWeight != nil {
             numRows.append((.participation, 1))
         }
         
-        if !course.assignmentsGrade.isEmpty {
+        if !course.assignmentsGrade.isEmpty && course.assignmentsWeight != nil {
             numRows.append((.assignments, course.assignmentsGrade.count))
         }
         
-        if !course.examsGrade.isEmpty {
+        if !course.examsGrade.isEmpty && course.examsWeight != nil {
             numRows.append((.exams, course.examsGrade.count))
         }
         
-        if !course.labsGrade.isEmpty {
+        if !course.labsGrade.isEmpty && course.labsWeight != nil {
             numRows.append((.labs, course.labsGrade.count))
         }
         
-        if !course.quizzesGrade.isEmpty {
+        if !course.quizzesGrade.isEmpty && course.quizzesWeight != nil {
             numRows.append((.quizzes, course.quizzesGrade.count))
         }
         
         return numRows
     }
     
+    static func calcCumGPA(currGPA: Double, currCred: Int, courses: [Course]) -> (credits: Int, GPA: Double) {
+        var cumPoint = currGPA * Double(currCred)
+        var cumCred = Double(currCred)
+        
+        for course in courses {
+            let grade = self.calculateTotal(course: course).grade
+            let credit = Double(course.credit)
+            
+            let point = self.parseGradeToLetter(grade: grade).point
+            
+            cumCred += credit
+            cumPoint += credit * point
+        }
+        
+        return (Int(cumCred), cumPoint/cumCred)
+    }
+    
     static func load(imageView: UIImageView, from url: String) {
         if let imgUrl = URL(string: url) {
             imageView.kf.setImage(with: imgUrl)
-//            DispatchQueue.global().async { // Download in the background
-//                do {
-//                    let data = try Data(contentsOf: imgUrl)
-//                    DispatchQueue.main.async { // Then update on main thread
-//                        imageView.image = UIImage(data: data)
-//                    }
-//                } catch {
-//                    print("Error downloading image: \(error)")
-//                }
-//            }
         }
     }
     
