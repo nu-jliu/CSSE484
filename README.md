@@ -8,5 +8,7 @@ Team 7 - Allen Liu
 [CSSE484 Project Ideas](https://docs.google.com/document/d/1eX4ThsqNq1nLqIShoX0AW2xk00IZNNPQCqXaH3twXfA/edit?usp=sharing)
 ## Initial Project Plan Doc
 [CSSE484 Initial Project Planning](https://docs.google.com/document/d/1m3EBocIK6wSFCz1nTCvmaSHDZQTMJcrkoOlHrWxYEdE/edit?usp=sharing)
+## Video
+[![Youtube Demo](https://img.youtube.com/vi/ODwEFshUdT8/0.jpg)](https://www.youtube.com/watch?v=ODwEFshUdT8)
 ## Author
 - Allen Liu
