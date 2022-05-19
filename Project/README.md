@@ -1,5 +1,5 @@
-# CSSE484 `iOS App Development`
-Repository for CSSE484 `iOS App Development`
+# CSSE484 `iOS App Development` Project
+Repository for CSSE484 `iOS App Development` Project `Rose Gradebook`
 ## Rose-Hulman Institute of Technology
 Team 7 - Allen Liu
 ## Figma Link
