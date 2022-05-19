@@ -59,13 +59,33 @@ class Utils {
         }
     }
     
+    static func quarterStrToNum(_ quarterStr: String) -> Int {
+        if quarterStr == "Fall" {
+            return 1
+        }
+        
+        if quarterStr == "Winter" {
+            return 2
+        }
+        
+        if quarterStr == "Spring" {
+            return 3
+        }
+        
+        if quarterStr == "Summer" {
+            return 4
+        }
+        
+        return -1
+    }
+    
     static func calculateTotal(course: Course) -> (grade: Double, weight: Int) {
         var totalWeight = 0
         var totalGrade = 0.0
         
         if let partWeight = course.partWeight {
             totalWeight += partWeight
-            totalGrade += course.partGrade! / 100.0 * Double(partWeight)
+            totalGrade += (course.partGrade ?? 0) / 100.0 * Double(partWeight)
         }
         
         if let assignWeight = course.assignmentsWeight {
@@ -132,7 +152,7 @@ class Utils {
     static func getNumRows(course: Course) -> [(GradeType, Int)] {
         var numRows = [(GradeType, Int)]()
         
-        if course.partGrade != nil && course.partWeight != nil {
+        if course.partWeight != nil {
             numRows.append((.participation, 1))
         }
         

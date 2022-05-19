@@ -20,9 +20,6 @@ class CourseListViewController: UIViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var courseListTableView: UITableView!
     
-    let COURSE_CELL_IDENTIFIER = "courseCell"
-    let SHOW_COURSE_DETAIL_SEGUE_IDENTIFIER = "showCourseDetailSegue"
-    
     var coursesListenerRegisteration: ListenerRegistration?
     var userListenerRegisteration: ListenerRegistration?
     var logoutHandle: AuthStateDidChangeListenerHandle?
@@ -108,8 +105,8 @@ class CourseListViewController: UIViewController {
         
         let courses = Array(CoursesCollectionManager.shared.latestCourses.joined())
         let gpa = Utils.calcCumGPA(
-            currGPA: UserDocumentManager.shared.GPA,
-            currCred: UserDocumentManager.shared.credits,
+            currGPA: UserDocumentManager.shared.GPA ?? 0.0,
+            currCred: UserDocumentManager.shared.credits ?? 0,
             courses: courses
         )
             
@@ -125,7 +122,7 @@ class CourseListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == self.SHOW_COURSE_DETAIL_SEGUE_IDENTIFIER {
+        if segue.identifier == Constants.SHOW_COURSE_DETAIL_SEGUE_IDENTIFIER {
             let courseDetailVC = segue.destination as! CourseDetailViewController
             if let indexPath = self.courseListTableView.indexPathForSelectedRow {
                 let course = CoursesCollectionManager.shared.latestCourses[indexPath.section][indexPath.row]
@@ -140,12 +137,15 @@ class CourseListViewController: UIViewController {
 extension CourseListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.courseListTableView.dequeueReusableCell(withIdentifier: self.COURSE_CELL_IDENTIFIER, for: indexPath) as! CourseTableCell
+        let cell = self.courseListTableView.dequeueReusableCell(withIdentifier: Constants.COURSE_CELL_IDENTIFIER, for: indexPath) as! CourseTableCell
         
         let course = CoursesCollectionManager.shared.latestCourses[indexPath.section][indexPath.row]
-        cell.courseNameLabel.text = course.name
-        cell.couseSectionLabel.text = course.section
-        cell.courseGradeLabel.text = Utils.parseGradeToLetter(grade: Utils.calculateTotal(course: course).grade).letter
+        cell.courseNameLabel.text = "\(course.number) \(course.name)"
+        cell.couseSectionLabel.text = String(format: "%02d", course.section)
+        
+        let grade = Utils.parseGradeToLetter(grade: Utils.calculateTotal(course: course).grade)
+        cell.courseGradeLabel.text = grade.letter
+        cell.courseGradeLabel.textColor = UIColor(red: grade.point < 2 ? 1 : 0, green: 0, blue: 0, alpha: 1)
         
         return cell
     }
@@ -164,5 +164,13 @@ extension CourseListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "Total Number of Courses: \(CoursesCollectionManager.shared.latestCourses[section].count)"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let docId = CoursesCollectionManager.shared.latestCourses[indexPath.section][indexPath.row].documentId {
+                CoursesCollectionManager.shared.delete(docId)
+            }
+        }
     }
 }

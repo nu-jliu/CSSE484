@@ -9,13 +9,11 @@ import UIKit
 
 class GradeSideViewController: UIViewController {
 
-    @IBOutlet weak var deletePartButton: UIButton!
     @IBOutlet weak var addPartButton: UIButton!
-    
-    @IBOutlet weak var deleteAssignButton: UIButton!
-    @IBOutlet weak var deleteExamButton: UIButton!
-    @IBOutlet weak var deleteLabButton: UIButton!
-    @IBOutlet weak var deleteQuizButton: UIButton!
+    @IBOutlet weak var addAssignmentButton: UIButton!
+    @IBOutlet weak var addExamsButton: UIButton!
+    @IBOutlet weak var addLabButton: UIButton!
+    @IBOutlet weak var addQuizButton: UIButton!
     
     var courseDetailViewController: CourseDetailViewController {
         let navController = self.presentingViewController as! UINavigationController
@@ -26,18 +24,21 @@ class GradeSideViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.deletePartButton.isHidden = CourseDocumentManager.shared.latestCourse?.partWeight == nil
         self.addPartButton.isHidden = CourseDocumentManager.shared.latestCourse?.partWeight != nil
-        
-        self.deleteAssignButton.isHidden = CourseDocumentManager.shared.latestCourse!.assignmentsGrade.isEmpty
-        self.deleteExamButton.isHidden = CourseDocumentManager.shared.latestCourse!.examsGrade.isEmpty
-        self.deleteLabButton.isHidden = CourseDocumentManager.shared.latestCourse!.labsGrade.isEmpty
-        self.deleteQuizButton.isHidden = CourseDocumentManager.shared.latestCourse!.quizzesGrade.isEmpty
+        self.addAssignmentButton.isHidden = CourseDocumentManager.shared.latestCourse?.assignmentsWeight == nil
+        self.addExamsButton.isHidden = CourseDocumentManager.shared.latestCourse?.examsWeight == nil
+        self.addLabButton.isHidden = CourseDocumentManager.shared.latestCourse?.labsWeight == nil
+        self.addQuizButton.isHidden = CourseDocumentManager.shared.latestCourse?.quizzesWeight == nil
     }
     
-    @IBAction func deletePartPressed(_ sender: Any) {
+    @IBAction func deleteGradesPressed(_ sender: Any) {
         self.dismiss(animated: true)
-        CourseDocumentManager.shared.removeGrade(type: .participation)
+        self.courseDetailViewController.gradeDetailTableView.isEditing = true
+    }
+    
+    @IBAction func doneEditingPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+        self.courseDetailViewController.gradeDetailTableView.isEditing = false
     }
     
     @IBAction func addPartPressed(_ sender: Any) {
@@ -251,6 +252,78 @@ class GradeSideViewController: UIViewController {
         }
     }
     
+    @IBAction func editWeightsPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+        
+        let alertController = UIAlertController(
+            title: "Edit Weights",
+            message: "Enter New Weights",
+            preferredStyle: .alert
+        )
+        
+        alertController.addTextField { textfield in
+            textfield.placeholder = "Participation Weight"
+            if let weight = CourseDocumentManager.shared.latestCourse?.partWeight {
+                textfield.text = "\(weight)"
+            }
+        }
+        
+        alertController.addTextField { textfield in
+            textfield.placeholder = "Assignments Weight"
+            if let weight = CourseDocumentManager.shared.latestCourse?.assignmentsWeight {
+                textfield.text = "\(weight)"
+            }
+        }
+        
+        alertController.addTextField { textfield in
+            textfield.placeholder = "Exams Weight"
+            if let weight = CourseDocumentManager.shared.latestCourse?.examsWeight {
+                textfield.text = "\(weight)"
+            }
+        }
+        
+        alertController.addTextField { textfield in
+            textfield.placeholder = "Labs Weight"
+            if let weight = CourseDocumentManager.shared.latestCourse?.labsWeight {
+                textfield.text = "\(weight)"
+            }
+        }
+        
+        alertController.addTextField { textfield in
+            textfield.placeholder = "Quizzes Weight"
+            if let weight = CourseDocumentManager.shared.latestCourse?.quizzesWeight {
+                textfield.text = "\(weight)"
+            }
+        }
+        
+        alertController.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel
+        ))
+        
+        alertController.addAction(UIAlertAction(
+            title: "Confirm",
+            style: .default
+        ) { action in
+            let partWeight = Int(alertController.textFields?[0].text ?? "")
+            let assignWeight = Int(alertController.textFields?[1].text ?? "")
+            let examsWeight = Int(alertController.textFields?[2].text ?? "")
+            let labsWeight = Int(alertController.textFields?[3].text ?? "")
+            let quizzesWeight = Int(alertController.textFields?[4].text ?? "")
+            
+            
+            CourseDocumentManager.shared.updateWeight(type: .participation, weight: partWeight)
+            CourseDocumentManager.shared.updateWeight(type: .assignments, weight: assignWeight)
+            CourseDocumentManager.shared.updateWeight(type: .exams, weight: examsWeight)
+            CourseDocumentManager.shared.updateWeight(type: .labs, weight: labsWeight)
+            CourseDocumentManager.shared.updateWeight(type: .quizzes, weight: quizzesWeight)
+        })
+        
+        self.courseDetailViewController.present(
+            alertController,
+            animated: true
+        )
+    }
     /*
     // MARK: - Navigation
 

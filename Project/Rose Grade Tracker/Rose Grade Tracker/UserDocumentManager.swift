@@ -91,39 +91,51 @@ class UserDocumentManager {
         return ""
     }
     
-    var GPA: Double {
+    var GPA: Double? {
         if let point = self._latestDocument?.get(Constants.FIRESTORE_USER_CURRENT_GPA) {
-            return point as! Double
+            return point as? Double
         }
         
-        return 0.0
+        return nil
     }
     
-    var credits: Int {
+    var credits: Int? {
         if let credit = self._latestDocument?.get(Constants.FIRESTORE_USER_CURRENT_CREDITS) {
-            return credit as! Int
+            return credit as? Int
         }
         
-        return 0
+        return nil
     }
-    
-//    func update(quote: String, movie: String) {
-//        self._collectionRef.document(self.latestUser!.documentId!).updateData([
-//            MOVIE_QUOTE_QUOTE: quote,
-//            MOVIE_QUOTE_MOVIE: movie,
-//            MOVIE_QUOTE_LAST_TOUCHED: Timestamp.init()
-//        ]) { err in
-//            if let err = err {
-//                print("ERROR: failed to update document \(err)")
-//            } else {
-//                print("Update document \(self.latestUser!.documentId!) successfully")
-//            }
-//        }
-//    }
     
     func updatePhotoUrl(photoUrl: String) {
         self._collectionRef.document(self._latestDocument!.documentID).updateData([
             Constants.FIRESTORE_USER_PHOTO_URL: photoUrl
+        ]) { err in
+            if let err = err {
+                print("ERROR: failed to update document \(err)")
+            } else {
+                print("Update document \(self._latestDocument!.documentID) successfully")
+            }
+            
+        }
+    }
+    
+    func updateGPA(_ gpa: Double) {
+        self._collectionRef.document(self._latestDocument!.documentID).updateData([
+            Constants.FIRESTORE_USER_CURRENT_GPA: gpa
+        ]) { err in
+            if let err = err {
+                print("ERROR: failed to update document \(err)")
+            } else {
+                print("Update document \(self._latestDocument!.documentID) successfully")
+            }
+            
+        }
+    }
+    
+    func updateCredits(_ credits: Int) {
+        self._collectionRef.document(self._latestDocument!.documentID).updateData([
+            Constants.FIRESTORE_USER_CURRENT_CREDITS: credits
         ]) { err in
             if let err = err {
                 print("ERROR: failed to update document \(err)")

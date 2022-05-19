@@ -12,10 +12,10 @@ class LogInViewController: UIViewController {
     
     private var logInHandle: AuthStateDidChangeListenerHandle?
     var rosefireName: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -31,7 +31,7 @@ class LogInViewController: UIViewController {
         AuthManager.shared.removeObserver(self.logInHandle)
         
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
     }
@@ -60,23 +60,23 @@ class LogInViewController: UIViewController {
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         print("Segue identifier: \(segue.identifier ?? "")")
         if segue.identifier == Constants.SHOW_COURSE_LIST_SEQUE {
-                    print("Name = \(self.rosefireName ?? "")")
-                    print("PhotoUrl = \(AuthManager.shared.currentUser?.photoURL?.absoluteString ?? "")")
-                    
-                    UserDocumentManager.shared.addNewUserMaybe(
-                        uid: AuthManager.shared.currentUser!.uid,
-                        name: self.rosefireName,
-                        photoUrl: AuthManager.shared.currentUser?.photoURL?.absoluteString
-                    )
-                }
+            print("Name = \(self.rosefireName ?? "")")
+            print("PhotoUrl = \(AuthManager.shared.currentUser?.photoURL?.absoluteString ?? "")")
+            
+            UserDocumentManager.shared.addNewUserMaybe(
+                uid: AuthManager.shared.currentUser!.uid,
+                name: self.rosefireName,
+                photoUrl: AuthManager.shared.currentUser?.photoURL?.absoluteString
+            )
+        }
     }
     
-
+    
 }

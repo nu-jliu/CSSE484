@@ -25,10 +25,9 @@ class CoursesCollectionManager {
         
         let query = self._collectionRef
             .whereField(Constants.FIRESTORE_COURSE_TAKEN_BY_KEY, isEqualTo: studentId)
-        //            .order(by: Constants.FIRESTORE_COURSE_YEAR_KEY, descending: true)
-        //            .limit(to: 50)
-        //            .order(by: Constants.FIRESTORE_COURSE_QUARTER_KEY, descending: true)
-        //            .limit(to: 50)
+            .order(by: Constants.FIRESTORE_COURSE_YEAR_KEY, descending: true)
+            .order(by: Constants.FIRESTORE_COURSE_QUARTER_KEY, descending: true)
+            .limit(to: 50)
         
         return query.addSnapshotListener { snapshot, err in
             guard let courseDocuments = snapshot?.documents else {
@@ -40,7 +39,7 @@ class CoursesCollectionManager {
             self.latestQuarters = [String]()
             for courseDoc in courseDocuments {
                 let course = Course(snapshot: courseDoc)
-                let quarter = "\(course.quarter) \(course.year - 1)-\(course.year)"
+                let quarter = "\(Utils.parseQuarter(quarter: course.quarter)) \(course.year - 1)-\(course.year)"
                 
                 var index = self.latestQuarters.firstIndex(of: quarter) ?? -1
                 if index == -1 {
@@ -83,6 +82,57 @@ class CoursesCollectionManager {
                 print("ERROR: failed to detele document \(err)")
             } else {
                 print("Delete document \(documentId) sucessful")
+            }
+        }
+    }
+    
+    func add(_ course: Course) {
+        var docRef: DocumentReference?
+        
+        if let uid = AuthManager.shared.currentUser?.uid {
+            docRef = self._collectionRef.addDocument(data: [
+                Constants.FIRESTORE_COURSE_YEAR_KEY: course.year,
+                Constants.FIRESTORE_COURSE_QUARTER_KEY: course.quarter,
+                Constants.FIRESTORE_COURSE_NAME_KEY: course.name,
+                Constants.FIRESTORE_COURSE_SECTION_KEY: course.section,
+                Constants.FIRESTORE_COURSE_NUMBER_KEY: course.number,
+                Constants.FIRESTORE_COURSE_TAKEN_BY_KEY: uid,
+            ]) { err in
+                if let err = err {
+                    print("Add document failed \(err)")
+                } else {
+                    print("Add document \(docRef!.documentID)")
+                }
+            }
+            
+            if let partWeight = course.partWeight {
+                docRef?.updateData([
+                    Constants.FIRESTORE_COURSE_PARTICIPATION_WEIGHT_KEY: partWeight
+                ])
+            }
+            
+            if let assignWeight = course.assignmentsWeight {
+                docRef?.updateData([
+                    Constants.FIRESTORE_COURSE_ASSIGNMENTS_WEIGHT_KEY: assignWeight
+                ])
+            }
+            
+            if let examWeight = course.examsWeight {
+                docRef?.updateData([
+                    Constants.FIRESTORE_COURSE_EXAMS_WEIGHT_KEY: examWeight
+                ])
+            }
+            
+            if let labsWeight = course.labsWeight {
+                docRef?.updateData([
+                    Constants.FIRESTORE_COURSE_PARTICIPATION_WEIGHT_KEY: labsWeight
+                ])
+            }
+            
+            if let quizzesWeight = course.quizzesWeight {
+                docRef?.updateData([
+                    Constants.FIRESTORE_COURSE_PARTICIPATION_WEIGHT_KEY: quizzesWeight
+                ])
             }
         }
     }

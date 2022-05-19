@@ -68,4 +68,11 @@ class Constants {
     
     // Segue Identifier
     static let SHOW_COURSE_LIST_SEQUE = "showCourseListSegue"
+    static let ADD_COURSE_SEGUE = "addCourseSegue"
+    static let SHOW_COURSE_DETAIL_SEGUE_IDENTIFIER = "showCourseDetailSegue"
+    
+    // Cell Identifier
+    static let COURSE_CELL_IDENTIFIER = "courseCell"
+    static let GRAGE_TABLE_CELL_IDENTIFIER = "gradeCell"
+    
 }

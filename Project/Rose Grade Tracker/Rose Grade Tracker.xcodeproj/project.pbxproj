@@ -24,6 +24,7 @@
 		266C0045281DD8F70023702A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C0044281DD8F70023702A /* Course.swift */; };
 		266C0049281E3BFA0023702A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C0048281E3BFA0023702A /* Utils.swift */; };
 		266C004B281E40D10023702A /* CoursesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C004A281E40D10023702A /* CoursesCollectionManager.swift */; };
+		2679B9A528354E740056A67D /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679B9A428354E740056A67D /* AddCourseViewController.swift */; };
 		26803A102820323400F36EFB /* CourseDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A0F2820323400F36EFB /* CourseDocumentManager.swift */; };
 		26803A122820334400F36EFB /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A112820334400F36EFB /* CourseDetailViewController.swift */; };
 		26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AEB2821AE7200D8FF3E /* Kingfisher */; };
@@ -70,6 +71,7 @@
 		266C0044281DD8F70023702A /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		266C0048281E3BFA0023702A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		266C004A281E40D10023702A /* CoursesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionManager.swift; sourceTree = "<group>"; };
+		2679B9A428354E740056A67D /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		26803A0F2820323400F36EFB /* CourseDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDocumentManager.swift; sourceTree = "<group>"; };
 		26803A112820334400F36EFB /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		26986AF32821D10E00D8FF3E /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				26803A112820334400F36EFB /* CourseDetailViewController.swift */,
 				26A0E9832834631F00497025 /* GradeSideViewController.swift */,
 				26986AF32821D10E00D8FF3E /* SideMenuViewController.swift */,
+				2679B9A428354E740056A67D /* AddCourseViewController.swift */,
 				266C0011281D9CB40023702A /* Main.storyboard */,
 				266C0014281D9CB60023702A /* Assets.xcassets */,
 				266C0016281D9CB60023702A /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 				266C003F281DBE390023702A /* AuthManager.swift in Sources */,
 				26803A102820323400F36EFB /* CourseDocumentManager.swift in Sources */,
 				266C004B281E40D10023702A /* CoursesCollectionManager.swift in Sources */,
+				2679B9A528354E740056A67D /* AddCourseViewController.swift in Sources */,
 				26803A122820334400F36EFB /* CourseDetailViewController.swift in Sources */,
 				26A0E9842834631F00497025 /* GradeSideViewController.swift in Sources */,
 				26B90B9F282161BA00000CF1 /* UserDocumentManager.swift in Sources */,

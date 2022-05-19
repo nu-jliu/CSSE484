@@ -24,7 +24,6 @@ class CourseDetailViewController: UIViewController {
     var courseDetailListenerRegiteration: ListenerRegistration?
     var coursDocumentId: String?
     
-    let GRAGE_TABLE_CELL = "gradeCell"
     var numRows = [(GradeType, Int)]()
     var sumWeight: Double?
     
@@ -61,12 +60,21 @@ class CourseDetailViewController: UIViewController {
     }
     
     func updateView() {
-        self.tabBarItem.title = CourseDocumentManager.shared.latestCourse?.name
+        if
+            let name = CourseDocumentManager.shared.latestCourse?.name,
+            let number = CourseDocumentManager.shared.latestCourse?.number {
+            self.navigationItem.title = "\(number) \(name)"
+        }
+        
         let overallGrade = Utils.calculateTotal(course: CourseDocumentManager.shared.latestCourse!)
         self.overallGradeLabel.text = String(format: "%.2f", overallGrade.grade)
         self.overallLetterGradeLabel.text = Utils.parseGradeToLetter(grade: overallGrade.grade).letter
         
         self.gradeDetailTableView.reloadData()
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation
@@ -80,6 +88,7 @@ class CourseDetailViewController: UIViewController {
 
 }
 
+// MARK: - Table View Data Source
 
 extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -88,7 +97,10 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.gradeDetailTableView.dequeueReusableCell(withIdentifier: self.GRAGE_TABLE_CELL, for: indexPath) as! GradeTableCell
+        let cell = self.gradeDetailTableView.dequeueReusableCell(
+            withIdentifier: Constants.GRAGE_TABLE_CELL_IDENTIFIER,
+            for: indexPath
+        ) as! GradeTableCell
         
         if let course = CourseDocumentManager.shared.latestCourse {
             var gradeEntry = [(weight: Int, grade: Double, displayName: String)]()
@@ -110,8 +122,8 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
             case .participation:
                 cell.gradeItemNameLabel.text = "Participation Grade"
                 cell.gradeWeightLabel.text = "\(String(format: "%.1f", Double(course.partWeight!) / self.sumWeight! * 100.0))%"
-                cell.gradeLabel.text = "\(String(format: "%.1f", course.partGrade!))"
-                cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: course.partGrade!).letter
+                cell.gradeLabel.text = "\(String(format: "%.1f", course.partGrade ?? 0.0))"
+                cell.letterGradeLabel.text = Utils.parseGradeToLetter(grade: course.partGrade ?? 0.0).letter
                 return cell
             }
             
@@ -140,8 +152,8 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row at section: \(indexPath.section), row: \(indexPath.row)")
         
-        switch indexPath.section {
-        case 0:
+        switch self.numRows[indexPath.section].0 {
+        case .participation:
             
             let alertController = UIAlertController(
                 title: "Edit Participation Grade",
@@ -184,7 +196,7 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
             ))
             
             self.present(alertController, animated: true)
-        case 1:
+        case .assignments:
             if var assignments = CourseDocumentManager.shared.latestCourse?.assignmentsGrade {
                 var assignment = assignments[indexPath.row]
                 
@@ -230,7 +242,7 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 self.present(alertController, animated: true)
             }
-        case 2:
+        case .exams:
             if var exams = CourseDocumentManager.shared.latestCourse?.examsGrade {
                 var exam = exams[indexPath.row]
                 
@@ -279,7 +291,7 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 self.present(alertController, animated: true)
             }
-        case 3:
+        case .labs:
             if var labs = CourseDocumentManager.shared.latestCourse?.labsGrade {
                 var lab = labs[indexPath.row]
                 
@@ -328,7 +340,7 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 self.present(alertController, animated: true)
             }
-        case 4:
+        case .quizzes:
             if var quizzes = CourseDocumentManager.shared.latestCourse?.quizzesGrade {
                 var quiz = quizzes[indexPath.row]
                 
@@ -374,8 +386,57 @@ extension CourseDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 self.present(alertController, animated: true)
             }
-        default:
-            print("Invalid row")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let type = self.numRows[indexPath.section].0
+            
+            switch type {
+            case .participation:
+                CourseDocumentManager.shared.removeGrade(type: type)
+            case .assignments:
+                if var grades = CourseDocumentManager.shared.latestCourse?.assignmentsGrade {
+                    grades.remove(at: indexPath.row)
+                    
+                    if grades.isEmpty {
+                        CourseDocumentManager.shared.removeGrade(type: type)
+                    } else {
+                        CourseDocumentManager.shared.updateGrade(type: type, grades: grades)
+                    }
+                }
+            case .exams:
+                if var grades = CourseDocumentManager.shared.latestCourse?.examsGrade {
+                    grades.remove(at: indexPath.row)
+                    
+                    if grades.isEmpty {
+                        CourseDocumentManager.shared.removeGrade(type: type)
+                    } else {
+                        CourseDocumentManager.shared.updateGrade(type: type, grades: grades)
+                    }
+                }
+            case .labs:
+                if var grades = CourseDocumentManager.shared.latestCourse?.labsGrade {
+                    grades.remove(at: indexPath.row)
+                    
+                    if grades.isEmpty {
+                        CourseDocumentManager.shared.removeGrade(type: type)
+                    } else {
+                        CourseDocumentManager.shared.updateGrade(type: type, grades: grades)
+                    }
+                }
+            case .quizzes:
+                if var grades = CourseDocumentManager.shared.latestCourse?.quizzesGrade {
+                    grades.remove(at: indexPath.row)
+                    
+                    if grades.isEmpty {
+                        CourseDocumentManager.shared.removeGrade(type: type)
+                    } else {
+                        CourseDocumentManager.shared.updateGrade(type: type, grades: grades)
+                    }
+                }
+            }
         }
     }
 }

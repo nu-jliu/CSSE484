@@ -99,7 +99,7 @@ class CourseDocumentManager {
     
     func removeGrade(type: GradeType) {
         if let docId = self.latestCourse?.documentId {
-            
+
             let docRef = self._collectionRef.document(docId)
             switch type {
             case .participation:
@@ -128,6 +128,38 @@ class CourseDocumentManager {
                     Constants.FIRESTORE_COURSE_QUIZZES_GRADE_KEY: FieldValue.delete()
                 ])
             }
+        }
+    }
+    
+    func updateWeight(type: GradeType, weight: Int?) {
+        if let weight = weight {
+            if let docId = self.latestCourse?.documentId {
+                let docRef = self._collectionRef.document(docId)
+                
+                switch type {
+                case .participation:
+                    docRef.updateData([
+                        Constants.FIRESTORE_COURSE_PARTICIPATION_WEIGHT_KEY: weight
+                    ])
+                case .assignments:
+                    docRef.updateData([
+                        Constants.FIRESTORE_COURSE_ASSIGNMENTS_WEIGHT_KEY: weight
+                    ])
+                case .labs:
+                    docRef.updateData([
+                        Constants.FIRESTORE_COURSE_LABS_WEIGHT_KEY: weight
+                    ])
+                case .exams:
+                    docRef.updateData([
+                        Constants.FIRESTORE_COURSE_EXAMS_WEIGHT_KEY: weight
+                    ])
+                case .quizzes:
+                    docRef.updateData([
+                        Constants.FIRESTORE_COURSE_QUIZZES_WEIGHT_KEY: weight
+                    ])
+                }
+            }
+            
         }
     }
 }
