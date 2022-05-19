@@ -278,7 +278,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="824"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TSz-3U-RDJ">
-                                        <rect key="frame" x="20" y="15" width="374" height="722"/>
+                                        <rect key="frame" x="20" y="15" width="374" height="942"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCh-j9-V9o">
                                                 <rect key="frame" x="0.0" y="0.0" width="41" height="24"/>
@@ -301,103 +301,110 @@
                                                 <rect key="frame" x="0.0" y="94" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="quarterTextFieldTouchedInside:" destination="MsO-oC-84G" eventType="editingDidBegin" id="Y1U-bo-0jM"/>
+                                                    <action selector="quarterTextFieldTouchedOutside:" destination="MsO-oC-84G" eventType="editingDidEnd" id="82Z-be-u1P"/>
+                                                </connections>
                                             </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PD0-f6-eEI">
+                                                <rect key="frame" x="0.0" y="132" width="374" height="216"/>
+                                            </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGg-dq-IeD">
-                                                <rect key="frame" x="0.0" y="132" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="352" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. iOS Application Development" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eDN-70-3SI">
-                                                <rect key="frame" x="0.0" y="160" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="380" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ru-T3-sTR">
-                                                <rect key="frame" x="0.0" y="198" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="418" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Section Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9Q-KU-sGC">
-                                                <rect key="frame" x="0.0" y="226" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="446" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-KL-f5s">
-                                                <rect key="frame" x="0.0" y="264" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="484" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. CSSE484" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Iy-Rs-hsj">
-                                                <rect key="frame" x="0.0" y="292" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="512" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejb-u7-VQ8">
-                                                <rect key="frame" x="0.0" y="330" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="550" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Credits" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ACl-OI-il4">
-                                                <rect key="frame" x="0.0" y="358" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="578" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3o-zx-61S">
-                                                <rect key="frame" x="0.0" y="396" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="616" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Participation Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-dQ-ep4">
-                                                <rect key="frame" x="0.0" y="424" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="644" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE0-iZ-qC2">
-                                                <rect key="frame" x="0.0" y="462" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="682" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Assignments Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="706-4v-3nM">
-                                                <rect key="frame" x="0.0" y="490" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="710" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmp-5F-SIU">
-                                                <rect key="frame" x="0.0" y="528" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="748" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exams Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9qI-e4-uMc">
-                                                <rect key="frame" x="0.0" y="556" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="776" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPk-Ah-O1P">
-                                                <rect key="frame" x="0.0" y="594" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="814" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Labs Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-eR-Rfb">
-                                                <rect key="frame" x="0.0" y="622" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="842" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quizzes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZb-QK-jAo">
-                                                <rect key="frame" x="0.0" y="660" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="880" width="374" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quizzes Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RjC-aM-XZB">
-                                                <rect key="frame" x="0.0" y="688" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="908" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -409,11 +416,13 @@
                                             <constraint firstItem="HPk-Ah-O1P" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="23X-Ku-VhL"/>
                                             <constraint firstItem="nE0-iZ-qC2" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="7pI-OL-duI"/>
                                             <constraint firstItem="b1R-eR-Rfb" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="84e-jP-7gl"/>
+                                            <constraint firstItem="PD0-f6-eEI" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="8AK-ah-3hV"/>
                                             <constraint firstItem="sGg-dq-IeD" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="8Xy-0E-Yza"/>
                                             <constraint firstAttribute="trailing" secondItem="L9Q-KU-sGC" secondAttribute="trailing" id="95Z-hE-yCk"/>
                                             <constraint firstItem="ACl-OI-il4" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="9R9-L7-fv6"/>
                                             <constraint firstItem="Zac-ZK-ciw" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="CZw-oF-fqX"/>
                                             <constraint firstItem="Fmp-5F-SIU" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="DWo-ke-mvL"/>
+                                            <constraint firstAttribute="trailing" secondItem="PD0-f6-eEI" secondAttribute="trailing" id="IHN-GH-hvY"/>
                                             <constraint firstAttribute="trailing" secondItem="HPk-Ah-O1P" secondAttribute="trailing" id="LUY-yM-D7K"/>
                                             <constraint firstItem="L9Q-KU-sGC" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="Oz0-km-g1y"/>
                                             <constraint firstItem="RXN-zo-8pc" firstAttribute="leading" secondItem="TSz-3U-RDJ" secondAttribute="leading" id="PMI-NP-zb2"/>
@@ -484,6 +493,7 @@
                         <outlet property="labsWeightTextField" destination="b1R-eR-Rfb" id="HdQ-n4-YgQ"/>
                         <outlet property="nameTextField" destination="eDN-70-3SI" id="1jc-ip-0Gd"/>
                         <outlet property="participationWeightTextField" destination="hdx-dQ-ep4" id="O5z-4B-xLs"/>
+                        <outlet property="quarterPicker" destination="PD0-f6-eEI" id="vL1-GB-q9y"/>
                         <outlet property="quarterTextField" destination="Zac-ZK-ciw" id="x4a-dV-UZR"/>
                         <outlet property="quizzesWeightTextField" destination="RjC-aM-XZB" id="rtG-7S-rWk"/>
                         <outlet property="sectionTextField" destination="L9Q-KU-sGC" id="een-9c-p4D"/>

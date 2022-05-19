@@ -25,6 +25,7 @@
 		266C0049281E3BFA0023702A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C0048281E3BFA0023702A /* Utils.swift */; };
 		266C004B281E40D10023702A /* CoursesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C004A281E40D10023702A /* CoursesCollectionManager.swift */; };
 		2679B9A528354E740056A67D /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679B9A428354E740056A67D /* AddCourseViewController.swift */; };
+		2679B9A82836B3870056A67D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2679B9A72836B3870056A67D /* Toast */; };
 		26803A102820323400F36EFB /* CourseDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A0F2820323400F36EFB /* CourseDocumentManager.swift */; };
 		26803A122820334400F36EFB /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26803A112820334400F36EFB /* CourseDetailViewController.swift */; };
 		26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26986AEB2821AE7200D8FF3E /* Kingfisher */; };
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2679B9A82836B3870056A67D /* Toast in Frameworks */,
 				26986AEC2821AE7200D8FF3E /* Kingfisher in Frameworks */,
 				26986AF22821B0A200D8FF3E /* SideMenu in Frameworks */,
 				26A0E9A72834715700497025 /* FirebaseAnalytics in Frameworks */,
@@ -192,6 +194,7 @@
 				26A0E9AA2834715700497025 /* FirebaseFirestore */,
 				26A0E9AC2834715700497025 /* FirebaseFunctions */,
 				26A0E9AE2834715700497025 /* FirebaseStorage */,
+				2679B9A72836B3870056A67D /* Toast */,
 			);
 			productName = "Rose Grade Tracker";
 			productReference = 266C0008281D9CB40023702A /* Rose Grade Tracker.app */;
@@ -225,6 +228,7 @@
 				26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				26986AF02821B0A100D8FF3E /* XCRemoteSwiftPackageReference "SideMenu" */,
 				26A0E9A52834715700497025 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2679B9A62836B3870056A67D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 266C0009281D9CB40023702A /* Products */;
 			projectDirPath = "";
@@ -514,6 +518,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2679B9A62836B3870056A67D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -541,6 +553,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2679B9A72836B3870056A67D /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2679B9A62836B3870056A67D /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		26986AEB2821AE7200D8FF3E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26986AEA2821AE7200D8FF3E /* XCRemoteSwiftPackageReference "Kingfisher" */;

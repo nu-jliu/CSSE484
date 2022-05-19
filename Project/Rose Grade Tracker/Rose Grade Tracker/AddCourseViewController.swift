@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class AddCourseViewController: UIViewController {
 
@@ -22,15 +23,18 @@ class AddCourseViewController: UIViewController {
     @IBOutlet weak var labsWeightTextField: UITextField!
     @IBOutlet weak var quizzesWeightTextField: UITextField!
     
+    @IBOutlet weak var quarterPicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.quarterPicker.dataSource = self
+        self.quarterPicker.delegate = self
+        self.quarterPicker.isHidden = true
     }
     
     @IBAction func comfirmPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
         
         guard
             let year = Int(self.yearTextField.text ?? ""),
@@ -40,6 +44,7 @@ class AddCourseViewController: UIViewController {
             let number = self.courseNumberTextField.text,
             let credits = Int(self.courseCreditsTextField.text ?? "")
         else {
+            self.view.makeToast("Add failed: Invalid input")
             print("ERROR: invalid input")
             return
         }
@@ -62,10 +67,20 @@ class AddCourseViewController: UIViewController {
         course.quizzesWeight = Int(self.quizzesWeightTextField.text ?? "")
         
         CoursesCollectionManager.shared.add(course)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func quarterTextFieldTouchedInside(_ sender: Any) {
+        self.quarterPicker.isHidden = false
+    }
+    
+    
+    @IBAction func quarterTextFieldTouchedOutside(_ sender: Any) {
+        self.quarterPicker.isHidden = true
     }
     /*
     // MARK: - Navigation
@@ -77,4 +92,37 @@ class AddCourseViewController: UIViewController {
     }
     */
 
+}
+
+extension AddCourseViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        4
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch row {
+        case 0:
+            return "Fall"
+        case 1:
+            return "Winter"
+        case 2:
+            return "Spring"
+        case 3:
+            return "Summer"
+        default:
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.quarterTextField.text = self.pickerView(
+            pickerView,
+            titleForRow: row,
+            forComponent: component
+        )
+    }
 }
