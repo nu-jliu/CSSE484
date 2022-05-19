@@ -96,7 +96,8 @@ class CoursesCollectionManager {
                 Constants.FIRESTORE_COURSE_NAME_KEY: course.name,
                 Constants.FIRESTORE_COURSE_SECTION_KEY: course.section,
                 Constants.FIRESTORE_COURSE_NUMBER_KEY: course.number,
-                Constants.FIRESTORE_COURSE_TAKEN_BY_KEY: uid,
+                Constants.FIREBASE_COURSE_CREDIT_KEY: course.credit,
+                Constants.FIRESTORE_COURSE_TAKEN_BY_KEY: uid
             ]) { err in
                 if let err = err {
                     print("Add document failed \(err)")

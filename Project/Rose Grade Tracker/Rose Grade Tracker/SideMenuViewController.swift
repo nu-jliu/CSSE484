@@ -38,6 +38,8 @@ class SideMenuViewController: UIViewController {
             for: AuthManager.shared.currentUser!.uid
         ) {
             Utils.load(imageView: self.profileImageView, from: UserDocumentManager.shared.photoUrl)
+            self.navigationItem.title = " Hi, \(UserDocumentManager.shared.name)"
+            self.navigationItem.titleView?.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
     

@@ -88,8 +88,10 @@ class CourseListViewController: UIViewController {
             self.updateView()
         }
         
-        self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: AuthManager.shared.currentUser!.uid) {
-            self.updateView()
+        if let uid = AuthManager.shared.currentUser?.uid {
+            self.userListenerRegisteration = UserDocumentManager.shared.startListening(for: uid) {
+                self.updateView()
+            }
         }
     }
     
@@ -97,11 +99,11 @@ class CourseListViewController: UIViewController {
         super.viewDidDisappear(animated)
         AuthManager.shared.removeObserver(self.logoutHandle)
         CoursesCollectionManager.shared.stopListening(self.coursesListenerRegisteration)
+        UserDocumentManager.shared.stopListening(self.userListenerRegisteration)
     }
     
     func updateView() {
         self.courseListTableView.reloadData()
-        self.navigationItem.title = "Hi, \(UserDocumentManager.shared.name)!"
         
         let courses = Array(CoursesCollectionManager.shared.latestCourses.joined())
         let gpa = Utils.calcCumGPA(
@@ -163,7 +165,11 @@ extension CourseListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Total Number of Courses: \(CoursesCollectionManager.shared.latestCourses[section].count)"
+        let totalCredits = CoursesCollectionManager.shared.latestCourses[section].map { course in
+            course.credit
+        }.reduce(0, +)
+        
+        return "Total Credits: \(totalCredits)"
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
