@@ -1,0 +1,168 @@
+
+/* Class = "UILabel"; text = "Section"; ObjectID = "0Ru-T3-sTR"; */
+"0Ru-T3-sTR.text" = "Section";
+
+/* Class = "UITextField"; placeholder = "e.g. CSSE484"; ObjectID = "2Iy-Rs-hsj"; */
+"2Iy-Rs-hsj.placeholder" = "e.g. CSSE484";
+
+/* Class = "UILabel"; text = "01"; ObjectID = "6m5-QB-AaG"; */
+"6m5-QB-AaG.text" = "01";
+
+/* Class = "UITextField"; placeholder = "Assignments Weight"; ObjectID = "706-4v-3nM"; */
+"706-4v-3nM.placeholder" = "Assignments Weight";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "7IO-tx-axf"; */
+"7IO-tx-axf.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Exams Weight"; ObjectID = "9qI-e4-uMc"; */
+"9qI-e4-uMc.placeholder" = "Exams Weight";
+
+/* Class = "UITextField"; placeholder = "Course Credits"; ObjectID = "ACl-OI-il4"; */
+"ACl-OI-il4.placeholder" = "Course Credits";
+
+/* Class = "UILabel"; text = "Participation"; ObjectID = "B3o-zx-61S"; */
+"B3o-zx-61S.text" = "Participation";
+
+/* Class = "UIButton"; normalTitle = "  Change Avatar"; ObjectID = "BEV-Ri-0nL"; */
+"BEV-Ri-0nL.normalTitle" = "  Change Avatar";
+
+/* Class = "UILabel"; text = "Credits"; ObjectID = "Ejb-u7-VQ8"; */
+"Ejb-u7-VQ8.text" = "Credits";
+
+/* Class = "UIButton"; normalTitle = "   Add Quiz"; ObjectID = "FQQ-KX-Bka"; */
+"FQQ-KX-Bka.normalTitle" = "   Add Quiz";
+
+/* Class = "UILabel"; text = "Exams"; ObjectID = "Fmp-5F-SIU"; */
+"Fmp-5F-SIU.text" = "Exams";
+
+/* Class = "UILabel"; text = "Labs"; ObjectID = "HPk-Ah-O1P"; */
+"HPk-Ah-O1P.text" = "Labs";
+
+/* Class = "UIButton"; normalTitle = "   Edit Weights"; ObjectID = "Ieq-2U-MdP"; */
+"Ieq-2U-MdP.normalTitle" = "   Edit Weights";
+
+/* Class = "UINavigationItem"; title = "Add a Course"; ObjectID = "KGK-AN-GrS"; */
+"KGK-AN-GrS.title" = "Add a Course";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "KLt-wG-kjG"; */
+"KLt-wG-kjG.title" = "Item";
+
+/* Class = "UILabel"; text = "Overall Grade"; ObjectID = "L1b-iW-QN8"; */
+"L1b-iW-QN8.text" = "Overall Grade";
+
+/* Class = "UILabel"; text = "Homework 1"; ObjectID = "L3C-hE-pYF"; */
+"L3C-hE-pYF.text" = "Homework 1";
+
+/* Class = "UITextField"; placeholder = "Section Number"; ObjectID = "L9Q-KU-sGC"; */
+"L9Q-KU-sGC.placeholder" = "Section Number";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "LCh-j9-V9o"; */
+"LCh-j9-V9o.text" = "Year";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "N44-Lm-DFS"; */
+"N44-Lm-DFS.text" = "A";
+
+/* Class = "UILabel"; text = "XX.X"; ObjectID = "N7J-tb-QV9"; */
+"N7J-tb-QV9.text" = "XX.X";
+
+/* Class = "UILabel"; text = "3.78"; ObjectID = "O8y-YN-1lQ"; */
+"O8y-YN-1lQ.text" = "3.78";
+
+/* Class = "UITextField"; placeholder = "Year"; ObjectID = "RXN-zo-8pc"; */
+"RXN-zo-8pc.placeholder" = "Year";
+
+/* Class = "UITextField"; placeholder = "Quizzes Weight"; ObjectID = "RjC-aM-XZB"; */
+"RjC-aM-XZB.placeholder" = "Quizzes Weight";
+
+/* Class = "UIButton"; normalTitle = "    Edit Grades"; ObjectID = "Tjy-Nq-o11"; */
+"Tjy-Nq-o11.normalTitle" = "    Edit Grades";
+
+/* Class = "UILabel"; text = "Quarter"; ObjectID = "VEg-b9-Q6R"; */
+"VEg-b9-Q6R.text" = "Quarter";
+
+/* Class = "UIButton"; normalTitle = "   Add Lab"; ObjectID = "Y1o-Yq-ojP"; */
+"Y1o-Yq-ojP.normalTitle" = "   Add Lab";
+
+/* Class = "UINavigationItem"; title = "Course List"; ObjectID = "Yns-sJ-R2h"; */
+"Yns-sJ-R2h.title" = "Course List";
+
+/* Class = "UITextField"; placeholder = "Fall, Winter, Spring or Summer"; ObjectID = "Zac-ZK-ciw"; */
+"Zac-ZK-ciw.placeholder" = "Fall, Winter, Spring or Summer";
+
+/* Class = "UITextField"; placeholder = "Labs Weight"; ObjectID = "b1R-eR-Rfb"; */
+"b1R-eR-Rfb.placeholder" = "Labs Weight";
+
+/* Class = "UIButton"; normalTitle = "   Add Exams"; ObjectID = "cUL-vw-VLz"; */
+"cUL-vw-VLz.normalTitle" = "   Add Exams";
+
+/* Class = "UIBarButtonItem"; title = "Confirm"; ObjectID = "caI-gm-ppa"; */
+"caI-gm-ppa.title" = "Confirm";
+
+/* Class = "UIButton"; normalTitle = "   Add Participation"; ObjectID = "dFc-72-0uf"; */
+"dFc-72-0uf.normalTitle" = "   Add Participation";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "dpQ-6V-Mmq"; */
+"dpQ-6V-Mmq.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "e.g. iOS Application Development"; ObjectID = "eDN-70-3SI"; */
+"eDN-70-3SI.placeholder" = "e.g. iOS Application Development";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "eRe-KL-f5s"; */
+"eRe-KL-f5s.text" = "Number";
+
+/* Class = "UIButton"; normalTitle = "   Add Assignment"; ObjectID = "fWX-jV-Ddd"; */
+"fWX-jV-Ddd.normalTitle" = "   Add Assignment";
+
+/* Class = "UIButton"; normalTitle = "  Edit Courses"; ObjectID = "fpl-Lj-ldA"; */
+"fpl-Lj-ldA.normalTitle" = "  Edit Courses";
+
+/* Class = "UIButton"; normalTitle = "   Delete Grades"; ObjectID = "gho-QR-Qhp"; */
+"gho-QR-Qhp.normalTitle" = "   Delete Grades";
+
+/* Class = "UITextField"; placeholder = "Participation Weight"; ObjectID = "hdx-dQ-ep4"; */
+"hdx-dQ-ep4.placeholder" = "Participation Weight";
+
+/* Class = "UILabel"; text = "A+"; ObjectID = "iUl-9O-dNo"; */
+"iUl-9O-dNo.text" = "A+";
+
+/* Class = "UILabel"; text = "Overall GPA"; ObjectID = "kjZ-06-LUm"; */
+"kjZ-06-LUm.text" = "Overall GPA";
+
+/* Class = "UILabel"; text = "Rose Gradebook"; ObjectID = "kpX-eR-o3z"; */
+"kpX-eR-o3z.text" = "Rose Gradebook";
+
+/* Class = "UIButton"; normalTitle = "  Done Editing"; ObjectID = "mDt-DW-mTm"; */
+"mDt-DW-mTm.normalTitle" = "  Done Editing";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "ml2-hZ-jbW"; */
+"ml2-hZ-jbW.title" = "Item";
+
+/* Class = "UILabel"; text = "Assignments"; ObjectID = "nE0-iZ-qC2"; */
+"nE0-iZ-qC2.text" = "Assignments";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "nTd-PG-ZAW"; */
+"nTd-PG-ZAW.text" = "A";
+
+/* Class = "UIButton"; normalTitle = "  Sign Out"; ObjectID = "sEu-w6-s4O"; */
+"sEu-w6-s4O.normalTitle" = "  Sign Out";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "sGg-dq-IeD"; */
+"sGg-dq-IeD.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Course Name"; ObjectID = "sMS-Ei-w1Z"; */
+"sMS-Ei-w1Z.title" = "Course Name";
+
+/* Class = "UILabel"; text = "XX.X"; ObjectID = "tRg-yw-PrL"; */
+"tRg-yw-PrL.text" = "XX.X";
+
+/* Class = "UILabel"; text = "CSSE484 iOS App Development"; ObjectID = "thd-2u-djy"; */
+"thd-2u-djy.text" = "CSSE484 iOS App Development";
+
+/* Class = "UIButton"; normalTitle = "Continue with RoseFire"; ObjectID = "yWa-wv-CbV"; */
+"yWa-wv-CbV.normalTitle" = "Continue with RoseFire";
+
+/* Class = "UILabel"; text = "XX.X%"; ObjectID = "zQy-ma-2ur"; */
+"zQy-ma-2ur.text" = "XX.X%";
+
+/* Class = "UILabel"; text = "Quizzes"; ObjectID = "zZb-QK-jAo"; */
+"zZb-QK-jAo.text" = "Quizzes";

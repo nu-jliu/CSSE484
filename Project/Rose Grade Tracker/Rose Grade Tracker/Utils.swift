@@ -45,14 +45,28 @@ class Utils {
     }
     
     static func parseQuarter(quarter: Int) -> String {
+        let language = Locale.autoupdatingCurrent.languageCode
+        
         switch quarter {
         case 1:
+            if language == "zh" {
+                return "秋"
+            }
             return "Fall"
         case 2:
+            if language == "zh" {
+                return "冬"
+            }
             return "Winter"
         case 3:
+            if language == "zh" {
+                return "春"
+            }
             return "Spring"
         case 4:
+            if language == "zh" {
+                return "夏"
+            }
             return "Summer"
         default:
             return "N/A"

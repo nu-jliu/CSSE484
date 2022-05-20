@@ -60,6 +60,14 @@ class Constants {
     static let FIRESTORE_COURSE_TEMPLATES_LABS_WEIGHT_KEY = "lWeight"
     static let FIRESTORE_COURSE_TEMPLATES_QUIZZES_WEIGHT_KEY = "qWeight"
     
+    // Translation
+    static let FIRESTORE_COURSE_NAME_TRANSLATED_KEY = "translatedName"
+    static let FIRESTORE_COURSE_NAME_GERMAN = "de"
+    static let FIRESTORE_COURSE_NAME_ENGLISH = "en"
+    static let FIRESTORE_COURSE_NAME_SPANISH = "es"
+    static let FIRESTORE_COURSE_NAME_FRANCH = "fr"
+    static let FIRESTORE_COURSE_NAME_CHINESE = "zh"
+    
     // Cloud Functions
     static let CLOUD_FUNCTIONS_URL = "https://us-central-rose-gradebook-ios.cloudfunctions.net"
     

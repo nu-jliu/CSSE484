@@ -51,6 +51,15 @@ class Course {
         self.documentId = snapshot.documentID
         self.name = snapshot.get(Constants.FIRESTORE_COURSE_NAME_KEY) as? String ?? ""
         self.number = snapshot.get(Constants.FIRESTORE_COURSE_NUMBER_KEY) as? String ?? ""
+        
+        print("Language \(Locale.autoupdatingCurrent.languageCode ?? "")")
+        if let localcode = Locale.autoupdatingCurrent.languageCode {
+            if let namesTranslated = snapshot.get(Constants.FIRESTORE_COURSE_NAME_TRANSLATED_KEY) as? [String: String] {
+                if let translated = namesTranslated[localcode] {
+                    self.name = translated
+                }
+            }
+        }
 //        self.name = "\(snapshot.get(Constants.FIRESTORE_COURSE_NUMBER_KEY) ?? "") \(snapshot.get(Constants.FIRESTORE_COURSE_NAME_KEY) ?? "")"
 //        self.section = String(format: "%02d", snapshot.get(Constants.FIRESTORE_COURSE_SECTION_KEY) as? Int ?? 0)
 //        self.quarter = Utils.parseQuarter(quarter: snapshot.get(Constants.FIRESTORE_COURSE_QUARTER_KEY) as? Int ?? 0)
