@@ -72,7 +72,7 @@ class Constants {
     static let CLOUD_FUNCTIONS_URL = "https://us-central-rose-gradebook-ios.cloudfunctions.net"
     
     // Rosefire
-    static let ROSEFIRE_REGISTRY_TOKEN = "33d13b03-2362-42cf-9786-f552b4e96d6e"
+    static let ROSEFIRE_REGISTRY_TOKEN = "3e7cf079-71b1-4be1-93b5-213b46e17a2a"
     
     // Segue Identifier
     static let SHOW_COURSE_LIST_SEQUE = "showCourseListSegue"
